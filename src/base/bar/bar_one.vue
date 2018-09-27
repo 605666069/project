@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div id="echart_one" style="width: 100%;height:400px;margin-top: 10px;"></div>		
+		<div  style="width: 100%;height:500px;" ref="my_chart"></div>		
 	</div>
 </template>
 
@@ -25,12 +25,14 @@
 				        trigger: 'axis',
 				        axisPointer: {
 				            type: 'shadow'
-				        }
+				        },
+				        color:'#fff'
 				    },
 				    grid: {
 				        left: '3%',
 				        right: '4%',
 				        bottom: '3%',
+				        top:"0%",
 				        containLabel: true
 				    },
 				    xAxis: {
@@ -50,18 +52,24 @@
 				        axisTick:{
 				        	show:false
 				        },
-				        inverse:true
+				        inverse:true,
+				        axisLabel:{
+				        		color:'#fff'
+				        }
 				    },
 				    series: [
 				        {
 				            name: this.data.name,
 				            type: 'bar',
 				            data: this.data.data,
+				            barMaxWidth:10,
 				            label: {
 				                normal: {
 				                    show: true,
-				                    position: 'right'
-				                }
+				                    position: 'right',
+				                    color:'#fff'
+				                },
+				                
 				            },
 				            itemStyle: {
 				                normal: {
@@ -84,7 +92,7 @@
         	creatChart() {
         		this.initOpction();
         		this.echart_one && this.echart_one.dispose();
-				this.echart_one = this.echarts.init(document.getElementById('echart_one'));
+				this.echart_one = this.echarts.init(this.$refs.my_chart);
         		this.echart_one.setOption(this.option);
         	},
         	getData() {

@@ -4,6 +4,9 @@
 .r {
 	float: right;
 }
+html,body {
+	color: #fff;
+}
 ul,ol,ul li,ol li { list-style: none; }/*重置列表*/
 .clearfix:after { clear:both;content:".";display:block;font-size:0;height:0;visibility:hidden; }
 .clearfix:after { _zoom:1; }
@@ -130,7 +133,7 @@ a:hover {
 	color: #666;
 }
 .gray-bc {
-	background-color: #f6f6f6
+	background-color: #f6f6f6;
 }
 .line:after {
 	content: "";
@@ -140,6 +143,10 @@ a:hover {
 	background-color: #DEDEDE;
 }
 .bg {
-	position: absolute;
-	top: 0;left: 0;right: 0;bottom: 0;
+	background: url(../bg.jpg)0 0 no-repeat;
+	background-size:100% 100%;
+	min-width:1200px;
+}
+.sub_title {
+	font-size: 25px;
 }

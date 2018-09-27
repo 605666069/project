@@ -21,6 +21,8 @@ Vue.use(VueAwesomeSwiper)
 Vue.prototype.echarts = echarts;
 
 
+import Title from "@/base/Title.vue";
+Vue.component('Title', Title)
 
 /* eslint-disable no-new */
 new Vue({
