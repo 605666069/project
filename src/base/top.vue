@@ -3,12 +3,37 @@
 		<div class="l font-1">2018/10/09</div>
 		<div class="r font-1">链接</div>
 		<div class="center font-1">
-			22222222222222222222222
+			{{title}}
+		</div>
+		<div class="top-line">
+			<img src="../assets/top.png"/>
 		</div>
 	</div>
 </template>
 
 <script>
+	export default {
+        data() {
+        	return {
+        	}
+        },
+        props:{
+        	title:{
+        		default:''
+        	}
+        },
+        computed:{
+        },
+        components: {
+        },
+        methods:{
+        },
+        created() {
+        		
+        },
+       
+       
+    }
 </script>
 
 <style scoped>
@@ -27,7 +52,14 @@
 	}
 	.top .center {
 		font-size: 40px;
+		
+	}
+	.top .top-line {
 		position: absolute;
-		left: 0;right: 0;
+		left: 0;top: 0;bottom: 0;right: 0;
+	}
+	.top .top-line img {
+		width: 100%;
+		height: 100%;
 	}
 </style>

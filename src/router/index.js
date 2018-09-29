@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home.vue'
+import passenger_flow from '@/components/passenger_flow.vue'
 import store from '@/store/index.js'
 
 Vue.use(Router)
@@ -8,6 +9,7 @@ const vueRouter = new Router({
   routes: [
   	{path:'/',redirect:'/home'},
     {path: '/home', component: home},
+    {path: '/passenger_flow', component: passenger_flow},
   ]
 })
 

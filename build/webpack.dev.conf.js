@@ -57,6 +57,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
+    new webpack.ProvidePlugin({
+        // other modules
+        introJs: ['intro.js', 'introJs']
+    }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {

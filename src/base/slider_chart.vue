@@ -60,19 +60,49 @@
 		            </div>
 		        </CarouselItem>
 		        <CarouselItem>
-		            <div class="demo-carousel">2222222222222222</div>
+		            <div class="demo-carousel">
+		            	 <div class="demo-carousel flex">
+		            		<div class="flex-1" v-for="(d,index) in data">
+		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            		</div>
+		           		</div>
+		            </div>
 		        </CarouselItem>
 		        <CarouselItem>
-		            <div class="demo-carousel">33333333333333</div>
+		            <div class="demo-carousel">
+		            	 <div class="demo-carousel flex">
+		            		<div class="flex-1" v-for="(d,index) in data">
+		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            		</div>
+		            	</div>
+		            </div>
 		        </CarouselItem>
 		        <CarouselItem>
-		            <div class="demo-carousel">4444444444444</div>
+		            <div class="demo-carousel">
+		            	 <div class="demo-carousel flex">
+		            		<div class="flex-1" v-for="(d,index) in data">
+		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            		</div>
+		           		 </div>
+		            </div>
 		        </CarouselItem>
 		         <CarouselItem>
-		            <div class="demo-carousel">5555555555555555</div>
+		            <div class="demo-carousel">
+		            	 <div class="demo-carousel flex">
+		            		<div class="flex-1" v-for="(d,index) in data">
+		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            		</div>
+		            	</div>
+		            </div>
 		        </CarouselItem>
 		         <CarouselItem>
-		            <div class="demo-carousel">6666666666666666</div>
+		            <div class="demo-carousel">
+		            	 <div class="demo-carousel flex">
+		            		<div class="flex-1" v-for="(d,index) in data">
+		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            		</div>
+		            	</div>
+		            </div>
 		        </CarouselItem>
 		    </Carousel>
 		</div>
@@ -99,9 +129,7 @@
 	        		this.index = index
 	        	},
 	        	getData() {
-				this.data = this.echarts_data.home_data.traffic;
-	        		
-	        		
+					this.data = this.echarts_data.home_data.traffic;
 	        	}
 	        	
         },

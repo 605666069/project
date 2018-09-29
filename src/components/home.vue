@@ -1,5 +1,6 @@
 <template>
 	<div class="bg clearfix">
+		<Top title="磐安全域旅游大数据中心"></Top>
 		<div class="l line-left">
 			<div class="line-1 sub-line l">
 				<Title title="景区实时客流数" ></Title>
@@ -10,7 +11,7 @@
 			</div>
 			<div class="line-4 sub-line">
 				<Title title="实时客流分布地图" ></Title>
-				
+				<Home_center></Home_center>
 			</div>
 			<div class="l line-2">
 				<Title title="旅游要素" :vertical="true" class="l bottom-title"></Title>
@@ -41,9 +42,9 @@
 			</div>
 		</div>
 		
-		<!--<Top></Top>-->
 		
 	</div>
+	
 </template>
 
 <script>
@@ -52,6 +53,8 @@
 	import Slider_chart from "@/base/slider_chart.vue";
 	import Line_one from "@/base/line/line_one.vue";
 	import Num from "@/base/num.vue";
+	import Home_center from "@/base/center/home_center.vue";
+	
 	
 	
 	
@@ -66,7 +69,7 @@
         computed:{
         },
         components: {
-        	Top,Bar_one,Slider_chart,Line_one,Num
+        	Top,Bar_one,Slider_chart,Line_one,Num,Home_center
         },
         methods:{
         		getVisit() {
@@ -90,7 +93,8 @@
 
 <style scoped>
 	.line-1 {
-		width: 400px;
+		width: 300px;
+		padding: 0 5px;
 	}
 	.line-2 {
 		position: relative;
@@ -113,6 +117,6 @@
 		margin-top: 20px;
 	}
 	.line-4 {
-		margin-left: 400px;
+		margin-left: 300px;
 	}
 </style>

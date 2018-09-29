@@ -74,7 +74,73 @@ export default  {
 					data:[140, 112, 22, 114, 90, 20, 210]
 				},
 			]
-		}
+		},
+		home_center:[
+			{
+				name:'十八涡',
+				today_data:10131,
+				current_data:100
+			},
+			{
+				name:'百丈潭',
+				today_data:10131,
+				current_data:100
+			},
+			{
+				name:'沙溪玫瑰园',
+				today_data:10131,
+				current_data:100
+			},
+			{
+				name:'金鸡岩',
+				today_data:10131,
+				current_data:100
+			},
+			{
+				name:'舞龙峡',
+				today_data:10131,
+				current_data:100
+			},
+			{
+				name:'水下孔',
+				today_data:10131,
+				current_data:100
+			},
+			{
+				name:'花溪',
+				today_data:10131,
+				current_data:100
+			},
+			{
+				name:'灵江源',
+				today_data:10131,
+				current_data:100
+			},
+			{
+				name:'孔庙',
+				today_data:10131,
+				current_data:100
+			},
+		]
+	},
+	passenger_flow:{
+		data1:{
+			name:'昨日游客驻留情况',
+			data:[
+				{
+					value: 435,
+					name: '1-3天'
+				},
+				{
+					value: 20,
+					name: '3-5天'
+				},
+				{
+					value: 1601,
+					name: '5天以上'
+				},
+			]
+		},
 	}
 	
 	

@@ -24,7 +24,6 @@
 		components: {},
 		methods: {
 			initOpction() {
-				console.log(this.isShowLegend)
 				this.option = {
 					legend: {
 				        orient: 'vertical',

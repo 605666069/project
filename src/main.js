@@ -15,6 +15,8 @@ import '@/assets/css/index.css'
 
 import echarts_data from '@/api/data.js'
 Vue.prototype.echarts_data = echarts_data;
+import geoCoordMap from '@/api/geoCoordMap.js'
+Vue.prototype.geoCoordMap = geoCoordMap;
 Vue.use(VueClipboard)
 Vue.use(Iview)
 Vue.use(VueAwesomeSwiper)
