@@ -3,7 +3,7 @@
 		<Top title="磐安全域旅游大数据中心"></Top>
 		<div class="top clearfix">
 			<div class="l line-1">
-				<Title title="入磐总客流数" ></Title>
+				<Title title="入磐总客流数"></Title>
 				<div class="sub_title">
 					今日入磐
 				</div>
@@ -16,22 +16,29 @@
 				<div>
 					<Num data="2094"></Num>
 				</div>
-				<Title title="昨日游客驻留情况" ></Title>
-				<Circle_two :data="reside_data"></Circle_two>
+				<Title title="昨日游客驻留情况"></Title>
+				<Circle_two :data="reside_data" position="inner" :colorList="colorList"></Circle_two>
 			</div>
 			<div class="line-right r">
-				<Title title="游客来源增幅TOP10(市)" ></Title>
-				<Bar_two></Bar_two>
+				<Title title="游客来源增幅TOP10(市)"></Title>
+				<Bar_two :data="source_visitor_data"></Bar_two>
+				<Line_one :data="visitor_data" :show_legend="false" class="sub-line" :isAreaShow="true" :colorList="colorList1"></Line_one>
 			</div>
 			<div class="line-2">
-				<Title title="游客来访地图" ></Title>
+				<Title title="游客来访地图"></Title>
 				<Passenger_map></Passenger_map>
 			</div>
 		</div>
-		<div class="l">
-			
+		<div class="clearfix">
+			<div class="l bottom-line">
+				<Line_one :data="history_visitor_data"  :isSmooth="true" class="sub-line"></Line_one>
+			</div>
+			<div class="l bottom-line sub-line">
+				<Title title="2018年客源累计Top10"></Title>
+				<Bar_four :data="sum_visitor_data" :barMaxWidth='60' :show_legend="false"></Bar_four>
+			</div>
 		</div>
-		
+
 	</div>
 </template>
 
@@ -41,52 +48,91 @@
 	import Passenger_map from "@/base/center/Passenger_map.vue";
 	import Circle_two from "@/base/circle/circle_two.vue";
 	import Bar_two from "@/base/bar/bar_two.vue";
-	
-	
-	
+	import Bar_four from "@/base/bar/Bar_four.vue";
+	import Bar_three from "@/base/bar/bar_three.vue";
+	import Line_one from "@/base/line/line_one.vue";
+
 	export default {
-        data() {
-        	return {
-        		reside_data:null
-        	}
-        },
-        computed:{
-        },
-        components: {
-        	Top,Num,Passenger_map,Circle_two,Bar_two
-        },
-        methods:{
-        	getResideData() {
-        		this.reside_data =  this.echarts_data.passenger_flow.data1;
-        	}
-        	
-        },
-        created() {
-        	this.$nextTick(() => {
-				this.getResideData()
+		data() {
+			return {
+				reside_data: null,
+				visitor_data:null,
+				history_visitor_data:null,
+				source_visitor_data:null,
+				sum_visitor_data:null,
+				colorList:['#fe996a','#944fe8','#01c8f3'],
+				colorList1:['#01c8f3','#b5f0fe'],
+			}
+		},
+		computed: {},
+		components: {
+			Top,
+			Num,
+			Passenger_map,
+			Circle_two,
+			Bar_two,
+			Line_one,
+			Bar_three,
+			Bar_four
+		},
+		methods: {
+			getResideData() {
+				this.reside_data = this.echarts_data.passenger_flow.data1;
+			},
+			getVisitorData() {
+        			this.visitor_data = this.echarts_data.passenger_flow.line_data;
+        		},
+        		getHistoryVisitorData() {
+        			this.history_visitor_data = this.echarts_data.passenger_flow.line_data1;
+        			this.history_visitor_data.data.map((item,index)=>{
+        				item.color = [this.colorList[index],this.colorList[index]]
+        			})
+        		},
+        		getSourceVisitorData() {
+        			this.source_visitor_data = this.echarts_data.passenger_flow.bar_data;
+        		},
+        		getSumVisitorData() {
+        			this.sum_visitor_data = this.echarts_data.passenger_flow.bar_data1;
+        		},
+        		
+
+		},
+		created() {
+			this.$nextTick(() => {
+				this.getResideData();
+				this.getVisitorData()
+				this.getHistoryVisitorData();
+				this.getSourceVisitorData();
+				this.getSumVisitorData()
 			})
-        },
-       
-       
-    }
+		},
+
+	}
 </script>
 
 <style scoped>
 	.line-1 {
 		width: 400px;
 	}
+	
 	.sub-line {
 		margin-top: 20px;
 	}
+	
 	.line-2 {
 		margin-left: 400px;
 		margin-right: 400px;
 	}
+	
 	.line-left {
 		margin-right: 400px;
 		position: relative;
 	}
+	
 	.line-right {
 		width: 400px;
+	}
+	.bottom-line {
+		width: 50%;
 	}
 </style>

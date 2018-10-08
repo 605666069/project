@@ -29,7 +29,7 @@
 				        color:'#fff'
 				    },
 				    grid: {
-				        left: '3%',
+				        left: '-70',
 				        right: '4%',
 				        bottom: '3%',
 				        top:"0%",
@@ -42,6 +42,7 @@
 				        splitLine: {
 				            show: false
 				        },
+				        
 				    },
 				    yAxis: {
 				        type: 'category',
@@ -54,8 +55,11 @@
 				        },
 				        inverse:true,
 				        axisLabel:{
-				        		color:'#fff'
-				        }
+				        		color:'#fff',
+				        		align:'left',
+				        		margin:110,
+				        		fontSize:16
+				        },
 				    },
 				    series: [
 				        {
@@ -67,7 +71,8 @@
 				                normal: {
 				                    show: true,
 				                    position: 'right',
-				                    color:'#fff'
+				                    color:'#fff',
+				                    fontSize:14
 				                },
 				                
 				            },
@@ -76,9 +81,9 @@
 				                    color: new this.echarts.graphic.LinearGradient(
 				                        0, 0, 0, 1,
 				                        [
-				                            {offset: 0, color: '#28C5E4'},
-				                            {offset: 0.5, color: '#23AAF8'},
-				                            {offset: 1, color: '#6573EF'}
+				                            {offset: 0, color: '#37C4DA'},
+				                            {offset: 0.5, color: '#0EBAFB'},
+				                            {offset: 1, color: '#6474F0'}
 				                        ]
 				                    )
 				                },

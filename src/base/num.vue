@@ -45,6 +45,7 @@
 
 <style scoped>
 	.iconfont {
-		font-size: 30px;
+		font-size: 50px;
+		color: #02DFFF;
 	}
 </style>

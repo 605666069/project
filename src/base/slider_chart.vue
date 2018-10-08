@@ -55,7 +55,7 @@
 		        <CarouselItem>
 		            <div class="demo-carousel flex">
 		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            			<Circle_one :data="d" ></Circle_one>
 		            		</div>
 		            </div>
 		        </CarouselItem>
@@ -63,7 +63,7 @@
 		            <div class="demo-carousel">
 		            	 <div class="demo-carousel flex">
 		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            			<Circle_one :data="d" ></Circle_one>
 		            		</div>
 		           		</div>
 		            </div>
@@ -72,7 +72,7 @@
 		            <div class="demo-carousel">
 		            	 <div class="demo-carousel flex">
 		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            			<Circle_one :data="d" ></Circle_one>
 		            		</div>
 		            	</div>
 		            </div>
@@ -81,7 +81,7 @@
 		            <div class="demo-carousel">
 		            	 <div class="demo-carousel flex">
 		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            			<Circle_one :data="d"></Circle_one>
 		            		</div>
 		           		 </div>
 		            </div>
@@ -90,7 +90,7 @@
 		            <div class="demo-carousel">
 		            	 <div class="demo-carousel flex">
 		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            			<Circle_one :data="d" ></Circle_one>
 		            		</div>
 		            	</div>
 		            </div>
@@ -99,7 +99,7 @@
 		            <div class="demo-carousel">
 		            	 <div class="demo-carousel flex">
 		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
+		            			<Circle_one :data="d"></Circle_one>
 		            		</div>
 		            	</div>
 		            </div>
@@ -130,6 +130,13 @@
 	        	},
 	        	getData() {
 					this.data = this.echarts_data.home_data.traffic;
+					console.log(this.data)
+					this.data.map(item=>{
+						item.data.map(sub=>{
+							sub.bg_color = [this.color(),this.color()]
+						})
+	        			})
+					
 	        	}
 	        	
         },
@@ -146,12 +153,12 @@
 
 <style scoped>
 	.nav {
-		width: 250px;
+		width: 400px;
 	}
 	.nav .nav-line {
-		margin: 2px;
+		margin: 5px 10px;
 		display: inline-block;
-		width: 71px;
+		width: 100px;
 		text-align: center;
 		cursor: pointer;
 	}
@@ -159,8 +166,7 @@
 		width: 100%;
 	}
 	.content {
-		margin-left: 250px;
-		width: 800px;
+		margin-left: 400px;
 	}
 	
 	.demo-carousel {

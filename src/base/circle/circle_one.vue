@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div  style="width: 100%;height:200px;margin-top: 10px;" ref="my_chart"></div>
+		<div  style="width: 100%;height:280px;margin-top: 10px;" ref="my_chart"></div>
 	</div>
 </template>
 
@@ -10,11 +10,16 @@
 			return {
 				option: {},
 				circle_one: null,
+				color:{
+					'省内':['#00d4be','#01c8f4'],
+					'省外':['#8d53ea', '#01c6fd'],
+					'本地':['#9952e2','#fe996a'],
+				}
 			}
 		},
 		props:{
 			data:{
-				default:[]
+				default:null
 			},
 			isShowLegend:{
 				default:false
@@ -24,6 +29,27 @@
 		components: {},
 		methods: {
 			initOpction() {
+				this.data.data.map((item,index)=>{
+					item.itemStyle = {
+		                normal: {
+		                    color: { // 完成的圆环的颜色
+		                        colorStops: [{
+		                            offset: 0,
+		                            color: (this.color[this.data.name]&&index<1)?this.color[this.data.name][0]:'#25354F' // 0% 处的颜色
+		                        }, {
+		                            offset: 1,
+		                            color: (this.color[this.data.name]&&index<1)?this.color[this.data.name][1]:'#25354F'  // 100% 处的颜色
+		                        }]
+		                    },
+		                    label: {
+		                        show: false
+		                    },
+		                    labelLine: {
+		                        show: false
+		                    }
+		                } 
+		            }
+				})
 				this.option = {
 					legend: {
 				        orient: 'vertical',
@@ -40,7 +66,7 @@
 					title:{
 						text:this.data.name,
 						top:'bottom',
-						left:'25%',
+						left:'33%',
 						textStyle:{
 				        	 	color:'#fff'
 				        }
@@ -52,7 +78,7 @@
 					series: [{
 							name: this.data.name,
 							type: 'pie',
-							center:['30%','50%'],
+							center:['40%','50%'],
 							radius: ['55%', '65%'],
 							avoidLabelOverlap: false,
 							hoverAnimation:false,
@@ -83,20 +109,26 @@
 			},
 			creatChart() {
 				this.initOpction();
+				
 				this.circle_one && this.circle_one.dispose();
 				this.circle_one = this.echarts.init(this.$refs.my_chart);
 				this.circle_one.setOption(this.option);
 			},
-			getData() {
-				this.creatChart()
-			}
 
 		},
-		created() {
-			this.$nextTick(() => {
-				this.getData();
-			})
-		},
+		watch:{
+			'data':{
+		    		handler(val,oldVal) {
+		    			if(this.data) {
+		    				this.$nextTick(() => {
+							this.creatChart()
+						})
+		    				
+		    			}
+		    		},
+		    		immediate: true
+		    	}
+		}
 
 	}
 </script>

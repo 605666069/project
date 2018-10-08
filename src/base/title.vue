@@ -40,7 +40,7 @@
 <style scoped>
 	.title {
 		color: #33cccc;
-		font-size: 30px;
+		font-size: 25px;
 		line-height: 40px;
 		justify-content: center;
 		text-align: center;
@@ -59,7 +59,7 @@
 		width: 100%;
 	}
 	.title-vertical {
-		width: 55px;
+		width: 45px;
 		position: absolute;
 		top: 0;
 		bottom: 0;

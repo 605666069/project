@@ -16,11 +16,38 @@
 			data:{
 				default:null
 			},
+			position:{
+				default:'outside'
+			},
+			position_formatter:{
+				default:'{d}%'
+			},
+			colorList:{
+				default:null
+			}
 		},
 		computed: {},
 		components: {},
 		methods: {
 			initOpction() {
+				if(this.colorList&&this.data) {
+					this.data.data.map((item,index)=>{
+						item.itemStyle = {
+			                normal: {
+			                    color: { // 完成的圆环的颜色
+			                        colorStops: [{
+			                            offset: 0,
+			                            color:this.colorList[index] // 0% 处的颜色
+			                        }, {
+			                            offset: 1,
+			                            color: this.colorList[index]  // 100% 处的颜色
+			                        }]
+			                    },
+			                } 
+		            }
+					})
+				}
+				console.log(this.data)
 				this.option = {
 					legend: {
 				        orient: 'vertical',
@@ -47,8 +74,8 @@
 							label: {
 								normal: {
 									show: true,
-									position:"inner",
-									formatter:"{d}%"
+									position:this.position,
+									formatter:this.position_formatter
 								},
 								emphasis: {
 									show: true,

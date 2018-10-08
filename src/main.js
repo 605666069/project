@@ -22,6 +22,10 @@ Vue.use(Iview)
 Vue.use(VueAwesomeSwiper)
 Vue.prototype.echarts = echarts;
 
+Vue.prototype.color = ()  => {
+    return 'rgb('+  Math.floor(Math.random()*255) +','+  Math.floor(Math.random()*255) +','+  Math.floor(Math.random()*255) + ')';
+ }
+
 
 import Title from "@/base/Title.vue";
 Vue.component('Title', Title)

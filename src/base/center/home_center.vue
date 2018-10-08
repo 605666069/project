@@ -1,7 +1,7 @@
 <template>
 	<div class="wrap">
 		
-		<div class="text-wrap" v-for="(d,index) in data" v-bind:class="{'text-wrap-low':(index+1)%2==0,'text-wrap-hight':(index+1)%2!=0}" v-bind:style="{left:100/data.length * index + '%'}"> 
+		<div class="text-wrap" v-for="(d,index) in data"  v-bind:style="{left:d.left,bottom:d.bottom}"> 
 			<div class="">
 				<div class="top-text-wrap" >
 					<div class="">
@@ -11,7 +11,7 @@
 					 	实时：{{d.current_data}}人
 					</div>
 				</div>
-				<div class="sub_title border">{{d.name}}</div>
+				<div class="sub-title border">{{d.name}}</div>
 			</div>
 			<div class="wrap-line">
 				<img src="../../assets/home_line_top.png" class="line-top"/>
@@ -33,9 +33,17 @@
         components: {
         },
         methods:{
-        	getData() {
-				this.data = this.echarts_data.home_data.home_center;
-        	}
+	        	getData() {
+					this.data =  this.echarts_data.home_data.home_center
+					this.data.map((item,index)=>{
+					 	 item.left = 100/this.data.length * index + "%";
+					 	 item.bottom = this.randomFunction(100,240) + 'px'
+					 })
+	        	},
+	        	randomFunction(min , max){
+				return parseInt(Math.random() * (max - min)) + min;
+			}
+
         },
         created() {
 			this.getData();        		
@@ -76,7 +84,7 @@
 		width: 64px;
 		display: inline-block;
 	}
-	.text-wrap .sub_title {
+	.text-wrap .sub-title {
 		display: inline-block;
 		width: 100%;
 		overflow: hidden;
@@ -84,11 +92,16 @@
 	}
 	.top-text-wrap {
 		display: none;
+		font-size: 14px;
 	}
 	.text-wrap:hover .top-text-wrap {
 		display: block;
 	}
-	.text-wrap:hover .sub_title {
+	.sub-title {
+		font-size: 20px;
+		font-weight:700;
+	}
+	.text-wrap:hover .sub-title {
 		border: 1px solid rgba(255,255,255,.6);
 		background-color:rgba(255,255,255,.3);
 		border-radius: 5px;

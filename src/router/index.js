@@ -2,6 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home.vue'
 import passenger_flow from '@/components/passenger_flow.vue'
+import scenic_area from '@/components/scenic_area.vue'
+import car from '@/components/car.vue'
+import hotel from '@/components/hotel.vue'
+import hot_search from '@/components/hot_search.vue'
+import wx_operation from '@/components/wx_operation.vue'
 import store from '@/store/index.js'
 
 Vue.use(Router)
@@ -10,6 +15,11 @@ const vueRouter = new Router({
   	{path:'/',redirect:'/home'},
     {path: '/home', component: home},
     {path: '/passenger_flow', component: passenger_flow},
+    {path: '/scenic_area', component: scenic_area},
+    {path: '/hotel', component: hotel},
+    {path: '/car', component: car},
+    {path: '/wx_operation', component: wx_operation},
+    {path: '/hot_search', component: hot_search},
   ]
 })
 

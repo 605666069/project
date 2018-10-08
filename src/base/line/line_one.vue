@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Title :title="data.name" v-if="data"></Title>
+		<Title :title="data.name" v-if="data&&showTitle"></Title>
 		<div  style="width: 100%;height:200px;margin-top: 10px;" ref="my_chart"></div>
 	</div>
 </template>
@@ -16,6 +16,27 @@
 		props:{
 			data:{
 				default:null
+			},
+			show_legend:{
+				default:true
+			},
+			isSmooth:{
+				default:false
+			},
+			isAreaShow:{
+				default:false
+			},
+			showTitle:{
+				default:true
+			},
+			gradient:{
+				default:null
+			},
+			colorList:{
+				default:null
+			},
+			dataZoom:{
+				default:null
 			}
 		},
 		computed: {},
@@ -24,12 +45,23 @@
 			initOpction() {
 				let dataList = [];
 				let nameList = [];
-				this.data.data.map(item=>{
+				this.data.data.map((item,index)=>{
 					dataList.push({
+						 areaStyle: {
+						 	opacity:this.isAreaShow?1:0
+						 },
 			            name:item.name,
 			            type:'line',
 			            stack: '总量',
-			            data:item.data
+			            data:item.data,
+			            smooth: this.isSmooth,
+			            color:(this.colorList&&this.colorList[index])?this.colorList[index]:(item.color?new this.echarts.graphic.LinearGradient(
+			                0, 0, 0, 1,
+			                [
+			                    {offset: 0, color:item.color[0]},
+			                    {offset: 1, color:item.color[1]}
+			                ]
+			            ):null)
 			       });
 			       nameList.push(item.name)
 				})
@@ -44,13 +76,25 @@
 				    tooltip: {
 				        trigger: 'axis'
 				    },
+				    dataZoom:this.dataZoom? [{
+				        type: 'inside',
+				        start: 50,
+				        end: 100
+				    }, {
+				        show: true,
+				        type: 'slider',
+				        y: '90%',
+				        start: 50,
+				        end: 100
+				    }]:null,
 				    legend: {
 					    	textStyle:{
 					    		color:'#fff'
 					    	},
 //				    		orient:'vertical',
 //				    		right:0,
-				        data:nameList
+				        data:nameList,
+				        show:this.show_legend
 				    },
 				    grid: {
 				        left: '3%',
@@ -70,7 +114,10 @@
 				       	},
 				        type: 'category',
 				        boundaryGap: false,
-				        data: this.data.product
+				        data: this.data.product,
+				        splitLine: {
+				            show: false
+				        },
 				    },
 				    yAxis: {
 				    		axisLine:{
@@ -82,7 +129,10 @@
 				    		axisLabel:{
 				        		color:'#fff'
 				       	},
-				        type: 'value'
+				        type: 'value',
+				        splitLine: {
+				            show: false
+				        },
 				    },
 				    series:dataList
 				}
