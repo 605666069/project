@@ -7,6 +7,7 @@ import Iview from "iview"
 import 'iview/dist/styles/iview.css';
 import store from '@/store'
 import echarts from "echarts"
+//import "echarts/extension/bmap/bmap"
 import 'animate.css/animate.min.css'
 import VueClipboard from 'vue-clipboard2'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -15,8 +16,8 @@ import '@/assets/css/index.css'
 
 import echarts_data from '@/api/data.js'
 Vue.prototype.echarts_data = echarts_data;
-import geoCoordMap from '@/api/geoCoordMap.js'
-Vue.prototype.geoCoordMap = geoCoordMap;
+//import geoCoordMap from '@/api/geoCoordMap.js'
+//Vue.prototype.geoCoordMap = geoCoordMap;
 Vue.use(VueClipboard)
 Vue.use(Iview)
 Vue.use(VueAwesomeSwiper)

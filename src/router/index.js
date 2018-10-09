@@ -7,6 +7,7 @@ import car from '@/components/car.vue'
 import hotel from '@/components/hotel.vue'
 import hot_search from '@/components/hot_search.vue'
 import wx_operation from '@/components/wx_operation.vue'
+import test from '@/components/test.vue'
 import store from '@/store/index.js'
 
 Vue.use(Router)
@@ -20,6 +21,7 @@ const vueRouter = new Router({
     {path: '/car', component: car},
     {path: '/wx_operation', component: wx_operation},
     {path: '/hot_search', component: hot_search},
+    {path: '/test', component: test},
   ]
 })
 
