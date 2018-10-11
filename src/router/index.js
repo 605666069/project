@@ -7,6 +7,7 @@ import car from '@/components/car.vue'
 import hotel from '@/components/hotel.vue'
 import hot_search from '@/components/hot_search.vue'
 import wx_operation from '@/components/wx_operation.vue'
+import passenger_map from '@/base/jchart.vue'
 import test from '@/components/test.vue'
 import store from '@/store/index.js'
 
@@ -14,32 +15,16 @@ Vue.use(Router)
 const vueRouter = new Router({
   routes: [
   	{path:'/',redirect:'/home'},
-    {path: '/home', component: home},
-    {path: '/passenger_flow', component: passenger_flow},
-    {path: '/scenic_area', component: scenic_area},
-    {path: '/hotel', component: hotel},
-    {path: '/car', component: car},
-    {path: '/wx_operation', component: wx_operation},
-    {path: '/hot_search', component: hot_search},
+    {path: '/home', component: home,name:'首页'},
+    {path: '/passenger_flow', component: passenger_flow,name:'客流数据'},
+    {path: '/scenic_area', component: scenic_area,name:'景区数据'},
+    {path: '/hotel', component: hotel,name:'酒店住宿'},
+    {path: '/car', component: car,name:'交通数据'},
+    {path: '/wx_operation', component: wx_operation,name:'微信运营'},
+    {path: '/hot_search', component: hot_search,name:'网络热搜'},
     {path: '/test', component: test},
+    {path: '/passenger_map', component: passenger_map,name:'哈哈哈'},
   ]
 })
 
-//vueRouter.beforeEach(function (to, from, next) {  
-//  const nextRoute = [ 'upload', 'user_center'];  
-//  const auth = store.state.global.login_data.token_access; 
-//  if (nextRoute.indexOf(to.name) >= 0) {  
-        //未登录  
-//      if (!auth) {  
-//          vueRouter.push({name:'login'})  
-//      }  
-//  }  
-//  //已登录的情况再去登录页，跳转至首页  
-//  if (to.path === '/login') {  
-//      if (auth) {  
-//          vueRouter.push({path: '/home'});  
-//      }  
-//  }  
-//  next();  
-//});  
 export default vueRouter;

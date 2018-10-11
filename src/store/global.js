@@ -52,8 +52,10 @@ getRandomData:function (length,isDate) {
 		}
 	}
 	return arr;
-}
-	
+},
+randomFunction:function  (min , max){
+	return parseInt(Math.random() * (max - min)) + min;
+}	
 	
 	
 }

@@ -150,14 +150,14 @@
 				                    value: 21,
 				                    name: '1-3天',
 				                    itemStyle: {
-				                        color: '#9ed472'
+				                        color: '#f48c2d'
 				                    }
 				                },
 				                {
 				                    value: 2,
 				                    name: '3-5天',
 				                    itemStyle: {
-				                        color: '#bc78d8'
+				                        color: '#32e3eb'
 				                    }
 				                },
 				                {

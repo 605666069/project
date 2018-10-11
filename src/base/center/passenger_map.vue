@@ -10,292 +10,39 @@
 
 	export default {
 		data() {
-			return {}
+			return {
+				chinaData: this.echarts.getMap('china').geoJson.features
+			}
 		},
 		computed: {},
 		components: {},
 		methods: {
 			initOpction() {
-				var nameColor = " rgb(55, 75, 113)"
-				var name_fontFamily = '等线'
-				var subname_fontSize = 15
-				var name_fontSize = 18
+				let citys = [];
+				let moveLines = [];
+				this.chinaData.map(item=>{
+					citys.push({
+						name: item.properties.name,
+						value: item.properties.cp.concat(this.global.randomFunction(500,1000)),
+					});
+					moveLines.push({
+						fromName: item.properties.name,
+						toName: "磐安",
+						coords: [item.properties.cp,
+							[120.4413750000000,29.0514720000000],
+						]
+					})
+					
+				});
+				
 				var mapName = 'china'
-				var data = [{
-						name: "北京",
-						value: 177
-					},
-					{
-						name: "天津",
-						value: 42
-					},
-					{
-						name: "河北",
-						value: 102
-					},
-					{
-						name: "山西",
-						value: 81
-					},
-					{
-						name: "内蒙古",
-						value: 47
-					},
-					{
-						name: "辽宁",
-						value: 67
-					},
-					{
-						name: "吉林",
-						value: 82
-					},
-					{
-						name: "黑龙江",
-						value: 66
-					},
-					{
-						name: "上海",
-						value: 24
-					},
-					{
-						name: "江苏",
-						value: 92
-					},
-					{
-						name: "浙江",
-						value: 114
-					},
-					{
-						name: "安徽",
-						value: 109
-					},
-					{
-						name: "福建",
-						value: 116
-					},
-					{
-						name: "江西",
-						value: 91
-					},
-					{
-						name: "山东",
-						value: 119
-					},
-					{
-						name: "河南",
-						value: 137
-					},
-					{
-						name: "湖北",
-						value: 116
-					},
-					{
-						name: "湖南",
-						value: 114
-					},
-					{
-						name: "重庆",
-						value: 91
-					},
-					{
-						name: "四川",
-						value: 125
-					},
-					{
-						name: "贵州",
-						value: 62
-					},
-					{
-						name: "云南",
-						value: 83
-					},
-					{
-						name: "西藏",
-						value: 9
-					},
-					{
-						name: "陕西",
-						value: 80
-					},
-					{
-						name: "甘肃",
-						value: 56
-					},
-					{
-						name: "青海",
-						value: 10
-					},
-					{
-						name: "宁夏",
-						value: 18
-					},
-					{
-						name: "新疆",
-						value: 67
-					},
-					{
-						name: "广东",
-						value: 123
-					},
-					{
-						name: "广西",
-						value: 59
-					},
-					{
-						name: "海南",
-						value: 14
-					},
-				];
 
 				var geoCoordMap = {};
-				var toolTipData = [{
-						name: "北京",
-						value: [{
-							name: "人数",
-							value: 177
-						}]
-					},
-					{
-						name: "天津",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "河北",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "山西",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "内蒙古",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "辽宁",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "吉林",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "黑龙江",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "上海",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "江苏",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "浙江",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "安徽",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "福建",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-					{
-						name: "江西",
-						value: [{
-							name: "人数",
-							value: 95
-						}]
-					},
-
-				];
-				var moveLines =  [{
-						"fromName": "黑龙江",
-						"toName": "浙江",
-						"coords": [
-							[126.661669, 45.742347],
-							[120.1535761,30.287459]
-						]
-					}, {
-						"fromName": "黑龙江",
-						"toName": "浙江",
-						"coords": [
-							[126.661669, 45.742347],
-							[120.1535761,30.287459]
-						]
-					},  {
-						"fromName": "上海",
-						"toName": "浙江",
-						"coords": [
-							[121.473701, 31.230416],
-							[120.1535761,30.287459]
-						]
-					}, {
-				        "fromName": "北京",
-						"toName": "浙江",
-				        "coords": [
-				            [116.407526, 39.90403],
-				            [120.1535761,30.287459]
-				        ]
-				    }, {
-				        "fromName": "吉林",
-						"toName": "浙江",
-				        "coords": [
-				            [126.549572, 43.837883],
-				            [120.1535761,30.287459]
-				        ]
-				    }, {
-				        "fromName": "吉林",
-						"toName": "浙江",
-				        "coords": [
-				            [126.549572, 43.837883],
-				            [120.1535761,30.287459]
-				        ]
-				    },]
+				
 
 				/*获取地图数据*/
 				//				var mapFeatures = echarts.getMap(mapName).geoJson.features;
 				var mapFeatures = this.echarts.getMap(mapName).geoJson.features;
-				console.log(mapFeatures)
 				//				var mapFeatures = this.geoCoordMap.features;
 				mapFeatures.forEach(function(v) {
 					// 地区名称
@@ -305,15 +52,6 @@
 
 				});
 
-				// console.log("============geoCoordMap===================")
-				// console.log(geoCoordMap)
-				// console.log("================data======================")
-				//console.log(data)
-				//console.log(toolTipData)
-				var max = 480,
-					min = 9; // todo 
-				var maxSize4Pin = 100,
-					minSize4Pin = 20;
 
 				var convertData = function(data) {
 					var res = [];
@@ -418,7 +156,7 @@
 							name: '散点',
 							type: 'effectScatter',
 							coordinateSystem: 'geo',
-							data: convertData(data),
+							data: citys,
 							symbolSize:5,
 							 label: {
 			                    normal: {
@@ -454,6 +192,7 @@
 							geoIndex: 0,
 							aspectScale: 0.75, //长宽比
 							showLegendSymbol: false, // 存在legend时显示
+							zoom: 1.2,
 							label: {
 								normal: {
 									show: false,

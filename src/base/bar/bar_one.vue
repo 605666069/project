@@ -78,14 +78,16 @@
 				            },
 				            itemStyle: {
 				                normal: {
-				                    color: new this.echarts.graphic.LinearGradient(
-				                        0, 0, 0, 1,
-				                        [
-				                            {offset: 0, color: '#37C4DA'},
-				                            {offset: 0.5, color: '#0EBAFB'},
-				                            {offset: 1, color: '#6474F0'}
-				                        ]
-				                    )
+				                    color:{
+				                    	 colorStops: [{
+				                            offset: 0,
+				                            color: '#37C4DA' // 0% 处的颜色
+				                        }, {
+				                            offset: 1,
+				                            color: '#6474F0' // 100% 处的颜色
+				                        }],
+				                    }
+				                    
 				                },
 				            },
 				        },

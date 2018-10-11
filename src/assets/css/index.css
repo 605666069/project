@@ -145,7 +145,7 @@ a:hover {
 .bg {
 	background: url(../bg.jpg)0 0 no-repeat;
 	background-size:100% 100%;
-	min-width:1600px;
+	/*min-width:1600px;*/
 	position: absolute;
 	width: 100%;
 	top: 0;
@@ -163,8 +163,8 @@ a:hover {
 	height: 300px;
 }
 .pd {
-	box-sizing: border-box;
-	background-color: rgba(0,0,0,.8);
+	/*box-sizing: border-box;
+	background-color: rgba(0,0,0,.8);*/
 	padding: 0 10px;
 }
 .m-t {
@@ -178,9 +178,10 @@ a:hover {
 	margin-top: 50px;
 }
 .b {
-	/*margin-top: 10px;*/
-	/*box-sizing: border-box;
-	background-color: rgba(0,0,0,.8);*/
+	margin-top: 10px;
+	box-sizing: border-box;
+	background-color: rgba(0,0,0,.8);
+	min-height: 250px;
 }
 .sub-left {
 	

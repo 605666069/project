@@ -2,14 +2,14 @@
 	<div class="clearfix top" >
 		<div class="l font-1 left-text">
 			<div style="margin-top: 5px;">
-				{{newDate}}<br />
-				{{newTime}}
+				{{date_string}}<br />
+				{{time_string}}
 			</div>
 		</div>
 		<div class="r" style="height: 100%;">
 			<Dropdown> 
 		        <a href="javascript:void(0)" class="font-1 pointer right-text">
-		            菜单
+		            {{$route.name||'菜单'}}
 		        </a>
 		        <DropdownMenu slot="list">
 		           <a href="#/home"><DropdownItem>首页</DropdownItem></a>
@@ -31,9 +31,11 @@
 <script>
 	export default {
         data() {
-	        	return {
-	        		newDate:this.global.timespanToString(new Date(),'yyyy/MM/dd'),
-	        	}
+        	return {
+        		date_string:this.global.timespanToString(new Date(),'yyyy/MM/dd'),
+        		time_string:this.global.timespanToString(new Date(),'hh:mm:ss'),
+        		timer:null
+        	}
         },
         props:{
         		title:{
@@ -41,26 +43,25 @@
         		}
         },
         computed:{
-        		newTime() {
-        			return this.global.timespanToString(new Date(),'hh:mm:ss')
-        		}
         },
         components: {
         },
         methods:{
         },
-        created() {
-        		
+        mounted() {
+        	var _this = this; 
+        	this.timer = setInterval(function(){      
+        	 	_this.time_string = _this.global.timespanToString(new Date(),'hh:mm:ss');
+        	},1000);
         },
-        watch: {	
-		  	$route: {
-		    		handler: function(val, oldVal){
-		      	console.log(val);
-		    		},
-		    		deep: true
-		  	}
-		},
-       
+        beforeDestroy:function(){
+	        if(this.timer){
+	            clearInterval(this.timer);  
+	        }
+     	},
+        created() {
+        	
+        },
        
     }
 </script>
