@@ -87,6 +87,7 @@
 				/*获取地图数据*/
 //				var mapFeatures = echarts.getMap(mapName).geoJson.features;
 				var mapFeatures = this.echarts.getMap(mapName).geoJson.features;
+				console.log(mapFeatures)
 //				var mapFeatures = myMap?myMap.features:this.geoCoordMap.features;
 				mapFeatures.forEach(function(v) {
 				    // 地区名称
@@ -190,7 +191,8 @@
 				        left:'20%',
 				        label: {
 				            normal: {
-				                show: true
+				                show: true,
+				                color:'#fff'
 				            },
 				            emphasis: {
 				                show: false,

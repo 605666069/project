@@ -27,7 +27,7 @@
 			},
 			show_legend:{
 				default:true
-			}
+			},
 			
 		},
 		computed: {},
@@ -51,7 +51,6 @@
 		            }
 					})
 				}
-				console.log(this.data)
 				this.option = {
 					legend: {
 				        orient: 'vertical',
@@ -72,23 +71,22 @@
 					series: [{
 							name: this.data.name,
 							type: 'pie',
-							center:['40%','50%'],
-							radius: ['45%', '65%'],
+							center:['45%','50%'],
+							radius: ['45%', '55%'],
 							avoidLabelOverlap: false,
 							hoverAnimation:true,
 							label: {
 								normal: {
 									show: true,
 									position:this.position,
-									formatter:this.position_formatter,
-									color:'#fff'
+									formatter:this.position_formatter
 								},
 								emphasis: {
 									show: true,
 								},
 								textStyle:{
-						    			color:'#fff'
-						    		},
+						    		color:'#fff'
+						    	},
 							},
 							labelLine: {
 								normal: {

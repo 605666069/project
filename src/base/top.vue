@@ -1,9 +1,14 @@
 <template>
 	<div class="clearfix top" >
-		<div class="l font-1">2018/10/09</div>
-		<div class="r">
+		<div class="l font-1 left-text">
+			<div style="margin-top: 5px;">
+				{{newDate}}<br />
+				{{newTime}}
+			</div>
+		</div>
+		<div class="r" style="height: 100%;">
 			<Dropdown> 
-		        <a href="javascript:void(0)" class="font-1 pointer">
+		        <a href="javascript:void(0)" class="font-1 pointer right-text">
 		            菜单
 		        </a>
 		        <DropdownMenu slot="list">
@@ -26,15 +31,19 @@
 <script>
 	export default {
         data() {
-        	return {
-        	}
+	        	return {
+	        		newDate:this.global.timespanToString(new Date(),'yyyy/MM/dd'),
+	        	}
         },
         props:{
-        	title:{
-        		default:''
-        	}
+        		title:{
+        			default:""
+        		}
         },
         computed:{
+        		newTime() {
+        			return this.global.timespanToString(new Date(),'hh:mm:ss')
+        		}
         },
         components: {
         },
@@ -43,6 +52,14 @@
         created() {
         		
         },
+        watch: {	
+		  	$route: {
+		    		handler: function(val, oldVal){
+		      	console.log(val);
+		    		},
+		    		deep: true
+		  	}
+		},
        
        
     }
@@ -53,16 +70,17 @@
 		position: relative;
 		background: url(../assets/top.png) 0 0;
 		background-size: 100% 100%;
+		padding-bottom: 15px;
 	}
 	.font-1 {
-		font-size: 30px;
+		font-size: 20px;
 		color: #FFFFFF;
 	}
 	.top .l {
-		padding-left: 140px;
+		padding-left: 20px;
 	}
 	.top .r {
-		padding-right: 140px;
+		padding-right: 20px;
 	}
 	.top .center {
 		font-size: 40px;
@@ -76,5 +94,11 @@
 	.top .top-line img {
 		width: 100%;
 		height: 100%;
+	}
+	.right-text {
+		line-height: 50px;
+	}
+	.left-text {
+		line-height: 1;
 	}
 </style>

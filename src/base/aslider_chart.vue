@@ -159,12 +159,16 @@
 	.nav .nav-line {
 		margin: 5px 10px;
 		display: inline-block;
-		width: 100px;
 		text-align: center;
 		cursor: pointer;
 	}
 	.nav .nav-line img{
-		width: 100%;
+		width: 60px;
+		display: inline-block;
+	}
+	.nav .nav-img {
+		height: 75px;
+		width: 75px;
 	}
 	.content {
 		margin-left: 400px;

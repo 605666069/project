@@ -1,48 +1,63 @@
 <template>
 	<div class="bg clearfix">
 		<Top title="磐安全域旅游大数据中心"></Top>
-		<div style="padding: 0 20px;">
-			<div class="l line-left">
-				<Title title="景区累计客流数" ></Title>
-				<Bar_one></Bar_one>
-			</div>
-			
-			<div class="r line-right">
-				<div class="">
-					<Title title="入磐总客流数" ></Title>
-					<div class="sub_title">
-						总客流数
+		<div class="content">
+			<Row>
+		        <Col span="6" class="pd">
+		        		<Title title="景区累计客流数" ></Title>
+		        		<div class="b">
+						<Bar_one style="margin-top: 20px;"></Bar_one>
+		        		</div>
+		        </Col>
+		        <Col span="12" class="pd">
+		        		<Title title="实时客流分布地图" ></Title>
+					<Home_center></Home_center>
+		        </Col>
+		        <Col span="6" class="pd">
+			        	<div class="chunk">
+						<Title title="入磐总客流数" ></Title>
+						<div class="sub_title  m-t">
+							总客流数
+						</div>
+						<div>
+							<Num data="123796"></Num>
+						</div>
+						<div class="sub_title  m-t">
+							今日客流数
+						</div>
+						<div>
+							<Num data="2094"></Num>
+						</div>
 					</div>
-					<div>
-						<Num data="9123796"></Num>
+					<div class="chunk">
+			        		<Title title="网络访问量" ></Title>
+						<div class="b">
+							<Line_one :data="visit_data"   :colorList="colorList" :showTitle="false"></Line_one>
+						</div>
 					</div>
-					<div class="sub_title">
-						今日客流数
-					</div>
-					<div>
-						<Num data="2094"></Num>
-					</div>
-				</div>
 				
-				<div>
-					<Line_one :data="visit_data"  class="sub-line" :colorList="colorList"></Line_one>
-					<Title title="入县车型统计" ></Title>
-					<Bar_two :data="car_data" :colorList="barColorList"></Bar_two>
-					
-					<!--<Line_one :data="car_data"  class="sub-line"></Line_one>-->
-				</div>
-			</div>
-			<div class="line-center">
-				<Title title="实时客流分布地图" ></Title>
-				<Home_center></Home_center>
-			</div>
-			<div class="line-bottom-left clearfix">
-				<div class="line-2">
-					<Title title="旅游要素" :vertical="true" class="l bottom-title"></Title>
-					<Slider_chart></Slider_chart>
-				</div>
-			</div>
-			
+		        </Col>
+		    </Row>
+		    <Row>
+		        <Col span="18" class="pd">
+		        		<div class="line-2 chunk">
+			        		<Title title="旅游要素" :vertical="true" class="l bottom-title"></Title>
+			        		<div class="b">	
+							<Slider_chart></Slider_chart>
+			        		</div>
+					</div>
+		        </Col>
+		        <Col span="6" class="pd">
+	        			<div class="chunk">
+						
+						<Title title="入县车型统计" ></Title>
+						<div class="b">
+							<Bar_two :data="car_data" :colorList="barColorList" :top="50"></Bar_two>
+						<!--<Line_one :data="car_data"  class="sub-line"></Line_one>-->
+						</div>
+					</div>
+		        </Col>
+		    </Row>
 		</div>
 	
 		
@@ -134,6 +149,6 @@
 		margin-right: 400px;
 	}
 	.sub_title {
-		padding-top: 30px;
+		padding-top: 10px;
 	}
 </style>

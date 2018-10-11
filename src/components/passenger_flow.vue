@@ -1,42 +1,62 @@
 <template>
 	<div class="bg clearfix">
 		<Top title="磐安全域旅游大数据中心"></Top>
-		<div class="top clearfix">
-			<div class="l line-1">
-				<Title title="入磐总客流数"></Title>
-				<div class="sub_title">
-					今日入磐
-				</div>
-				<div>
-					<Num data="9123796"></Num>
-				</div>
-				<div class="sub_title">
-					2018累积入磐
-				</div>
-				<div>
-					<Num data="2094"></Num>
-				</div>
-				<Title title="昨日游客驻留情况"></Title>
-				<Circle_two :data="reside_data" position="inner" :colorList="colorList"></Circle_two>
-			</div>
-			<div class="line-right r">
-				<Title title="游客来源增幅TOP10(市)"></Title>
-				<Bar_two :data="source_visitor_data"></Bar_two>
-				<Line_one :data="visitor_data" :show_legend="false" class="sub-line" :isAreaShow="true" :colorList="colorList1"></Line_one>
-			</div>
-			<div class="line-2">
-				<Title title="游客来访地图"></Title>
-				<Passenger_map></Passenger_map>
-			</div>
-		</div>
-		<div class="clearfix">
-			<div class="l bottom-line">
-				<Line_one :data="history_visitor_data"  :isSmooth="true" class="sub-line"></Line_one>
-			</div>
-			<div class="l bottom-line sub-line">
-				<Title title="2018年客源累计Top10"></Title>
-				<Bar_four :data="sum_visitor_data" :barMaxWidth='60' :show_legend="false"></Bar_four>
-			</div>
+		<div class="content">
+			<Row>
+		        <Col span="6" class="pd">
+		        		<div class="chunk">
+						<Title title="入磐总客流数"></Title>
+						<div class="sub_title m-t">
+							今日入磐
+						</div>
+						<div>
+							<Num data="9123796"></Num>
+						</div>
+						<div class="sub_title m-t">
+							2018累积入磐
+						</div>
+						<div>
+							<Num data="2094"></Num>
+						</div>
+					</div>
+					<div class="chunk">
+						<Title title="昨日游客驻留情况"></Title>
+						<Bchart></Bchart>
+<!--						<Circle_two :data="reside_data" position="inner" :colorList="colorList"></Circle_two>
+-->					</div>
+		        </Col>
+		        <Col span="12" class="pd">
+		        		<Title title="游客来访地图"></Title>
+		        		<Jchart></Jchart>
+					<!--<Test></Test>-->
+		        </Col>
+		        <Col span="6" class="pd">
+		        		<div class="chunk">
+						<Title title="游客来源增幅TOP10(市)"></Title>
+						<Bar_two :data="source_visitor_data" :colorList="colorList2"></Bar_two>
+					</div>
+					<div class="chunk">
+						<Line_one :data="visitor_data" :show_legend="false" :colorList="colorList1"></Line_one>
+						
+					</div>
+		        </Col>
+		    </Row>
+		    <Row>
+		        <Col span="12" class="pd">
+		        		<Title title="昨日与历史客流对比"></Title>
+					<div style="width: 70%;" class="l">
+						<Line_one :data="history_visitor_data" :isSmooth="true" :showTitle="false"></Line_one>
+					</div>
+					<div class="l" style="width: 29%;">
+						<Cchart :data="reside_data" position="inner" :colorList="colorList" :show_legend="false" position_formatter="{b}:{c}"></Cchart>
+						<!--<Circle_two :data="reside_data" position="inner" :colorList="colorList" :show_legend="false"></Circle_two>-->
+					</div>
+		        </Col>
+		        <Col span="12" class="pd">
+		        		<Title title="2018年客源累计Top10"></Title>
+					<Bar_four :data="sum_visitor_data" :barMaxWidth='60' :show_legend="false" style="margin-top: 10px;"></Bar_four>
+		        </Col>
+		    </Row>
 		</div>
 
 	</div>
@@ -51,17 +71,26 @@
 	import Bar_four from "@/base/bar/Bar_four.vue";
 	import Bar_three from "@/base/bar/bar_three.vue";
 	import Line_one from "@/base/line/line_one.vue";
+	import Test from "@/components/test.vue";
+	import Bchart from "@/base/Bchart.vue";
+	import Cchart from "@/base/cchart.vue";
+	import Jchart from "@/base/jchart.vue";
+	
+	
+	
+	
 
 	export default {
 		data() {
 			return {
 				reside_data: null,
-				visitor_data:null,
-				history_visitor_data:null,
-				source_visitor_data:null,
-				sum_visitor_data:null,
-				colorList:['#fe996a','#944fe8','#01c8f3'],
-				colorList1:['#01c8f3','#b5f0fe'],
+				visitor_data: null,
+				history_visitor_data: null,
+				source_visitor_data: null,
+				sum_visitor_data: null,
+				colorList: ['#fe996a', '#944fe8', '#01c8f3'],
+				colorList1: ['#01c8f3', '#b5f0fe'],
+				colorList2:['#67d0e4','#f9e659']
 			}
 		},
 		computed: {},
@@ -73,28 +102,30 @@
 			Bar_two,
 			Line_one,
 			Bar_three,
-			Bar_four
+			Bar_four,
+			Test,
+			Bchart,
+			Cchart,Jchart
 		},
 		methods: {
 			getResideData() {
 				this.reside_data = this.echarts_data.passenger_flow.data1;
 			},
 			getVisitorData() {
-        			this.visitor_data = this.echarts_data.passenger_flow.line_data;
-        		},
-        		getHistoryVisitorData() {
-        			this.history_visitor_data = this.echarts_data.passenger_flow.line_data1;
-        			this.history_visitor_data.data.map((item,index)=>{
-        				item.color = [this.colorList[index],this.colorList[index]]
-        			})
-        		},
-        		getSourceVisitorData() {
-        			this.source_visitor_data = this.echarts_data.passenger_flow.bar_data;
-        		},
-        		getSumVisitorData() {
-        			this.sum_visitor_data = this.echarts_data.passenger_flow.bar_data1;
-        		},
-        		
+				this.visitor_data = this.echarts_data.passenger_flow.line_data;
+			},
+			getHistoryVisitorData() {
+				this.history_visitor_data = this.echarts_data.passenger_flow.line_data1;
+				this.history_visitor_data.data.map((item, index) => {
+					item.color = [this.colorList[index], this.colorList[index]]
+				})
+			},
+			getSourceVisitorData() {
+				this.source_visitor_data = this.echarts_data.passenger_flow.bar_data;
+			},
+			getSumVisitorData() {
+				this.sum_visitor_data = this.echarts_data.passenger_flow.bar_data1;
+			},
 
 		},
 		created() {
@@ -132,6 +163,7 @@
 	.line-right {
 		width: 400px;
 	}
+	
 	.bottom-line {
 		width: 50%;
 	}

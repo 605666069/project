@@ -1,46 +1,37 @@
 <template>
 	<div class="bg clearfix">
 		<Top title="磐安全域旅游大数据中心"></Top>
-		<div class="top clearfix">
-			<div class="r line-1 text-top">
-				<div class="clearfix">
-					<Title title="微信粉丝指标"></Title>
-					<div class="sub_title">
-						总关注：3104人
-					</div>
-					<div class="sub_title">
-						<div class="bottom-line l">
-							<span class="">
-								今日新增<br />
-								2300人
-							</span>
-						</div>
-						<div class="bottom-line l">
-							<span class="">
-								本周新增<br />
-								2300人
-							</span>
-						</div>
-					</div>
-				</div>
-				<div>
-					<Title title="关注量TOP5"></Title>
-					<Bar_two :data="wx_attention" :isAcross='true'></Bar_two>
-				</div>
-				
-			</div>
-		</div>
-		<div class="clearfix" style="width: 100%;">
-			<div class="line line-1 r">
-				<Title title="粉丝性别及年龄"></Title>
-				<Bar_two :data="wx_age"  stack="总量"></Bar_two>
-				
-			</div>
-			<div class="line-left">
-				<Title title="图文消息趋势"></Title>
-				<Line_one :data="wx_use_type"  :isSmooth="true" :showTitle="false" class="sub-line"></Line_one>
-			</div>
-			
+		<div class="content clearfix">
+			<Row>
+		        <Col span="18" class="pd">
+		        		<div class="" style="position: relative;">
+			        		<Title title="微信粉丝分布图"></Title>
+						<Apassenger_map></Apassenger_map>
+						<Btable class="wx-table"></Btable>
+		        		</div>
+		        </Col>
+		        <Col span="6" class="pd">
+			        	<div class="chunk center" style="position: relative;">
+			        		<Title title="微信粉丝指标"></Title>
+						<Anum class="v-center"></Anum>
+			        	</div>
+			        	<div class="chunk">
+			        		<Title title="关注量TOP5"></Title>
+						<Bar_two :data="wx_attention" :isAcross='true' :height="250" :show_legend="false" :top="10" :barMaxWidth="20"></Bar_two>
+			        	</div>
+		        </Col>
+		    </Row>
+		    <Row>
+		        <Col span="18" class="pd">
+		        		<Title title="近30日图文消息趋势"></Title>
+					<Line_one :data="wx_use_type"  :isSmooth="true" :showTitle="false" class="sub-line" :colorList="colorList"></Line_one>
+		        </Col>
+		        <Col span="6" class="pd">
+			        	<Title title="粉丝性别及年龄"></Title>
+			        	<Gchart></Gchart>
+					<!--<Bar_two :data="wx_age"  stack="总量"></Bar_two>-->
+		        </Col>
+		    </Row>
 		</div>
 
 	</div>
@@ -49,11 +40,17 @@
 <script>
 	import Top from "@/base/top.vue";
 	import Num from "@/base/num.vue";
-	import Passenger_map from "@/base/center/Passenger_map.vue";
+	import Apassenger_map from "@/base/center/apassenger_map.vue";
 	import Circle_two from "@/base/circle/circle_two.vue";
 	import Bar_two from "@/base/bar/bar_two.vue";
 	import Bar_three from "@/base/bar/bar_three.vue";
 	import Line_one from "@/base/line/line_one.vue";
+	import Anum from "@/base/anum.vue";
+	import Gchart from "@/base/gchart.vue";
+	import Btable from "@/base/Btable.vue";
+	
+	
+	
 	export default {
 		data() {
 			return {
@@ -61,19 +58,20 @@
 				wx_age:null,
 				wx_use_type:null,
 				comfort_data:null,
-				sum_visitor_data:null
+				sum_visitor_data:null,
+				colorList:['#ccb14a','#97df5d','#55afe6']
 			}
 		},
 		computed: {},
 		components: {
 			Top,
 			Num,
-			Passenger_map,
 			Circle_two,
 			Bar_two,
 			Line_one,
 			Bar_three,
-			
+			Anum,
+			Gchart,Apassenger_map,Btable
 		},
 		methods: {
 			getData() {
@@ -127,4 +125,11 @@
 	.text-top{
 		text-align: center;
 	}
+	.wx-table {
+		position: absolute;
+		left: 0;
+		top: 350px;
+		width: 300px;
+	}
+	
 </style>

@@ -1,49 +1,35 @@
 <template>
 	<div class="bg clearfix">
 		<Top title="磐安全域旅游大数据中心"></Top>
-		<div class="top clearfix">
-			<div class="l line-1">
-				<div>
-					<Title title="今日入住"></Title>
-					<Circle_two :data="sex_data" position_formatter="{b}: {d}%"></Circle_two>
-					
-				</div>
-				<div>
-					<Title title="磐安好评率酒店Top5"></Title>
-					<Bar_two :data="good_hotel" :isAcross='true' stack="总量"></Bar_two>
-				</div>
-			</div>
-			<!--<div class="line-right r">
-				<Title title="游客来源增幅TOP10(市)"></Title>
-				<Bar_two :data="source_visitor_data"></Bar_two>
-				<Line_one :data="visitor_data" :show_legend="false" class="sub-line" :isAreaShow="true"></Line_one>
-			</div>-->
-			<!--<div class="line-2">
-				<Title title="游客来访地图"></Title>
-				<Passenger_map></Passenger_map>
-			</div>-->
+		<div class="content">
+			<Row>
+		        <Col span="6" class="pd">
+		        		<div class="chunk">
+						<Title title="今日入住"></Title>
+						<Circle_two :data="sex_data" position_formatter="{b}: {d}%" :colorList="colorList"></Circle_two>
+					</div>
+					<div  class="chunk">
+						<Title title="接待人数Top5酒店"></Title>
+						<Bar_two :data="hotel_people_num" :isAcross='true' stack="总量" style="margin-top: 10px;" :colorList="colorList1"></Bar_two>
+						<!--<Bar_two :data="good_hotel" :isAcross='true' stack="总量"></Bar_two>-->
+					</div>
+		        </Col>
+		        <Col span="12" class="pd">
+		        		<Kchart></Kchart>
+		        </Col>
+		         <Col span="6" class="pd">
+		        		<Title title="磐安好评率酒店Top3"></Title>
+					<Dchart></Dchart>
+		        </Col>
+		    </Row>
+		    	<Row>
+		        <Col span="24" class="pd">
+		        		<Title title="近30日入住情况"></Title>
+					<Echart></Echart>
+		        </Col>
+		    </Row>
 		</div>
-		<div class="clearfix  sub-line" style="width: 100%;">
-			<div class="l bottom-line-1">
-				<Title title="接待人数Top5酒店"></Title>
-				<Bar_two :data="hotel_people_num" :isAcross='true' stack="总量"></Bar_two>
-			</div>
-			<div class="bottom-line-4 clearfix">
-				<Title title="近30日入住情况"></Title>
-				<div class="bottom-line-6 r clearfix flex">
-					<div class="bottom-line-7 l flex-1" v-for="(d,index) in hotel_in_total">
-	            			<Circle_one :data="d" :isShowLegend="index==hotel_in_total.length-1"></Circle_one>
-	            		</div>
-				</div>
-				<div class="bottom-line-5 ">
-					<Line_one :data="hotel_in"  :isSmooth="true" class="sub-line" :showTitle="false"></Line_one>
-				</div>
-				
-				
-
-			</div>
-		</div>
-
+		
 	</div>
 </template>
 
@@ -56,6 +42,12 @@
 	import Bar_three from "@/base/bar/bar_three.vue";
 	import Line_one from "@/base/line/line_one.vue";
 	import Circle_one from "@/base/circle/circle_one.vue";
+	import Dchart from "@/base/dchart.vue";
+	import Echart from "@/base/echart.vue";
+	import Kchart from "@/base/kchart.vue";
+	
+	
+	
 	
 	export default {
 		data() {
@@ -64,7 +56,10 @@
 				good_hotel:null,
 				hotel_people_num:null,
 				hotel_in:null,
-				hotel_in_total:null
+				hotel_in_total:null,
+				colorList:['#bc78d8','#9ed472'],
+				colorList1:['rgba(245, 166, 35, 1)','rgba(19, 173, 255, 1)'],
+				
 			}
 		},
 		computed: {},
@@ -76,7 +71,9 @@
 			Bar_two,
 			Line_one,
 			Bar_three,
-			Circle_one
+			Circle_one,
+			Dchart,
+			Echart,Kchart
 		},
 		methods: {
 			getData() {

@@ -12,8 +12,8 @@
 				circle_one: null,
 				color:{
 					'省内':['#00d4be','#01c8f4'],
-					'省外':['#8d53ea', '#01c6fd'],
-					'本地':['#9952e2','#fe996a'],
+					'省外':['#00d4be','#01c8f4'],
+					'本地':['#00d4be','#01c8f4'],
 				}
 			}
 		},
@@ -53,8 +53,8 @@
 				this.option = {
 					legend: {
 				        orient: 'vertical',
-				        top:'middle',
-				        right:0,
+				        top:'30%',
+				        right:10,
 				        data:this.data.data.map(item=>{
 				        		return item.name
 				        }),
@@ -65,8 +65,8 @@
 				    },
 					title:{
 						text:this.data.name,
-						top:'bottom',
-						left:'33%',
+						top:'70%',
+						left:'24%',
 						textStyle:{
 				        	 	color:'#fff'
 				        }
@@ -78,8 +78,8 @@
 					series: [{
 							name: this.data.name,
 							type: 'pie',
-							center:['40%','50%'],
-							radius: ['55%', '65%'],
+							center:['30%','40%'],
+							radius: ['45%', '55%'],
 							avoidLabelOverlap: false,
 							hoverAnimation:false,
 							label: {

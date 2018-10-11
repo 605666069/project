@@ -248,49 +248,6 @@
 					},
 
 				];
-				var moveLines =  [{
-						"fromName": "黑龙江",
-						"toName": "浙江",
-						"coords": [
-							[126.661669, 45.742347],
-							[120.1535761,30.287459]
-						]
-					}, {
-						"fromName": "黑龙江",
-						"toName": "浙江",
-						"coords": [
-							[126.661669, 45.742347],
-							[120.1535761,30.287459]
-						]
-					},  {
-						"fromName": "上海",
-						"toName": "浙江",
-						"coords": [
-							[121.473701, 31.230416],
-							[120.1535761,30.287459]
-						]
-					}, {
-				        "fromName": "北京",
-						"toName": "浙江",
-				        "coords": [
-				            [116.407526, 39.90403],
-				            [120.1535761,30.287459]
-				        ]
-				    }, {
-				        "fromName": "吉林",
-						"toName": "浙江",
-				        "coords": [
-				            [126.549572, 43.837883],
-				            [120.1535761,30.287459]
-				        ]
-				    }, {
-				        "fromName": "吉林",
-						"toName": "浙江",
-				        "coords": [
-				            [126.549572, 43.837883],
-				            [120.1535761,30.287459]
-				        ]
-				    },]
 
 				/*获取地图数据*/
 				//				var mapFeatures = echarts.getMap(mapName).geoJson.features;
@@ -372,7 +329,8 @@
 
 						show: true,
 						map: mapName,
-						aspectScale:0.8,
+						left: '40%',
+						zoom: 1.2,
 						label: {
 							normal: {
 								show: false,
@@ -385,32 +343,12 @@
 						roam: true,
 						itemStyle: {
 							normal: {
-
-								borderColor: 'rgba(147, 235, 248, .4)',
-								borderWidth: 1,
-								areaColor: {
-									type: 'radial',
-									x: 0.5,
-									y: 0.5,
-									r: 0.8,
-									colorStops: [{
-										offset: 0,
-										color: 'rgba(147, 235, 248, 0)' // 0% 处的颜色
-									}, {
-										offset: 1,
-										color: 'rgba(147, 235, 248, .2)' // 100% 处的颜色
-									}],
-									globalCoord: false // 缺省为 false
-								},
-								shadowColor: 'rgba(128, 217, 248, .4)',
-								// shadowColor: 'rgba(255, 255, 255, 1)',
-								shadowOffsetX: -2,
-								shadowOffsetY: 2,
-								shadowBlur: 10
-							},
-							emphasis: {
-								areaColor: '',
-							}
+			                    areaColor: 'rgba(61,97,166,0.5)',
+			                    borderColor: 'rgba(108,136,216,0.9)'
+			                },
+			                emphasis: {
+			                    areaColor: 'rgba(61,97,166,1)'
+			                }
 						}
 
 					},
@@ -419,7 +357,7 @@
 							type: 'effectScatter',
 							coordinateSystem: 'geo',
 							data: convertData(data),
-							symbolSize:5,
+							symbolSize: 5,
 							 label: {
 			                    normal: {
 			                       
@@ -429,13 +367,12 @@
 							label: {
 								normal: {
 									formatter: function (v) {
-			                            return v.value[2] + '量';
+			                            return v.value[2] + '人';
 			                        },
 			                        position: 'bottom',
 			                        show: true,
 			                        textStyle: {
-			                            fontSize: 12,
-			                            color:'#fff'
+			                            fontSize: 12
 			                        }
 								},
 								emphasis: {
@@ -456,10 +393,7 @@
 							showLegendSymbol: false, // 存在legend时显示
 							label: {
 								normal: {
-									show: false,
-									textStyle: {
-										color: '#fff'
-									}
+									show: true
 								},
 								emphasis: {
 									show: false,
@@ -480,36 +414,38 @@
 							},
 							animation: false,
 							data: data
-						},
-						 {
-							name: '线路',
-							type: 'lines',
-							coordinateSystem: 'geo',
-							zlevel: 2,
-							large: true,
-							effect: {
-								show: true,
-								constantSpeed: 30,
-								symbol: 'pin',
-								symbolSize: 10,
-								trailLength: 0,
-							},
-							lineStyle: {
-								normal: {
-									color: new this.echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-										offset: 0,
-										color: '#58B3CC'
-									}, {
-										offset: 1,
-										color: '#F58158'
-									}], false),
-									width: 5,
-									opacity: 0.2,
-									curveness: 0.1
-								}
-							},
-							data: moveLines
 						}
+						//				        {
+						//				            name: 'Top 5',
+						//				            type: 'effectScatter',
+						//				            coordinateSystem: 'geo',
+						//				            data: convertData(data.sort(function(a, b) {
+						//				                return b.value - a.value;
+						//				            }).slice(0, 5)),
+						//				            symbolSize: function(val) {
+						//				                return val[2] / 10;
+						//				            },
+						//				            showEffectOn: 'render',
+						//				            rippleEffect: {
+						//				                brushType: 'stroke'
+						//				            },
+						//				            hoverAnimation: true,
+						//				            label: {
+						//				                normal: {
+						//				                    formatter: '{b}',
+						//				                    position: 'right',
+						//				                    show: true
+						//				                }
+						//				            },
+						//				            itemStyle: {
+						//				                normal: {
+						//				                    color: 'yellow',
+						//				                    shadowBlur: 10,
+						//				                    shadowColor: 'yellow'
+						//				                }
+						//				            },
+						//				            zlevel: 1
+						//				        },
 
 					]
 				}

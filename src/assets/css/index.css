@@ -156,3 +156,32 @@ a:hover {
 .sub_title {
 	font-size: 20px;
 }
+.content {
+	padding: 20px 10px 0 10px;
+}
+.chunk {
+	height: 300px;
+}
+.pd {
+	box-sizing: border-box;
+	background-color: rgba(0,0,0,.8);
+	padding: 0 10px;
+}
+.m-t {
+	padding-top: 10px;
+	padding-left: 10px;
+}
+.v-center {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-top: 50px;
+}
+.b {
+	/*margin-top: 10px;*/
+	/*box-sizing: border-box;
+	background-color: rgba(0,0,0,.8);*/
+}
+.sub-left {
+	
+}

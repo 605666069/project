@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div style="width: 100%;height:400px;" ref="my_chart"></div>
+		<div style="width: 100%;height:200px;" ref="my_chart"></div>
 	</div>
 </template>
 
@@ -41,7 +41,7 @@
 			initOpction() {
 				var xData = function() {
 					var data = [];
-					for(var i = 1; i < 13; i++) {
+					for(var i = 1; i < 11; i++) {
 						data.push('杭州' + i);
 					}
 					return data;
@@ -60,7 +60,7 @@
 					"grid": {
 						"borderWidth": 0,
 						"top": 30,
-						"bottom": 95,
+						"bottom": 30,
 						textStyle: {
 							color: "#fff"
 						}
@@ -68,11 +68,15 @@
 					"calculable": true,
 					"xAxis": [{
 						"type": "category",
-						"axisLine": {
-							lineStyle: {
-								color: '#90979c'
-							}
-						},
+						axisLabel:{
+				        		color:'#fff'
+				       	},
+				       	axisLine:{
+				       		lineStyle:{
+				        			color:'#fff'
+				       			
+				       		}
+				       	},
 						"splitLine": {
 							"show": false
 						},
@@ -81,10 +85,6 @@
 						},
 						"splitArea": {
 							"show": false
-						},
-						"axisLabel": {
-							"interval": 0,
-
 						},
 						"data": xData,
 					}],
@@ -93,50 +93,49 @@
 						"splitLine": {
 							"show": false
 						},
-						"axisLine": {
-							lineStyle: {
-								color: '#90979c'
-							}
-						},
+						axisLabel:{
+				        		color:'#fff'
+				       	},
+				       	axisLine:{
+				       		lineStyle:{
+				        			color:'#fff'
+				       			
+				       		}
+				       	},
 						"axisTick": {
 							"show": false
-						},
-						"axisLabel": {
-							"interval": 0,
-
 						},
 						"splitArea": {
 							"show": false
 						},
 
 					}],
-					"dataZoom": [{
-						"show": true,
-						"height": 30,
-						"xAxisIndex": [
-							0
-						],
-						bottom: 30,
-						"start": 0,
-						"end":70,
-						handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
-						handleSize: '110%',
-						handleStyle: {
-							color: "#d3dee5",
-
-						},
-						textStyle: {
-							color: "#fff"
-						},
-						borderColor: "#90979c"
-
-					}, {
-						"type": "inside",
-						"show": true,
-						"height": 15,
-						"start": 1,
-						"end": 35
-					}],
+//					"dataZoom": [{
+//						"show": true,
+//						"height": 30,
+//						"xAxisIndex": [
+//							0
+//						],
+//						bottom: 30,
+//						"start": 0,
+//						"end":70,
+//						handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+//						handleSize: '110%',
+//						handleStyle: {
+//							color: "#d3dee5",
+//
+//						},
+//						textStyle: {
+//							color: "#fff"
+//						},
+//						borderColor: "#90979c"
+//
+//					}, {
+//						"type": "inside",
+//						"show": true,
+//						"height": 15,
+//						"start": 1,
+//						"end": 35
 					"series": [{
 							"name": "女",
 							"type": "bar",
@@ -169,8 +168,6 @@
 								3285,
 								5208,
 								3372,
-								2484,
-								4078
 							],
 						},
 
@@ -202,8 +199,6 @@
 								1390,
 								1001,
 								951,
-								381,
-								220
 							]
 						}, {
 							"name": "总数",
@@ -235,8 +230,6 @@
 								4675,
 								6209,
 								4323,
-								2865,
-								4298
 							]
 						},
 					]

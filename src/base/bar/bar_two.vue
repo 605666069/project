@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div  style="width: 100%;height:200px;" ref="my_chart"></div>		
+		<div  style="width: 100%" ref="my_chart" v-bind:style="{height:height+'px'}"></div>		
 	</div>
 </template>
 
@@ -34,7 +34,14 @@
         		},
         		colorList:{
         			default:null
-        		}
+        		},
+        		
+			height:{
+				default:200
+			},
+			top:{
+				default:null
+			}
         },
         computed:{
         },
@@ -107,6 +114,7 @@
 					    	},
 //				    		orient:'vertical',
 //				    		right:0,
+						top:20,
 				        data:name_list,
 				        show:this.show_legend
 				    },
@@ -114,6 +122,7 @@
 				        left: '3%',
 				        right: '4%',
 				        bottom: '3%',
+				        top:(this.show_legend&&!this.top)?50: (this.top?this.top:50),
 				        containLabel: true
 				    },
 				    xAxis:!this.isAcross?a:b,

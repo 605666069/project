@@ -1,3 +1,57 @@
+function  timespanToString (timespan, format) {
+	if (!timespan) return "--";
+
+	var date = new Date(timespan);
+	var o = {
+		"M+": date.getMonth() + 1, //month
+		"d+": date.getDate(), //day
+		"h+": date.getHours(), //hour
+		"m+": date.getMinutes(), //minute
+		"s+": date.getSeconds(), //second
+		"q+": Math.floor((date.getMonth() + 3) / 3), //quarter
+		"S": date.getMilliseconds() //millisecond
+	}
+	if (/(y+)/.test(format))
+		format = format.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+
+	for (var k in o) {
+		if (new RegExp("(" + k + ")").test(format)) {
+			format = format.replace(RegExp.$1,
+				RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+		}
+	}
+
+	return format;
+}
+
+function timeGMTToString (str, format) {
+	if (!str) return;
+	str = str.split(' ');
+	var date_str = str[0];
+	var time_str = "";
+	if (str.length > 1)
+		time_str = str[1];
+	date_str = date_str.split('-');
+	time_str = time_str.split(':');
+	var date = new Date();
+	date.setFullYear(date_str[0], date_str[1] - 1, date_str[2]);
+	date.setHours(time_str[0], time_str.length > 1 ? time_str[1] : 0, time_str.length > 2 ? time_str[2] : 0, time_str.length > 3 ? time_str[3] : 0);
+	return timespanToString(date.getTime(), format);
+}
+function getRandomData(length,isDate) {
+	var arr = [];
+	if(!isDate) {
+		for(var i = 0;i< length;i++) {
+			arr.push(parseInt(Math.random()*10000));
+		}
+	} else {
+		var Nowdate = new Date();
+		for(var i = 0;i< length;i++) {
+			arr.push(timespanToString( Nowdate.getTime() - 3600 * 1000 * 24 * i,'MM/dd'));
+		}
+	}
+	return arr;
+}
 export default  {
 	home_data:{
 		rank:{
@@ -48,30 +102,30 @@ export default  {
 		
 		],
 		line_data:{
-			product:['1','2','3','4','5','6','7'],
+			product:getRandomData(7,1),
 			name:'网络访问量',
 			data:[
 				{
 					name:'微信访问量',
-					data:[120, 132, 101, 134, 90, 230, 210]
+					data:getRandomData(7)
 				},
 				{
 					name:'每日关注量',
-					data:[220, 182, 191, 234, 290, 330, 310]
+					data:getRandomData(7)
 				},
 			]
 		},
 		line_data_1:{
-			product:['1','2','3','4','5','6','7'],
+			product:getRandomData(7,1),
 			name:'入县车型统计',
 			data:[
 				{
 					name:'轿车',
-					data:[120, 132, 101, 134, 90, 230, 110]
+					data:getRandomData(7)
 				},
 				{
 					name:'大巴',
-					data:[140, 112, 22, 114, 90, 20, 210]
+					data:getRandomData(7)
 				},
 			]
 		},
@@ -142,26 +196,26 @@ export default  {
 			]
 		},
 		line_data:{
-			product:['1','2','3','4','5','6','7'],
+			product:getRandomData(7,1),
 			name:'7日入磐客流趋势',
 			data:[
 				{
 					name:'人次',
-					data:[120, 132, 101, 134, 90, 230, 210]
+					data:getRandomData(7)
 				},
 			]
 		},
 		bar_data:{
-			product:['浙江','杭州','深圳','北京','浙江','杭州','深圳','北京','深圳'],
+			product:['浙江','杭州','深圳','北京','浙江','杭州','深圳','北京','深圳','深圳'],
 			name:'游客来源增幅TOP10(市)',
 			data:[
 				{
 					name:'本月',
-					data:[1234,1111,1000,500,300,200,150,130,100]
+					data:[1234,1111,1000,500,300,200,150,130,100,231]
 				},
 				{
 					name:'上月',
-					data:[124,111,100,430,320,334,13,45,12]
+					data:[124,111,100,430,320,334,13,45,12,211]
 				}
 			]
 		},
@@ -176,19 +230,19 @@ export default  {
 			]
 		},
 		line_data1:{
-			product:['0','2','4','6','8','10','12','14','16','18','20','24'],
+			product:['0h','2h','4h','6h','8h','10h','12h','14h','16h','18h','20h','24h'],
 			name:'昨日与历史客流对比',
 			data:[
 				{
-					name:'2018-08',
+					name:'昨日',
 					data:[120, 132, 101, 134, 90, 230, 210, 90, 230, 210,230, 210]
 				},
 				{
-					name:'2018-08',
+					name:'当年最高',
 					data:[12, 122, 10, 14, 90, 230, 210, 90, 230, 210,122, 10]
 				},
 				{
-					name:'2018-08',
+					name:'当年最低',
 					data:[223, 441, 223, 444, 90, 230, 210, 90, 230, 210,223, 444]
 				},
 			]
@@ -210,32 +264,28 @@ export default  {
 			]
 		},
 		line_data1:{
-			product:['1','2','3','4','5','6','7'],
+			product: getRandomData(30,1),
 			name:'各景区客流量趋势',
 			data:[
 				{
 					name:'十八窝',
-					data:[120, 132, 101, 134, 90, 230, 45]
+					data:getRandomData(30)
 				},
 				{
 					name:'百丈潭',
-					data:[1203, 3, 101, 134, 90, 230, 11]
+					data:getRandomData(30)
 				},
 				{
 					name:'孔庙',
-					data:[12, 132, 44, 134, 90, 55, 22]
+					data:getRandomData(30)
 				},
 				{
 					name:'沙溪玫瑰园',
-					data:[13, 132, 41, 134, 90, 2, 42]
+					data:getRandomData(30)
 				},
 				{
 					name:'水下孔',
-					data:[441, 132, 23, 134, 90, 230, 66]
-				},
-				{
-					name:'孔庙',
-					data:[213, 132, 11, 431, 90, 3, 210]
+					data:getRandomData(30)
 				},
 			]
 		},
@@ -401,12 +451,12 @@ export default  {
 			]
 		},
 		bar_data:{
-			product:['浙江','北京','上海','大连','长春'],
+			product:['浙江','北京','上海','大连','长春','浙江','北京','上海','大连','长春'],
 			name:'车辆来源城市top10',
 			data:[
 				{
 					name:'好评',
-					data:[1234,1111,1000,500,300]
+					data:getRandomData(10)
 				},
 			]
 		},
@@ -415,22 +465,30 @@ export default  {
 			name:'车辆来源省份top10',
 			data:[
 				{
-					name:'好评',
-					data:[1234,1111,1000,500,300]
+					name:'轿车',
+					data:getRandomData(5)
+				},
+				{
+					name:'大巴车',
+					data:getRandomData(5)
+				},
+				{
+					name:'其他',
+					data:getRandomData(5)
 				},
 			]
 		},
 		line_data1:{
-			product:['1','2','3','4','5','6','7','8','9','10'],
+			product:getRandomData(30,1),
 			name:'入县车辆与入景区车辆对比',
 			data:[
 				{
 					name:'30日总入县数',
-					data:[120, 132, 101, 134, 90, 230, 210, 90, 230, 210]
+					data:getRandomData(30)
 				},
 				{
 					name:'30日总入景区数',
-					data:[12, 122, 10, 14, 90, 230, 210, 90, 230, 210]
+					data:getRandomData(30)
 				},
 			]
 		},
@@ -461,20 +519,20 @@ export default  {
 			]
 		},
 		line_data:{
-			product:['1','2','3','4','5','6','7','8','9','10'],
+			product:getRandomData(30,1),
 			name:'图文消息趋势',
 			data:[
 				{
 					name:'阅读数',
-					data:[120, 132, 101, 134, 90, 230, 210, 90, 230, 210]
+					data:getRandomData(30)
 				},
 				{
 					name:'分享数',
-					data:[12, 122, 10, 14, 90, 230, 210, 90, 230, 210]
+					data:getRandomData(30)
 				},
 				{
 					name:'转发数',
-					data:[121, 32, 10, 441, 90, 23, 20, 90, 344, 210]
+					data:getRandomData(30)
 				},
 			]
 		},

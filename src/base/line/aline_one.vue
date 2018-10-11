@@ -49,6 +49,17 @@
 					dataList.push({
 						 areaStyle: {
 						 	opacity:this.isAreaShow?1:0,
+						 	normal:this.colorList?{
+				                color: new this.echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+				                    offset: 0,
+				                    color: item.color[0]
+				                }, {
+				                    offset: 1,
+				                    color:item.color[1]
+				                }], false),
+				                shadowColor: 'rgba(0, 0, 0, 0.1)',
+				                shadowBlur: 10
+				            }:null
 						 },
 			            name:item.name,
 			            type:'line',

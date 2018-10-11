@@ -36,7 +36,7 @@
 	        	getData() {
 					this.data =  this.echarts_data.home_data.home_center
 					this.data.map((item,index)=>{
-					 	 item.left = 100/this.data.length * index + "%";
+					 	 item.left = 90/this.data.length * index + "%";
 					 	 item.bottom = this.randomFunction(100,240) + 'px'
 					 })
 	        	},

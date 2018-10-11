@@ -1,33 +1,30 @@
 <template>
 	<div class="bg clearfix">
 		<Top title="磐安全域旅游大数据中心"></Top>
-		<div class="top clearfix">
-			<div class="l line-1">
-				<div>
-					<Title title="百度指数"></Title>
-					<div class="sub_title">
-						总搜索量：3104人
+		<div class="content">
+			<Row>
+		        <Col span="6" class="pd">
+		        		<div class="chunk">
+						<Title title="百度指数"></Title>
+						<Hchart></Hchart>
 					</div>
-					<div class="sub_title">
-						pc搜索量：3104人
+					<div class="chunk">
+						<Title title="关键字"></Title>
+						<Atable style="margin-top: 10px;"></Atable>
 					</div>
-				</div>
-				<div >
-					<Title title="关键字"></Title>
-					<div style="height: 200px;"></div>
-					 <!--<Table height="200" :columns="total_data.columns1" :data="total_data.data2" :border="false"></Table>-->
-				</div>
-			</div>
-			
-			<div class="line-2">
-				<Title title="旅游要素"></Title>
-				<Slider_chart></Slider_chart>
-			</div>
-		</div>
-		<div class="clearfix  sub-line" style="width: 100%;">
-			<Title title="近30日变化趋势"></Title>
-			<Line_one :data="hot_change"  :isSmooth="true" class="sub-line" :showTitle="false"></Line_one>
-			
+		        </Col>
+		        <Col span="18" class="pd">
+		        		<Title title="旅游要素分析"></Title>
+					<aSlider_chart></aSlider_chart>
+		        </Col>
+		    </Row>
+		    <Row>
+		        <Col span="24" class="pd">
+		        		<Title title="近30日搜索趋势"></Title>
+		        		<iChart></iChart>
+				<!--<Line_one :data="hot_change"  :isSmooth="true" class="sub-line" :showTitle="false"></Line_one>-->
+		        </Col>
+		    </Row>
 		</div>
 
 	</div>
@@ -43,6 +40,13 @@
 	import Line_one from "@/base/line/line_one.vue";
 	import Circle_one from "@/base/circle/circle_one.vue";
 	import Slider_chart from "@/base/slider_chart.vue";
+	import aSlider_chart from "@/base/aslider_chart.vue";
+	import Hchart from "@/base/hchart.vue";
+	import Atable from "@/base/atable.vue";
+	import iChart from "@/base/ichart.vue";
+	
+	
+	
 	
 	
 	export default {
@@ -62,7 +66,9 @@
 			Line_one,
 			Bar_three,
 			Circle_one,
-			Slider_chart
+			Slider_chart,
+			Hchart,
+			Atable,iChart,aSlider_chart
 		},
 		methods: {
 			getData() {

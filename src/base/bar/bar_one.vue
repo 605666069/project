@@ -66,7 +66,7 @@
 				            name: this.data.name,
 				            type: 'bar',
 				            data: this.data.data,
-				            barMaxWidth:10,
+				            barMaxWidth:20,
 				            label: {
 				                normal: {
 				                    show: true,

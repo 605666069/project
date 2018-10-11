@@ -1,56 +1,61 @@
 <template>
 	<div class="bg clearfix">
 		<Top title="磐安全域旅游大数据中心"></Top>
-		<div class="top clearfix">
-			<div class="l line-1">
-				<div class="t-top">
-					<Title title="入磐总车辆数"></Title>
-					<div class="sub_title">
-						今日入县车辆
-					</div>
-					<div>
-						<Num data="9123796"></Num>
-					</div>
-					<div class="sub_title">
-						当年入县车辆
-					</div>
-					<div>
-						<Num data="2094"></Num>
-					</div>
-					<Title title="7日入县车辆统计"></Title>
-					<Line_one :data="car_type_data" class="sub-line" :showTitle="false" :colorList="colorList"></Line_one>
-				</div>
+		<div class="content">
 			
-				<Title title="景区车辆出入统计"></Title>
-				<Line_one :data="car_total_num" :isSmooth="true" class="sub-line" :showTitle="false" :colorList="colorList" ></Line_one>
-			</div>
-			<div class="line-right r">
-				<div class="t-top">
-					<div>
-						<Title title="轿车驻留时间分析"></Title>
-						<Circle_two :data="car_stop_time" position_formatter="{b}" position="inner"></Circle_two>
+			<Row>
+		        <Col span="6" class="pd">
+		        		<div class="chunk">
+						<Title title="入磐总车辆数"></Title>
+						<div class="sub_title  m-t">
+							今日入县车辆
+						</div>
+						<div>
+							<Num data="9123796"></Num>
+						</div>
+						<div class="sub_title  m-t">
+							当年入县车辆
+						</div>
+						<div>
+							<Num data="2094"></Num>
+						</div>
 					</div>
-					<div>
+					<div class="chunk">
+						<Title title="景区车辆出入统计"></Title>
+						<Line_one :data="car_total_num" :isSmooth="true" class="sub-line" :showTitle="false" :colorList="colorList" ></Line_one>
+					</div>
+		        </Col>
+		        <Col span="12" class="pd">
+	        			<Title title="全国车辆来源示意图"></Title>
+					<Passenger_map></Passenger_map>
+		        </Col>
+		        <Col span="6" class="pd">
+		        		<div class="chunk">
+						<Title title="轿车驻留时间分析"></Title>
+						<Circle_two :data="car_stop_time" position_formatter="{b}" position="inner" :colorList="colorList2"></Circle_two>
+					</div>
+					<div class="chunk">
 						<Title title="车辆来源城市top10"></Title>
 						<Bar_two :data="car_from_min_data"  :show_legend="false"></Bar_two>
 					</div>
-				</div>
-				<div>
-					<Title title="车辆来源省份top10"></Title>
-					<Bar_two :data="car_from_data"  :show_legend="false"></Bar_two>
-				</div>
-				
-			</div>
-			<div class="line-2">
-				<div class="t-top">
-					<Title title="全国车辆来源示意图"></Title>
-					<Passenger_map></Passenger_map>
-				</div>
-				<div>
-					<Title title="入县车辆与入景区车辆对比(30日)"></Title>
-					<Line_one :data="car_compare_data"  :isSmooth="true" :showTitle="false" class="sub-line" :dataZoom="true" :colorList="colorList"></Line_one>
-				</div>
-			</div>
+		        </Col>
+		    </Row>
+		    	<Row>
+		        <Col span="6" class="pd">
+		        		<Title title="7日入县车辆统计"></Title>
+					<fChart></fChart>
+					<!--<Line_one :data="car_type_data" class="sub-line" :showTitle="false" :colorList="colorList"></Line_one>-->
+		        </Col>
+		        <Col span="12" class="pd">
+	        			<Title title="入县车辆与入景区车辆对比(30日)"></Title>
+					<Line_one :data="car_compare_data"   :showTitle="false" :dataZoom="true" :colorList="colorList1"></Line_one>
+		        </Col>
+		        <Col span="6" class="pd">
+		        		<Title title="车辆来源省份top5"></Title>
+					<Bar_two :data="car_from_data" :isAcross='true' stack="总量" :colorList="colorList3" ></Bar_two>
+		        </Col>
+		    </Row>
+		
 		</div>
 		
 	</div>
@@ -64,6 +69,8 @@
 	import Bar_two from "@/base/bar/bar_two.vue";
 	import Bar_three from "@/base/bar/bar_three.vue";
 	import Line_one from "@/base/line/line_one.vue";
+	import fChart from "@/base/fchart.vue";
+	
 
 	export default {
 		data() {
@@ -75,6 +82,12 @@
 				car_from_min_data:null,
 				car_compare_data:null,
 				colorList:['#8d53ea','#01c6fd'],
+				colorList1:['#39c4d9 ','#4f72f6'],
+				colorList2:['#9ed472 ','#bc78d8','#55afe6'],
+				colorList3:['#55b782 ','#ccb14a'],
+				
+				
+				
 				
 			}
 		},
@@ -86,7 +99,8 @@
 			Circle_two,
 			Bar_two,
 			Line_one,
-			Bar_three
+			Bar_three,
+			fChart
 		},
 		methods: {
 			getData(){
