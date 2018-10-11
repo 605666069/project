@@ -68,7 +68,8 @@
 	    text-align: center;
 	}
 	.num-text-1 {
-		font-size: 35px;
+		font-size: 40px;
+		font-weight: 700;
 	}
 	.num-text-2 {
 		font-size: 18px;

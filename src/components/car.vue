@@ -83,8 +83,8 @@
 				car_compare_data:null,
 				colorList:['#8d53ea','#01c6fd'],
 				colorList1:['#39c4d9 ','#4f72f6'],
-				colorList2:['#9ed472 ','#bc78d8','#55afe6'],
-				colorList3:['#55b782 ','#ccb14a'],
+				colorList2:['#f68b2d ','#3c9eff','#32e3eb'],
+				colorList3:['#ff6155 ','#edc553','#409ff1'],
 				
 				
 				

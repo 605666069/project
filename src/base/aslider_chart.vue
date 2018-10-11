@@ -1,6 +1,6 @@
 <template>
 	<div class="clearfix wrap">
-		<div class="nav l clearfix">
+		<div class="nav l clearfix v-middle">
 			<div @click="changeIndex(0)" class="nav-line">
 				<div class="nav-img" v-bind:class="{'nav-click':index==0}">
 					<img src="../assets/p1.png"/>
@@ -51,99 +51,82 @@
 			</div>
 		</div>
 		<div class="content ">
-			<Carousel v-model="index" dots="none" arrow="never">
-		        <CarouselItem>
-		            <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
-		            		</div>
-		            </div>
-		        </CarouselItem>
-		        <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" ></Circle_one>
-		            		</div>
-		           		</div>
-		            </div>
-		        </CarouselItem>
-		        <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" ></Circle_one>
-		            		</div>
-		            	</div>
-		            </div>
-		        </CarouselItem>
-		        <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d"></Circle_one>
-		            		</div>
-		           		 </div>
-		            </div>
-		        </CarouselItem>
-		         <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" ></Circle_one>
-		            		</div>
-		            	</div>
-		            </div>
-		        </CarouselItem>
-		         <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d"></Circle_one>
-		            		</div>
-		            	</div>
-		            </div>
-		        </CarouselItem>
-		    </Carousel>
+			<swiper :options="swiperOption" ref="mySwiper">
+		      	<swiper-slide >
+		      		<!--<Dslide></Dslide>-->
+					<Aslide></Aslide>
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Bslide></Bslide>
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Cslide></Cslide>
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Cslide></Cslide>
+		     	 	
+		      		<!--<Dslide></Dslide>-->
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Cslide></Cslide>
+		     	 	
+		      		<!--<Eslide></Eslide>-->
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Cslide></Cslide>
+		     	 	
+		      		<!--<Fslide></Fslide>-->
+		     	 </swiper-slide>
+		    </swiper>
 		</div>
+	
 	</div>
 </template>
 
 <script>
-	import Circle_one from "@/base/circle/circle_one.vue";
+	import Aslide from "@/base/slide/slide1/aslide.vue";
+	import Bslide from "@/base/slide/slide1/bslide.vue";
+	import Cslide from "@/base/slide/slide1/cslide.vue";
+	import Dslide from "@/base/slide/slide1/dslide.vue";
+	import Eslide from "@/base/slide/slide1/eslide.vue";
+	import Fslide from "@/base/slide/slide1/fslide.vue";
+	
+	
+	
+	
 	
 	
 	export default {
         data() {
 	        	return {
 	        		index:0,
-	        		data:[]
+	        		data:[],
+	        		swiperOption:{
+				    disableOnInteraction:false,
+				    observer:true,//修改swiper自己或子元素时，自动初始化swiper
+		       		observeParents:true//修改swiper的父元素时，自动初始化swiper
+				
+	        		}
 	        	}
         },
-        computed:{
-        },
+        computed: {
+	      	swiper() {
+	        		return this.$refs.mySwiper.swiper
+	      	}
+	    },
         components: {
-        		Circle_one
+        		Aslide,Bslide,Cslide,Dslide,Eslide,Fslide
         },
         methods:{
 	        	changeIndex(index) {
-	        		this.index = index
+	        		this.index = index;
+	        		this.swiper.slideTo(index)
 	        	},
-	        	getData() {
-					this.data = this.echarts_data.home_data.traffic;
-					console.log(this.data)
-					this.data.map(item=>{
-						item.data.map(sub=>{
-							sub.bg_color = [this.color(),this.color()]
-						})
-	        			})
-					
-	        	}
 	        	
         },
         created() {
         		this.$nextTick(() => {
-				this.getData();
+//      			this.changeIndex(0)
 			})
         },
        
@@ -154,24 +137,26 @@
 
 <style scoped>
 	.nav {
-		width: 400px;
+		width: 270px;
+		padding-top: 40px;
 	}
 	.nav .nav-line {
-		margin: 5px 10px;
+		margin:20px 10px;
 		display: inline-block;
 		text-align: center;
 		cursor: pointer;
 	}
 	.nav .nav-line img{
+		margin-top: 12.5px;
 		width: 60px;
 		display: inline-block;
 	}
-	.nav .nav-img {
-		height: 75px;
-		width: 75px;
+	.nav .nav-line .nav-img {
+		height: 85px;
+		width: 85px;
 	}
 	.content {
-		margin-left: 400px;
+		margin-left: 270px;
 	}
 	
 	.demo-carousel {
@@ -179,6 +164,7 @@
 		width: 100%;
 	}
 	.wrap {
+		height: 100%;
 	}
 	.nav-text {
 		font-size: 18px;

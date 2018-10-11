@@ -1,6 +1,6 @@
 <template>
 	<div class="clearfix wrap">
-		<div class="nav l clearfix">
+		<div class="nav l clearfix v-middle">
 			<div @click="changeIndex(0)" class="nav-line">
 				<div class="nav-img" v-bind:class="{'nav-click':index==0}">
 					<img src="../assets/p1.png"/>
@@ -51,99 +51,77 @@
 			</div>
 		</div>
 		<div class="content ">
-			<Carousel v-model="index" dots="none" arrow="never">
-		        <CarouselItem>
-		            <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" :isShowLegend="index==data.length-1"></Circle_one>
-		            		</div>
-		            </div>
-		        </CarouselItem>
-		        <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" ></Circle_one>
-		            		</div>
-		           		</div>
-		            </div>
-		        </CarouselItem>
-		        <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" ></Circle_one>
-		            		</div>
-		            	</div>
-		            </div>
-		        </CarouselItem>
-		        <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d"></Circle_one>
-		            		</div>
-		           		 </div>
-		            </div>
-		        </CarouselItem>
-		         <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d" ></Circle_one>
-		            		</div>
-		            	</div>
-		            </div>
-		        </CarouselItem>
-		         <CarouselItem>
-		            <div class="demo-carousel">
-		            	 <div class="demo-carousel flex">
-		            		<div class="flex-1" v-for="(d,index) in data">
-		            			<Circle_one :data="d"></Circle_one>
-		            		</div>
-		            	</div>
-		            </div>
-		        </CarouselItem>
-		    </Carousel>
+			<swiper :options="swiperOption" ref="mySwiper">
+		      	<swiper-slide >
+		      		<!--<Dslide></Dslide>-->
+					<Aslide></Aslide>
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Bslide></Bslide>
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Cslide></Cslide>
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Dslide></Dslide>
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Eslide></Eslide>
+		     	 </swiper-slide>
+		     	 <swiper-slide >
+		      		<Fslide></Fslide>
+		     	 </swiper-slide>
+		    </swiper>
 		</div>
+	
 	</div>
 </template>
 
 <script>
 	import Circle_one from "@/base/circle/circle_one.vue";
+	import Aslide from "@/base/slide/aslide.vue";
+	import Bslide from "@/base/slide/bslide.vue";
+	import Cslide from "@/base/slide/cslide.vue";
+	import Dslide from "@/base/slide/dslide.vue";
+	import Eslide from "@/base/slide/eslide.vue";
+	import Fslide from "@/base/slide/fslide.vue";
+	
+	
+	
+	
 	
 	
 	export default {
         data() {
 	        	return {
 	        		index:0,
-	        		data:[]
+	        		data:[],
+	        		swiperOption:{
+				    disableOnInteraction:false,
+				    observer:true,//修改swiper自己或子元素时，自动初始化swiper
+		       		observeParents:true//修改swiper的父元素时，自动初始化swiper
+				
+	        		}
 	        	}
         },
-        computed:{
-        },
+        computed: {
+	      	swiper() {
+	        		return this.$refs.mySwiper.swiper
+	      	}
+	    },
         components: {
-        		Circle_one
+        		Circle_one,Aslide,Bslide,Cslide,Dslide,Eslide,Fslide
         },
         methods:{
 	        	changeIndex(index) {
-	        		this.index = index
+	        		this.index = index;
+	        		this.swiper.slideTo(index)
 	        	},
-	        	getData() {
-					this.data = this.echarts_data.home_data.traffic;
-					console.log(this.data)
-					this.data.map(item=>{
-						item.data.map(sub=>{
-							sub.bg_color = [this.color(),this.color()]
-						})
-	        			})
-					
-	        	}
 	        	
         },
         created() {
         		this.$nextTick(() => {
-				this.getData();
+//      			this.changeIndex(0)
 			})
         },
        
@@ -154,10 +132,10 @@
 
 <style scoped>
 	.nav {
-		width: 400px;
+		width: 370px;
 	}
 	.nav .nav-line {
-		margin: 5px 10px;
+		margin:20px 10px;
 		display: inline-block;
 		text-align: center;
 		cursor: pointer;
@@ -172,7 +150,7 @@
 		width: 85px;
 	}
 	.content {
-		margin-left: 400px;
+		margin-left: 370px;
 	}
 	
 	.demo-carousel {
@@ -180,6 +158,7 @@
 		width: 100%;
 	}
 	.wrap {
+		height: 100%;
 	}
 	.nav-text {
 		font-size: 18px;

@@ -42,9 +42,7 @@
 		        <Col span="18" class="pd">
 		        		<div class="line-2 chunk">
 			        		<Title title="旅游要素" :vertical="true" class="l bottom-title"></Title>
-			        		<div class="b">	
 							<Slider_chart></Slider_chart>
-			        		</div>
 					</div>
 		        </Col>
 		        <Col span="6" class="pd">

@@ -69,7 +69,7 @@
 				tody_scenic_flow_data:null,
 				comfort_data:null,
 				sum_visitor_data:null,
-	        		colorList:['#c16fea','#ec5851'],
+	        		colorList:['#edc553','#3c9eff'],
 	        		colorList1:['#67d0e4','#97df5d','#4f72f6','#d6807e','#ccb14a'],
 	        		colorList2:['#67d0e4','#887bcc'],
 	        		

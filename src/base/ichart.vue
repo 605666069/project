@@ -38,6 +38,7 @@
 					source[3].push(this.random(1000, 2500));
 				}
 				this.option = {
+					color:['#78cba6','#3987ce','#e8af49'],
 					legend: {
 						textStyle: {
 							color: '#fff'
@@ -176,7 +177,7 @@
 				let _this = this;
 				this.echart.on('updateAxisPointer', function(event) {
 					var xAxisInfo = event.axesInfo[0];
-
+					console.log(event)
 					if(xAxisInfo) {
 						var dimension = xAxisInfo.value + 1;
 						_this.echart.setOption({

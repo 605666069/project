@@ -17,7 +17,8 @@
 			        	</div>
 			        	<div class="chunk">
 			        		<Title title="关注量TOP5"></Title>
-						<Bar_two :data="wx_attention" :isAcross='true' :height="250" :show_legend="false" :top="10" :barMaxWidth="20"></Bar_two>
+			        		<Abar_two></Abar_two>
+						<!--<Bar_two :data="wx_attention" :isAcross='true' :height="250" :show_legend="false" :top="10" :barMaxWidth="20"></Bar_two>-->
 			        	</div>
 		        </Col>
 		    </Row>
@@ -48,6 +49,8 @@
 	import Anum from "@/base/anum.vue";
 	import Gchart from "@/base/gchart.vue";
 	import Btable from "@/base/Btable.vue";
+	import Abar_two from "@/base/bar/abar_two.vue";
+	
 	
 	
 	
@@ -71,7 +74,7 @@
 			Line_one,
 			Bar_three,
 			Anum,
-			Gchart,Apassenger_map,Btable
+			Gchart,Apassenger_map,Btable,Abar_two
 		},
 		methods: {
 			getData() {

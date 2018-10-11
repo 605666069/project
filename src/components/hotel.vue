@@ -57,8 +57,8 @@
 				hotel_people_num:null,
 				hotel_in:null,
 				hotel_in_total:null,
-				colorList:['#bc78d8','#9ed472'],
-				colorList1:['rgba(245, 166, 35, 1)','rgba(19, 173, 255, 1)'],
+				colorList:['#3c9eff','#edc553'],
+				colorList1:['rgba(19, 173, 255, 1)','rgba(245, 166, 35, 1)'],
 				
 			}
 		},

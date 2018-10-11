@@ -15,7 +15,7 @@
 		        </Col>
 		        <Col span="18" class="pd">
 		        		<Title title="旅游要素分析"></Title>
-					<Slider_chart></Slider_chart>
+					<aSlider_chart style="height: 550px;"></aSlider_chart>
 		        </Col>
 		    </Row>
 		    <Row>

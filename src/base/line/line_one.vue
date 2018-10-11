@@ -37,6 +37,9 @@
 			},
 			dataZoom:{
 				default:null
+			},
+			area:{
+				default:false
 			}
 		},
 		computed: {},
@@ -46,9 +49,17 @@
 				let dataList = [];
 				let nameList = [];
 				this.data.data.map((item,index)=>{
+					console.log
 					dataList.push({
 						 areaStyle: {
 						 	opacity:this.isAreaShow?1:0,
+						 	color:this.isAreaShow?new this.echarts.graphic.LinearGradient(
+				                0, 0, 0, 1,
+				                [
+				                    {offset: 0, color:this.colorList[index].substr(0,this.colorList[index].length-2) + "1)"},
+				                    {offset: 1, color:this.colorList[index].substr(0,this.colorList[index].length-2) + "0)"}
+				                ]
+				            ):null
 						 },
 			            name:item.name,
 			            type:'line',

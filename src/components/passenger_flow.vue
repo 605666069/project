@@ -36,8 +36,8 @@
 						<Bar_two :data="source_visitor_data" :colorList="colorList2"></Bar_two>
 					</div>
 					<div class="chunk">
-						<Line_one :data="visitor_data" :show_legend="false" :colorList="colorList1"></Line_one>
-						
+						<Title title="7日入磐客流趋势"></Title>
+						<Line_one :data="visitor_data" :show_legend="false" :colorList="colorList1" :showTitle="false" :area="true" :isAreaShow="true"></Line_one>
 					</div>
 		        </Col>
 		    </Row>
@@ -89,7 +89,7 @@
 				source_visitor_data: null,
 				sum_visitor_data: null,
 				colorList: ['#fe996a', '#944fe8', '#01c8f3'],
-				colorList1: ['#01c8f3', '#b5f0fe'],
+				colorList1: ['rgba(50,227,235,1)'],
 				colorList2:['#67d0e4','#f9e659']
 			}
 		},

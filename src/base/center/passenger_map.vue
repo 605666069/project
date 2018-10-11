@@ -20,10 +20,12 @@
 			initOpction() {
 				let citys = [];
 				let moveLines = [];
+				let data = [];
 				this.chinaData.map(item=>{
+					let randomData = this.global.randomFunction(500,1000);
 					citys.push({
 						name: item.properties.name,
-						value: item.properties.cp.concat(this.global.randomFunction(500,1000)),
+						value: item.properties.cp.concat(randomData),
 					});
 					moveLines.push({
 						fromName: item.properties.name,
@@ -31,7 +33,12 @@
 						coords: [item.properties.cp,
 							[120.4413750000000,29.0514720000000],
 						]
+					});
+					data.push({
+						name: item.properties.name,
+						value: randomData,
 					})
+					
 					
 				});
 				

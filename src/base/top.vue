@@ -1,10 +1,21 @@
 <template>
 	<div class="clearfix top" >
-		<div class="l font-1 left-text">
-			<div style="margin-top: 5px;">
+		<div class="l font-2 left-text clearfix">
+			<div  class="l">
 				{{date_string}}<br />
 				{{time_string}}
 			</div>
+			<div  class="l">
+				<img src="../assets/clod.png"/>
+			</div>
+			<div  class="l">
+				多云 19°C<br />
+				
+				空气质量: 优35
+			</div>
+		</div>
+		<div class="font-1 pointer right-text r" @click="back">
+			返回首页>>
 		</div>
 		<div class="r" style="height: 100%;">
 			<Dropdown> 
@@ -12,7 +23,7 @@
 		            {{$route.name||'菜单'}}
 		        </a>
 		        <DropdownMenu slot="list">
-		           <a href="#/home"><DropdownItem>首页</DropdownItem></a>
+		           <a href="#/home"><DropdownItem>实时客流</DropdownItem></a>
 		           <a href="#/passenger_flow"> <DropdownItem>客流数据</DropdownItem></a>
 		           <a href="#/scenic_area"> <DropdownItem>景区数据</DropdownItem></a>
 		           <a href="#/hotel"> <DropdownItem>酒店住宿</DropdownItem></a>
@@ -22,6 +33,7 @@
 		        </DropdownMenu>
 		    </Dropdown>
 		</div>
+		
 		<div class="center font-1">
 			{{title}}
 		</div>
@@ -47,6 +59,9 @@
         components: {
         },
         methods:{
+        		back() {
+        			window.location.href=window.location.host;
+        		}
         },
         mounted() {
         	var _this = this; 
@@ -76,6 +91,10 @@
 	.font-1 {
 		font-size: 20px;
 		color: #FFFFFF;
+	}
+	.font-2 {
+		font-size: 16px;
+		padding-top: 10px;
 	}
 	.top .l {
 		padding-left: 20px;

@@ -15,7 +15,7 @@ Vue.use(Router)
 const vueRouter = new Router({
   routes: [
   	{path:'/',redirect:'/home'},
-    {path: '/home', component: home,name:'首页'},
+    {path: '/home', component: home,name:'实时客流'},
     {path: '/passenger_flow', component: passenger_flow,name:'客流数据'},
     {path: '/scenic_area', component: scenic_area,name:'景区数据'},
     {path: '/hotel', component: hotel,name:'酒店住宿'},

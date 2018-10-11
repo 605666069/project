@@ -35,7 +35,7 @@
 		methods: {
 			initOpction() {
 				this.option = {
-					color: ['#ffd285', '#55afe6', '#97df5d'],
+					color: ['#ffd285', '#55afe6', '#f96257'],
 					tooltip: {
 						trigger: 'axis'
 					},
@@ -184,14 +184,14 @@
 								name: '三日以上',
 								itemStyle: {
 									normal: {
-										color: '#97df5d'
+										color: '#f96257'
 									}
 								},
 								label: {
 									normal: {
 										formatter: '三日以上 {d} %',
 										textStyle: {
-											color: '#97df5d',
+											color: '#f96257',
 										}
 									}
 								}
@@ -215,13 +215,13 @@
 								},
 								itemStyle: {
 									normal: {
-										color: '#bc78d8'
+										color: '#3c9eff'
 									}
 								},
 								label: {
 									normal: {
 										textStyle: {
-											color: '#bc78d8',
+											color: '#3c9eff',
 										},
 										formatter: '男 {d} % \n',
 									}
@@ -234,13 +234,13 @@
 								},
 								itemStyle: {
 									normal: {
-										color: '#9ed472'
+										color: '#edc553'
 									}
 								},
 								label: {
 									normal: {
 										textStyle: {
-											color: '#9ed472',
+											color: '#edc553',
 										},
 										formatter: '女 {d} %  \n',
 									}
