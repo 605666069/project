@@ -4,7 +4,7 @@
 		<div class="content">
 			<Row>
 		        <Col span="6" class="pd">
-		        		<div class="chunk">
+	        		<div class="chunk">
 						<Title title="百度指数"></Title>
 						<Hchart></Hchart>
 					</div>
@@ -14,15 +14,17 @@
 					</div>
 		        </Col>
 		        <Col span="18" class="pd">
-		        		<Title title="旅游要素分析"></Title>
+	        		<Title title="旅游要素分析"></Title>
 					<aSlider_chart style="height: 550px;"></aSlider_chart>
 		        </Col>
 		    </Row>
 		    <Row>
 		        <Col span="24" class="pd">
-		        		<Title title="近30日搜索趋势"></Title>
+	        		<Title title="近30日搜索趋势"></Title>
+		        	<div class="b">
 		        		<iChart></iChart>
 				<!--<Line_one :data="hot_change"  :isSmooth="true" class="sub-line" :showTitle="false"></Line_one>-->
+		        	</div>	
 		        </Col>
 		    </Row>
 		</div>

@@ -22,7 +22,9 @@
 					</div>
 					<div class="chunk">
 						<Title title="景区车辆出入统计"></Title>
-						<Line_one :data="car_total_num" :isSmooth="true" class="sub-line" :showTitle="false" :colorList="colorList" ></Line_one>
+						<div class="b">
+							<Line_one :data="car_total_num" :isSmooth="true" class="sub-line" :showTitle="false" :colorList="colorList" ></Line_one>
+						</div>
 					</div>
 		        </Col>
 		        <Col span="12" class="pd">
@@ -30,29 +32,39 @@
 					<Passenger_map></Passenger_map>
 		        </Col>
 		        <Col span="6" class="pd">
-		        		<div class="chunk">
+	        		<div class="chunk">
 						<Title title="轿车驻留时间分析"></Title>
-						<Circle_two :data="car_stop_time" position_formatter="{b}" position="inner" :colorList="colorList2"></Circle_two>
+						<div class="b">
+							<Circle_two :data="car_stop_time" position_formatter="{b}" position="inner" :colorList="colorList2"></Circle_two>
+						</div>
 					</div>
 					<div class="chunk">
 						<Title title="车辆来源城市top10"></Title>
-						<Bar_two :data="car_from_min_data"  :show_legend="false"></Bar_two>
+						<div class="b">
+							<Bar_two :data="car_from_min_data"  :show_legend="false"></Bar_two>
+						</div>
 					</div>
 		        </Col>
 		    </Row>
 		    	<Row>
 		        <Col span="6" class="pd">
-		        		<Title title="7日入县车辆统计"></Title>
-					<fChart></fChart>
+	        		<Title title="7日入县车辆统计"></Title>
+	        		<div class="b">
+	        			<fChart></fChart>
+	        		</div>
 					<!--<Line_one :data="car_type_data" class="sub-line" :showTitle="false" :colorList="colorList"></Line_one>-->
 		        </Col>
 		        <Col span="12" class="pd">
-	        			<Title title="入县车辆与入景区车辆对比(30日)"></Title>
-					<Line_one :data="car_compare_data"   :showTitle="false" :dataZoom="true" :colorList="colorList1"></Line_one>
+        			<Title title="入县车辆与入景区车辆对比(30日)"></Title>
+        			<div class="b">
+        				<Line_one :data="car_compare_data"   :showTitle="false" :dataZoom="true" :colorList="colorList1"></Line_one>
+        			</div>
 		        </Col>
 		        <Col span="6" class="pd">
-		        		<Title title="车辆来源省份top5"></Title>
-					<Bar_two :data="car_from_data" :isAcross='true' stack="总量" :colorList="colorList3" ></Bar_two>
+	        		<Title title="车辆来源省份top5"></Title>
+	        		<div class="b">
+	        			<Bar_two :data="car_from_data" :isAcross='true' stack="总量" :colorList="colorList3" ></Bar_two>
+	        		</div>
 		        </Col>
 		    </Row>
 		

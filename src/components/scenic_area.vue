@@ -21,7 +21,10 @@
 					</div>
 					<div class="chunk">
 		        			<Title title="景区客流趋势" ></Title>
-						<Line_one :data="scenic_flow_data"  :colorList="colorList" :showTitle="false"></Line_one>
+		        			<div class="b">
+		        				<Line_one :data="scenic_flow_data"  :colorList="colorList" :showTitle="false"></Line_one>
+		        				
+		        			</div>
 					</div>
 		        </Col>
 		        <Col span="18" class="pd">
@@ -32,15 +35,21 @@
 		    <Row>
 		        <Col span="6" class="pd">
 		        		<Title title="景区客流舒适度"></Title>
-					<Achart></Achart>
+		        		<div class="b">
+		        			<Achart></Achart>
+		        		</div>
 		        </Col>
 		        <Col span="6" class="pd">
-		        		<Title title="今日景区客流top5"></Title>
-					<Bar_two :data="tody_scenic_flow_data" :isAcross='true' :colorList="colorList2" style="margin-top: 20px;"></Bar_two>
+	        		<Title title="今日景区客流top5"></Title>
+	        		<div class="b">
+	        			<Bar_two :data="tody_scenic_flow_data" :isAcross='true' :colorList="colorList2" style="margin-top: 20px;"></Bar_two>
+	        		</div>
 		        </Col>
 		        <Col span="12" class="pd">
 		        		<Title title="各景区客流量趋势"></Title>
-					<Line_one :data="history_scenic_flow_data"  :isSmooth="true"  :dataZoom="true" :colorList="colorList1" :showTitle="false"></Line_one>
+		        		<div class="b">
+		        			<Line_one :data="history_scenic_flow_data"  :isSmooth="true"  :dataZoom="true" :colorList="colorList1" :showTitle="false"></Line_one>
+		        		</div>
 		        </Col>
 		    </Row>
 		</div>

@@ -21,9 +21,11 @@
 					</div>
 					<div class="chunk">
 						<Title title="昨日游客驻留情况"></Title>
-						<Bchart></Bchart>
-<!--						<Circle_two :data="reside_data" position="inner" :colorList="colorList"></Circle_two>
--->					</div>
+						<div class="b">
+							<Bchart></Bchart>
+						<!--<Circle_two :data="reside_data" position="inner" :colorList="colorList"></Circle_two>-->
+						</div>
+					</div>
 		        </Col>
 		        <Col span="12" class="pd">
 		        		<Title title="游客来访地图"></Title>
@@ -31,30 +33,38 @@
 					<!--<Test></Test>-->
 		        </Col>
 		        <Col span="6" class="pd">
-		        		<div class="chunk">
+	        		<div class="chunk">
 						<Title title="游客来源增幅TOP10(市)"></Title>
-						<Bar_two :data="source_visitor_data" :colorList="colorList2"></Bar_two>
+						<div class="b">
+							<Bar_two :data="source_visitor_data" :colorList="colorList2"></Bar_two>
+						</div>
 					</div>
 					<div class="chunk">
 						<Title title="7日入磐客流趋势"></Title>
-						<Line_one :data="visitor_data" :show_legend="false" :colorList="colorList1" :showTitle="false" :area="true" :isAreaShow="true"></Line_one>
+						<div class="b">
+							<Line_one :data="visitor_data" :show_legend="false" :colorList="colorList1" :showTitle="false" :area="true" :isAreaShow="true"></Line_one>
+						</div>
 					</div>
 		        </Col>
 		    </Row>
 		    <Row>
 		        <Col span="12" class="pd">
-		        		<Title title="昨日与历史客流对比"></Title>
-					<div style="width: 70%;" class="l">
-						<Line_one :data="history_visitor_data" :isSmooth="true" :showTitle="false"></Line_one>
-					</div>
-					<div class="l" style="width: 29%;">
-						<Cchart :data="reside_data" position="inner" :colorList="colorList" :show_legend="false" position_formatter="{b}:{c}"></Cchart>
-						<!--<Circle_two :data="reside_data" position="inner" :colorList="colorList" :show_legend="false"></Circle_two>-->
-					</div>
+	        		<Title title="昨日与历史客流对比"></Title>
+	        		<div class="clearfix b">
+						<div style="width: 70%;" class="l">
+							<Line_one :data="history_visitor_data" :isSmooth="true" :showTitle="false"></Line_one>
+						</div>
+						<div class="l" style="width: 29%;">
+							<Cchart :data="reside_data" position="inner" :colorList="colorList" :show_legend="false" position_formatter="{b}:{c}"></Cchart>
+							<!--<Circle_two :data="reside_data" position="inner" :colorList="colorList" :show_legend="false"></Circle_two>-->
+						</div>
+	        		</div>
 		        </Col>
 		        <Col span="12" class="pd">
-		        		<Title title="2018年客源累计Top10"></Title>
-					<Bar_four :data="sum_visitor_data" :barMaxWidth='60' :show_legend="false" style="margin-top: 10px;"></Bar_four>
+	        		<Title title="2018年客源累计Top10"></Title>
+	        		<div class="b">
+	        			<Bar_four :data="sum_visitor_data" :barMaxWidth='60' :show_legend="false" style="margin-top: 10px;"></Bar_four>
+	        		</div>
 		        </Col>
 		    </Row>
 		</div>

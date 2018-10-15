@@ -6,26 +6,34 @@
 		        <Col span="6" class="pd">
 		        		<div class="chunk">
 						<Title title="今日入住"></Title>
-						<Circle_two :data="sex_data" position_formatter="{b}: {d}%" :colorList="colorList"></Circle_two>
+						<div class="b">
+							<Circle_two :data="sex_data" position_formatter="{b}: {d}%" :colorList="colorList"></Circle_two>
+						</div>
 					</div>
 					<div  class="chunk">
 						<Title title="接待人数Top5酒店"></Title>
-						<Bar_two :data="hotel_people_num" :isAcross='true' stack="总量" style="margin-top: 10px;" :colorList="colorList1"></Bar_two>
-						<!--<Bar_two :data="good_hotel" :isAcross='true' stack="总量"></Bar_two>-->
+						<div class="b">
+							<Bar_two :data="hotel_people_num" :isAcross='true' stack="总量" style="margin-top: 10px;" :colorList="colorList1"></Bar_two>
+							<!--<Bar_two :data="good_hotel" :isAcross='true' stack="总量"></Bar_two>-->
+						</div>
 					</div>
 		        </Col>
 		        <Col span="12" class="pd">
 		        		<Kchart></Kchart>
 		        </Col>
 		         <Col span="6" class="pd">
-		        		<Title title="磐安好评率酒店Top3"></Title>
-					<Dchart></Dchart>
+	        		<Title title="磐安好评率酒店Top3"></Title>
+	        		<div class="b" style="height: 530px;">
+	        			<Dchart></Dchart>
+	        		</div>
 		        </Col>
 		    </Row>
 		    	<Row>
 		        <Col span="24" class="pd">
-		        		<Title title="近30日入住情况"></Title>
-					<Echart></Echart>
+	        		<Title title="近30日入住情况"></Title>
+	        		<div class="b">
+	        			<Echart></Echart>
+	        		</div>
 		        </Col>
 		    </Row>
 		</div>

@@ -17,19 +17,26 @@
 			        	</div>
 			        	<div class="chunk">
 			        		<Title title="关注量TOP5"></Title>
-			        		<Abar_two></Abar_two>
+			        		<div class="b">
+			        			<Abar_two></Abar_two>
 						<!--<Bar_two :data="wx_attention" :isAcross='true' :height="250" :show_legend="false" :top="10" :barMaxWidth="20"></Bar_two>-->
+			        		</div>
 			        	</div>
 		        </Col>
 		    </Row>
 		    <Row>
 		        <Col span="18" class="pd">
 		        		<Title title="近30日图文消息趋势"></Title>
-					<Line_one :data="wx_use_type"  :isSmooth="true" :showTitle="false" class="sub-line" :colorList="colorList"></Line_one>
+		        		<div class="b">
+		        			<Line_one :data="wx_use_type"  :isSmooth="true" :showTitle="false" class="sub-line" :colorList="colorList"></Line_one>
+		        			
+		        		</div>
 		        </Col>
 		        <Col span="6" class="pd">
 			        	<Title title="粉丝性别及年龄"></Title>
-			        	<Gchart></Gchart>
+			        	<div class="b">
+			        		<Gchart></Gchart>
+			        	</div>
 					<!--<Bar_two :data="wx_age"  stack="总量"></Bar_two>-->
 		        </Col>
 		    </Row>

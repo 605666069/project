@@ -4,17 +4,17 @@
 		<div class="content">
 			<Row>
 		        <Col span="6" class="pd">
-		        		<Title title="景区累计客流数" ></Title>
-		        		<div class="b">
+	        		<Title title="景区累计客流数" ></Title>
+	        		<div class="b" style="height: 550px;">
 						<Bar_one style="margin-top: 20px;"></Bar_one>
-		        		</div>
+	        		</div>
 		        </Col>
 		        <Col span="12" class="pd">
 		        		<Title title="实时客流分布地图" ></Title>
 					<Home_center></Home_center>
 		        </Col>
 		        <Col span="6" class="pd">
-			        	<div class="chunk">
+		        	<div class="chunk">
 						<Title title="入磐总客流数" ></Title>
 						<div class="sub_title  m-t">
 							总客流数
@@ -40,9 +40,11 @@
 		    </Row>
 		    <Row>
 		        <Col span="18" class="pd">
-		        		<div class="line-2 chunk">
-			        		<Title title="旅游要素" :vertical="true" class="l bottom-title"></Title>
-							<Slider_chart></Slider_chart>
+	        		<div class="line-2 chunk">
+		        		<Title title="旅游要素" :vertical="true" class="l bottom-title"></Title>
+		        		<div class="b">
+		        			<Slider_chart></Slider_chart>
+		        		</div>
 					</div>
 		        </Col>
 		        <Col span="6" class="pd">
