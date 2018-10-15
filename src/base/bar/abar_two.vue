@@ -27,10 +27,10 @@
 				        }
 				    },
 				    grid: {
-				        left: '3%',
+				        left: '15%',
 				        right: '4%',
 				        bottom: '3%',
-				        top:20,
+				        top:0,
 				    },
 					xAxis: {
 						type: 'value',

@@ -20,12 +20,16 @@
 		components: {},
 		methods: {
 			initOpction() {
+				var mapName = 'china'
 				let citys = [];
 				let moveLines = [];
+				let data = [];
 				this.chinaData.map(item=>{
+					let randomData = this.global.randomFunction(500,1000);
+					
 					citys.push({
 						name: item.properties.name,
-						value: item.properties.cp.concat(this.global.randomFunction(500,1000)),
+						value: item.properties.cp.concat(randomData),
 						symbolSize: 2,
 						itemStyle: {
 							normal: {
@@ -41,10 +45,27 @@
 							[120.4413750000000,29.0514720000000],
 						]
 					})
+					data.push({
+						name: item.properties.name,
+						value: randomData,
+					})
 					
 				});
 				
 				this.option = {
+					tooltip: {
+						trigger: 'item',
+						formatter: function(params) {
+							console.log(params);
+							var toolTiphtml = '';
+							for(var i = 0; i < data.length; i++) {
+								if(params.name == data[i].name) {
+									toolTiphtml += params.name + ' : ' + data[i].value;
+								}
+							}
+							return toolTiphtml;
+						}
+					},
 					legend: {
 						show: false,
 						orient: 'vertical',
@@ -57,6 +78,7 @@
 					},
 					geo: {
 						map: 'china',
+						zoom:1.2,
 						label: {
 							emphasis: {
 								show: false
@@ -82,10 +104,18 @@
 							brushType: 'stroke'
 						},
 						label: {
+							normal: {
+								formatter: function (v) {
+		                            return v.value[2] + '人';
+		                        },
+		                        position: 'bottom',
+		                        show: true,
+		                        textStyle: {
+		                            fontSize: 12
+		                        }
+							},
 							emphasis: {
-								show: true,
-								position: 'right',
-								formatter: '{b}'
+								show: true
 							}
 						},
 						symbolSize: 2,
@@ -96,7 +126,43 @@
 							}
 						},
 						data: citys
-					}, {
+					},
+					{
+						
+						type: 'map',
+						map: mapName,
+						geoIndex: 0,
+						aspectScale: 0.75, //长宽比
+						showLegendSymbol: false, // 存在legend时显示
+						zoom: 1.2,
+						label: {
+							normal: {
+								show: false,
+								textStyle: {
+									color: '#fff'
+								}
+							},
+							emphasis: {
+								show: false,
+								textStyle: {
+									color: '#fff'
+								}
+							}
+						},
+						roam: true,
+						itemStyle: {
+							normal: {
+								areaColor: '#031525',
+								borderColor: '#3B5077',
+							},
+							emphasis: {
+								areaColor: '#2B91B7'
+							}
+						},
+						animation: false,
+						data: data
+					},
+					{
 						name: '线路',
 						type: 'lines',
 						coordinateSystem: 'geo',

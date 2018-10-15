@@ -53,7 +53,6 @@
 		<div class="content ">
 			<swiper :options="swiperOption" ref="mySwiper">
 		      	<swiper-slide >
-		      		<!--<Dslide></Dslide>-->
 					<Aslide></Aslide>
 		     	 </swiper-slide>
 		     	 <swiper-slide >
@@ -63,13 +62,40 @@
 		      		<Cslide></Cslide>
 		     	 </swiper-slide>
 		     	 <swiper-slide >
-		      		<Dslide></Dslide>
+		      		<div class="clearfix">
+		      			<div style="width: 50%;" class="l">
+			      			<Dslide></Dslide>
+			      		</div>
+			      		<div style="width: 50%;"  class="l">
+			      			<Dslide1></Dslide1>
+			      		</div>
+		      		</div>
 		     	 </swiper-slide>
 		     	 <swiper-slide >
-		      		<Eslide></Eslide>
+		     	 	<div class="clearfix">
+		      			<div style="width: 33%;" class="l">
+		      				<Eslide title="KTV"></Eslide>
+			      		</div>
+			      		<div style="width: 33%;" class="l">
+		      				<Eslide title="酒吧"></Eslide>
+			      		</div>
+			      		<div style="width: 33%;" class="l">
+		      				<Eslide title="漂流"></Eslide>
+			      		</div>
+		      		</div>
 		     	 </swiper-slide>
 		     	 <swiper-slide >
-		      		<Fslide></Fslide>
+		     	 	<div class="clearfix">
+		      			<div style="width: 33%;" class="l">
+		      				<Fslide title="住宿消费"></Fslide>
+			      		</div>
+			      		<div style="width: 33%;" class="l">
+		      				<Fslide title="餐饮消费"></Fslide>
+			      		</div>
+			      		<div style="width: 33%;" class="l">
+		      				<Fslide title="娱乐消费"></Fslide>
+			      		</div>
+		      		</div>
 		     	 </swiper-slide>
 		    </swiper>
 		</div>
@@ -83,6 +109,7 @@
 	import Bslide from "@/base/slide/bslide.vue";
 	import Cslide from "@/base/slide/cslide.vue";
 	import Dslide from "@/base/slide/dslide.vue";
+	import Dslide1 from "@/base/slide/dslide1.vue";
 	import Eslide from "@/base/slide/eslide.vue";
 	import Fslide from "@/base/slide/fslide.vue";
 	
@@ -110,7 +137,7 @@
 	      	}
 	    },
         components: {
-        		Circle_one,Aslide,Bslide,Cslide,Dslide,Eslide,Fslide
+        		Circle_one,Aslide,Bslide,Cslide,Dslide,Eslide,Fslide,Dslide1
         },
         methods:{
 	        	changeIndex(index) {

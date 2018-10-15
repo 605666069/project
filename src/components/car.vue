@@ -57,7 +57,7 @@
 		        <Col span="12" class="pd">
         			<Title title="入县车辆与入景区车辆对比(30日)"></Title>
         			<div class="b">
-        				<Line_one :data="car_compare_data"   :showTitle="false" :dataZoom="true" :colorList="colorList1"></Line_one>
+        				<Line_one :data="car_compare_data"  :isAreaShow="true"  :showTitle="false" :dataZoom="true" :colorList="colorList1"></Line_one>
         			</div>
 		        </Col>
 		        <Col span="6" class="pd">
@@ -94,7 +94,7 @@
 				car_from_min_data:null,
 				car_compare_data:null,
 				colorList:['#8d53ea','#01c6fd'],
-				colorList1:['#39c4d9 ','#4f72f6'],
+				colorList1:['rgba(84,116,238,1)','rgba(98,193,214,1)'],
 				colorList2:['#f68b2d ','#3c9eff','#32e3eb'],
 				colorList3:['#ff6155 ','#edc553','#409ff1'],
 				

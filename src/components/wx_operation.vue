@@ -4,10 +4,10 @@
 		<div class="content clearfix">
 			<Row>
 		        <Col span="18" class="pd">
-		        		<div class="" style="position: relative;">
+		        		<div class="" style="position: relative;height: 550px;">
 			        		<Title title="微信粉丝分布图"></Title>
 						<Apassenger_map></Apassenger_map>
-						<Btable class="wx-table"></Btable>
+						<Btable class="wx-table" ></Btable>
 		        		</div>
 		        </Col>
 		        <Col span="6" class="pd">
@@ -138,7 +138,7 @@
 	.wx-table {
 		position: absolute;
 		left: 0;
-		top: 350px;
+		top: 200px;
 		width: 300px;
 	}
 	

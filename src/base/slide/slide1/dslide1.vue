@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div style="width: 100%;height:300px;" ref="my_chart"></div>
+		<div style="width: 100%;height:550px;" ref="my_chart"></div>
 	</div>
 </template>
 
@@ -34,6 +34,7 @@
 		components: {},
 		methods: {
 			initOpction() {
+				
 				var dataStyle = {
 					normal: {
 						label: {
@@ -87,7 +88,7 @@
 				var center = ['50%','50%']
 				this.option = {
 					title: {
-						text: '收费景区',
+						text: '免费景区',
 						textStyle: {
 							fontSize: 25,
 							fontWeight: 'normal',
@@ -147,7 +148,7 @@
 						},
 						show:false,
 						itemGap: 12,
-						data: ['十八涡', '花溪', '百丈潭', '灵江源', '水下孔']
+						data: ['乌石村', '小章村', '方前村', '孔氏家庙', '中国药材城']
 					},
 					series: [{
 							name: 'Line 1',
@@ -164,7 +165,7 @@
 								},
 								{
 									value: 100,
-									name: '十八涡',
+									name: '乌石村',
 									label: labelShow,
 								},
 								{
@@ -191,7 +192,7 @@
 								},
 								{
 									value: 70,
-									name: '花溪',
+									name: '小章村',
 									label: labelShow,
 								},
 								{
@@ -217,7 +218,7 @@
 								},
 								{
 									value: 60,
-									name: '百丈潭',
+									name: '方前村',
 									label: labelShow,
 								},
 								{
@@ -243,7 +244,7 @@
 								},
 								{
 									value: 90,
-									name: '灵江源',
+									name: '孔氏家庙',
 									label: labelShow,
 								},
 								{
@@ -269,7 +270,7 @@
 								},
 								{
 									value: 40,
-									name: '水下孔',
+									name: '中国药材城',
 									label: labelShow,
 								},
 								{
@@ -289,6 +290,7 @@
 
 					]
 				};
+			
 			},
 			creatChart() {
 				this.initOpction();

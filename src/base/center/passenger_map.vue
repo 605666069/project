@@ -174,7 +174,7 @@
 							label: {
 								normal: {
 									formatter: function (v) {
-			                            return v.value[2] + '量';
+			                            return v.value[2] + '辆';
 			                        },
 			                        position: 'bottom',
 			                        show: true,

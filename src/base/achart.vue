@@ -115,11 +115,11 @@
 				data.chart.map((item,index)=>{
 					console.log(item.value/item.ratio)
 					if(item.value/item.ratio < 0.6) {
-						colorList.push('rgba(151,223,93,'+(index%2?0.8:0.6) +')')
+						colorList.push('rgba(151,223,93,'+(index%2?0.6:0.3) +')')
 					} else if(item.value/item.ratio > 60 && item.value/item.ratio < 0.75) {
-						colorList.push('rgba(249,230,89 ,'+(index%2?0.8:0.6) +')')
+						colorList.push('rgba(249,230,89 ,'+(index%2?0.6:0.3) +')')
 					} else {
-						colorList.push('rgba(236,88,81,'+(index%2?0.8:0.6) +')')
+						colorList.push('rgba(236,88,81,'+(index%2?0.6:0.3) +')')
 					}
 					
 				})

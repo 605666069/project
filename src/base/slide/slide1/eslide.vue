@@ -12,345 +12,255 @@
 				echart: null,
 			}
 		},
-		props: {
-			data: {
-				default: null
-			},
-			position: {
-				default: 'outside'
-			},
-			position_formatter: {
-				default: '{d}%'
-			},
-			colorList: {
-				default: null
-			},
-			show_legend: {
-				default: true
-			}
-
-		},
+		props:['title'],
 		computed: {},
 		components: {},
 		methods: {
 			initOpction() {
-				var echartdata = [{
-					value: 84, //时间
-					name: '公共交通',
-					itemStyle: {
+				console.log(this.title)
+				/*---------------------数据----------------------------*/
+				var exemptData = [{
+					value: 48,
+					name: '差评',
+					itemStyle:{
 						normal: {
-							borderColor: "#fbc72d",
-							borderWidth: 10,
-						}
+		                    color: { // 完成的圆环的颜色
+		                        colorStops: [{
+									offset:0,
+									color: 'rgba(235,41,125,0.1)' // 0% 处的颜色
+								}, {
+									offset: 1,
+									color: 'rgba(235,41,125,0.8)' // 100% 处的颜色
+								}]
+		                    },
+		                } 
 					}
+		            
 				}, {
-					value: 15,
-					name: '自驾',
-					itemStyle: {
+					value: 58,
+					name: '好评',
+					itemStyle:{
 						normal: {
-							borderColor: "#fbc72d",
-							borderWidth: 3,
-						}
+		                    color: { // 完成的圆环的颜色
+		                        colorStops: [{
+									offset:0,
+									color: 'rgba(63,218,255,0.1)' // 0% 处的颜色
+								}, {
+									offset: 1,
+									color: 'rgba(63,218,255,0.8)' // 100% 处的颜色
+								}]
+		                    },
+		                } 
 					}
-				}]
+				}];
+				var scale = 0.8;
+				/*---------------------颜色配置----------------------------*/
+				var exemptcolor = [{
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 0,
+					y2: 1,
+					colorStops: [{
+						offset:0,
+						color: 'rgba(235,41,125,0.1)' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: 'rgba(235,41,125,0.8)' // 100% 处的颜色
+					}],
+				},{
+					borderWidth: 0,
+					borderColor: 'none'
+				}];
 
-				/*---------------------缩放----------------------------*/
-				var scale = 1;
+				var examNumcolor = [{
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 0,
+					y2: 1,
+					colorStops: [{
+						offset: 0,
+						color: 'rgba(63,218,255,0.1)' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: 'rgba(63,218,255,0.8)' // 100% 处的颜色
+					}],
+				}];
 				/*---------------------富文本----------------------------*/
 				var rich = {
-					percent: {
-						color: '#3fdaff',
-						fontSize: 26 * scale,
-						padding: [0, 0, 30, 0],
+					exemptname: {
+						color: '#115b70',
+						fontSize: 14 * scale,
+						padding: [0, 0]
+					},
+					examptdata: {
+						color: '#eb297d',
+						fontSize: 30 * scale,
+						padding: [0, 0],
 						fontWeight: 'bold'
 					},
-					white: {
-						color: '#fff',
-						padding: [0, 0, 5, 0],
+					exemname: {
+						color: '#115b70',
 						fontSize: 14 * scale,
+						padding: [0, 0]
+					},
+					examdata: {
+						color: '#3fdaff',
+						fontSize: 30 * scale,
+						padding: [0, 0],
+						fontWeight: 'bold'
+					},
+					rectblue: {
+						width: 14,
+						height: 14,
+						borderRadius: 3,
+						backgroundColor: "#3fdaff",
+					},
+					rectred: {
+						width: 14,
+						height: 14,
+						borderRadius: 3,
+						backgroundColor: '#eb297d'
+					},
+					space: {
+						padding: [0, 10, 0, 0]
 					}
 				}
-				var pie1 =  ['40%', '40%'];
-				var pie2 = ['60%', '40%'];
-				var pie3 = ['60%', '60%'];
+				var radius = 80;
 				this.option = {
-					title: [
-					{
-						text: '省内',
-						left: '15%',
-						top: '80%',
-						textAlign: 'center',
+					title: {
+						text: this.title,
 						textStyle: {
+							fontSize: 25,
+							fontWeight: 'normal',
 							color: '#fff',
-							fontSize: 16 * scale
 						},
-					},{
-						text: '省外',
-						left: '50%',
-						top: '80%',
-						textAlign: 'center',
+						x: 'center',
+						bottom:30
+					},
+					legend: {
+						itemGap: 12,
+						right: 10,
+						bottom: 10,
+						icon: 'none',
+						align: 'left',
+						orient: 'vertical',
 						textStyle: {
-							color: '#fff',
-							fontSize: 16 * scale
+							color: '#115b70',
+							fontSize: 14 * scale,
+							rich: rich
 						},
-					},{
-						text: '本地',
-						left: '85%',
-						top: '80%',
-						textAlign: 'center',
-						textStyle: {
-							color: '#fff',
-							fontSize: 16 * scale
-						},
-					}
-					],
+						show:false,
+						data: ['好评', '差评'],
+						formatter: function(name) {
+							if(name === '好评') {
+								return '{rectblue|}' + '{space|}' + name
+							} else {
+								return '{rectred|}' + '{space|}' + name
+							}
+						}
+					},
 					series: [
-						//中间圆环
+						//内圈圆环
 						{
-							name: 'Line 1',
+							name: '内边框',
 							type: 'pie',
-							clockWise: false, //顺时加载
-							startAngle: 180,
-							hoverAnimation: false, //鼠标移入变大
-							center: ['15%', '40%'],
-							radius: pie1,
-							label: {
-								normal: {
-									show: false,
-//									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
-//									rich: rich
-									color:'#fff'
-								},
-								emphasis: {
-									show: true,
-								},
-							},
-							labelLine: {
-								normal: {
-									lineStyle:{
-										color:'#fff'
-									}
-								}
-							},
-							data: echartdata
-						},
-						//外层背景1
-						{
-							name: 'bg1',
-							type: 'pie',
+							startAngle: 260,
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['15%', '40%'],
-							radius: pie2,
-							color: ['rgba(56,129,137,0.1)', 'none'],
-							z: -5,
+							center: ['50%', '55%'],
+							radius: [radius-60+'%', radius-60+'%'],
 							label: {
 								normal: {
 									show: false
-								}
-							},
-							labelLine: {
-								normal: {
-									show: false
-								}
-							},
-							data: [{
-								value: 10,
-								name: '占位',
-							}]
-						},
-						//外层边框
-						{
-							name: 'Line 2',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['15%', '40%'],
-							radius: pie3,
-							itemStyle: {
-								normal: {
-									borderWidth: 2 * scale,
-									borderColor: 'rgba(38,111,148,0.4)',
-									label: {
-										show: false
-									},
-									labelLine: {
-										show: false
-									},
-								}
-							},
-							data: [{
-								value: 10,
-								name: '',
-							}]
-						},
-						
-						//中间圆环
-						{
-							name: 'Line 1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							startAngle: 180,
-							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '40%'],
-							radius: pie1,
-							label: {
-								normal: {
-									show: false,
-//									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
-//									rich: rich
-									color:'#fff'
-								},
-								emphasis: {
-									show: true,
-								},
-							},
-							labelLine: {
-								normal: {
-									lineStyle:{
-										color:'#fff'
-									}
-								}
-							},
-							data: echartdata
-						},
-						//外层背景1
-						{
-							name: 'bg1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '40%'],
-							radius: pie2,
-							color: ['rgba(56,129,137,0.1)', 'none'],
-							z: -5,
-							label: {
-								normal: {
-									show: false
-								}
-							},
-							labelLine: {
-								normal: {
-									show: false
-								}
-							},
-							data: [{
-								value: 10,
-								name: '占位',
-							}]
-						},
-						//外层边框
-						{
-							name: 'Line 2',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '40%'],
-							radius: pie3,
-							itemStyle: {
-								normal: {
-									borderWidth: 2 * scale,
-									borderColor: 'rgba(38,111,148,0.4)',
-									label: {
-										show: false
-									},
-									labelLine: {
-										show: false
-									},
-								}
-							},
-							data: [{
-								value: 10,
-								name: '',
-							}]
-						},
-					
-						//中间圆环
-						{
-							name: 'Line 1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							startAngle: 180,
-							hoverAnimation: false, //鼠标移入变大
-							center: ['85%', '40%'],
-							radius: pie1,
-							label: {
-								normal: {
-									show: false,
-//									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
-//									rich: rich
-									color:'#fff'
-								},
-								emphasis: {
-									show: true,
-								},
-							},
-							labelLine: {
-								normal: {
-									lineStyle:{
-										color:'#fff'
-									}
-								}
-							},
-							data: echartdata
-						},
-						//外层背景1
-						{
-							name: 'bg1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['85%', '40%'],
-							radius: pie2,
-							color: ['rgba(56,129,137,0.1)', 'none'],
-							z: -5,
-							label: {
-								normal: {
-									show: false
-								}
-							},
-							labelLine: {
-								normal: {
-									show: false
-								}
-							},
-							data: [{
-								value: 10,
-								name: '占位',
-							}]
-						},
-						//外层边框
-						{
-							name: 'Line 2',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['85%', '40%'],
-							radius: pie3,
-							itemStyle: {
-								normal: {
-									borderWidth: 2 * scale,
-									borderColor: 'rgba(38,111,148,0.4)',
-									label: {
-										show: false
-									},
-									labelLine: {
-										show: false
-									},
 								}
 							},
 							data: [{
 								value: 10,
 								name: '',
+								itemStyle: {
+									normal: {
+										borderWidth: 2,
+										borderColor: '#0b5263'
+									}
+								}
+							}, {
+								value: 2,
+								name: '',
+								itemStyle: {
+									normal: {
+										borderWidth: 0,
+										borderColor: 'none'
+									}
+								}
 							}]
 						},
-					
-					],
+						//免考人数圆环
+						{
+							name: '',
+							type: 'pie',
+							clockWise: false, //顺时加载
+							hoverAnimation: false, //鼠标移入变大
+							startAngle: 270,
+							center: ['50%', '55%'],
+							radius: [radius-40+'%', radius-50+'%'],
+							label: {
+								normal: {
+									formatter: function(params) {
+											return '{examptdata|' + params.value + '}\n{exemptname|' + params.name + '}';
+									},
+									rich: rich
+								}
+							},
+							labelLine: {
+								normal: {
+									length: 20,
+									length2: 20,
+									lineStyle: {
+										color: '#eb297d',
+									}
+								}
+							},
+							data: exemptData,
+						},
+						//正常考试人数圆环
+						//内圈圆环
+						{
+							name: '外边框',
+							type: 'pie',
+							// startAngle: 260,
+							clockWise: false, //顺时加载
+							hoverAnimation: false, //鼠标移入变大
+							center: ['50%', '55%'],
+							radius: [radius-30+'%', radius-30+'%'],
+							label: {
+								normal: {
+									show: false
+								}
+							},
+							data: [{
+								value: 9,
+								name: '',
+								itemStyle: {
+									normal: {
+										borderWidth: 2,
+										borderColor: '#0b5263'
+									}
+								}
+							}, {
+								value: 2,
+								name: '',
+								itemStyle: {
+									normal: {
+										borderWidth: 0,
+										borderColor: 'none'
+									}
+								}
+							}]
+						},
+					]
 				};
-
 			},
 			creatChart() {
 				this.initOpction();

@@ -51,7 +51,6 @@
 		            }
 					})
 				}
-				console.log(this.data)
 				this.option = {
 					legend: {
 				        orient: 'vertical',

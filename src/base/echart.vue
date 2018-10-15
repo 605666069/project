@@ -34,6 +34,9 @@
 		components: {},
 		methods: {
 			initOpction() {
+				var  labelLine = {
+						length: 5
+					}
 				this.option = {
 					color: ['#ffd285', '#55afe6', '#f96257'],
 					tooltip: {
@@ -134,13 +137,14 @@
 						},
 						{
 							type: 'pie',
-							center: ['83%', '72%'],
+							center: ['93%', '50%'],
 							radius: ['25%', '30%'],
 							label: {
 								normal: {
 									color:'#fff'
 								}
 							},
+							labelLine:labelLine,
 							data: [{
 								value: 180,
 								name: '一日',
@@ -200,7 +204,7 @@
 
 						{
 							type: 'pie',
-								center: ['83%', '33%'],
+							center: ['76%', '50%'],
 							radius: ['25%', '30%'],
 							label: {
 								normal: {
@@ -228,6 +232,8 @@
 								}
 							}, {
 								value: 180,
+								center: ['83%', '50%'],
+								radius: ['25%', '30%'],
 								name: '女',
 								tooltip: {
 									show: false

@@ -35,8 +35,8 @@
 		methods: {
 			initOpction() {
 				var dataAll = [
-					[30, 14, 28, 49, 60],
-					[2, 7, 3, 2, 90]
+					[30, 14, 28],
+					[2, 7, 3]
 				];
 
 				this.option = {
@@ -72,7 +72,7 @@
 					],
 					xAxis: [{
 							gridIndex: 0,
-							data: ['0-17', '18-35', '36-55', '55-65', '65以上'],
+							data: ['国内', '国外', '其他'],
 							axisTick: {
 								show: false
 							},
@@ -83,7 +83,7 @@
 						},
 						{
 							gridIndex: 1,
-							data: ['0-17', '18-35', '36-55', '55-65', '65以上'],
+							data: ['国内', '国外', '其他'],
 							axisLabel: {
 								show: false
 							},

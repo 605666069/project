@@ -34,323 +34,261 @@
 		components: {},
 		methods: {
 			initOpction() {
-				var echartdata = [{
-					value: 84, //时间
-					name: '公共交通',
-					itemStyle: {
-						normal: {
-							borderColor: "#fbc72d",
-							borderWidth: 10,
-						}
-					}
-				}, {
-					value: 15,
-					name: '自驾',
-					itemStyle: {
-						normal: {
-							borderColor: "#fbc72d",
-							borderWidth: 3,
-						}
-					}
-				}]
-
-				/*---------------------缩放----------------------------*/
-				var scale = 1;
-				/*---------------------富文本----------------------------*/
-				var rich = {
-					percent: {
-						color: '#3fdaff',
-						fontSize: 26 * scale,
-						padding: [0, 0, 30, 0],
-						fontWeight: 'bold'
-					},
-					white: {
-						color: '#fff',
-						padding: [0, 0, 5, 0],
-						fontSize: 14 * scale,
-					}
-				}
-				var pie1 =  ['40%', '40%'];
-				var pie2 = ['60%', '40%'];
-				var pie3 = ['60%', '60%'];
-				this.option = {
-					title: [
-					{
-						text: '省内',
-						left: '15%',
-						top: '80%',
-						textAlign: 'center',
-						textStyle: {
+				var dataStyle = {
+					normal: {
+						label: {
+							show: true,
 							color: '#fff',
-							fontSize: 16 * scale
+							fontSize: 18,
 						},
-					},{
-						text: '省外',
-						left: '50%',
-						top: '80%',
-						textAlign: 'center',
-						textStyle: {
-							color: '#fff',
-							fontSize: 16 * scale
-						},
-					},{
-						text: '本地',
-						left: '85%',
-						top: '80%',
-						textAlign: 'center',
-						textStyle: {
-							color: '#fff',
-							fontSize: 16 * scale
+						labelLine: {
+							//smooth: 0.2,
+							length: 20,
+							length2: 20
 						},
 					}
-					],
-					series: [
-						//中间圆环
-						{
-							name: 'Line 1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							startAngle: 180,
-							hoverAnimation: false, //鼠标移入变大
-							center: ['15%', '40%'],
-							radius: pie1,
-							label: {
-								normal: {
-									show: false,
-//									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
-//									rich: rich
-									color:'#fff'
-								},
-								emphasis: {
-									show: true,
-								},
-							},
-							labelLine: {
-								normal: {
-									lineStyle:{
-										color:'#fff'
-									}
-								}
-							},
-							data: echartdata
-						},
-						//外层背景1
-						{
-							name: 'bg1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['15%', '40%'],
-							radius: pie2,
-							color: ['rgba(56,129,137,0.1)', 'none'],
-							z: -5,
-							label: {
-								normal: {
-									show: false
-								}
-							},
-							labelLine: {
-								normal: {
-									show: false
-								}
-							},
-							data: [{
-								value: 10,
-								name: '占位',
-							}]
-						},
-						//外层边框
-						{
-							name: 'Line 2',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['15%', '40%'],
-							radius: pie3,
-							itemStyle: {
-								normal: {
-									borderWidth: 2 * scale,
-									borderColor: 'rgba(38,111,148,0.4)',
-									label: {
-										show: false
-									},
-									labelLine: {
-										show: false
-									},
-								}
-							},
-							data: [{
-								value: 10,
-								name: '',
-							}]
-						},
-						
-						//中间圆环
-						{
-							name: 'Line 1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							startAngle: 180,
-							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '40%'],
-							radius: pie1,
-							label: {
-								normal: {
-									show: false,
-//									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
-//									rich: rich
-									color:'#fff'
-								},
-								emphasis: {
-									show: true,
-								},
-							},
-							labelLine: {
-								normal: {
-									lineStyle:{
-										color:'#fff'
-									}
-								}
-							},
-							data: echartdata
-						},
-						//外层背景1
-						{
-							name: 'bg1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '40%'],
-							radius: pie2,
-							color: ['rgba(56,129,137,0.1)', 'none'],
-							z: -5,
-							label: {
-								normal: {
-									show: false
-								}
-							},
-							labelLine: {
-								normal: {
-									show: false
-								}
-							},
-							data: [{
-								value: 10,
-								name: '占位',
-							}]
-						},
-						//外层边框
-						{
-							name: 'Line 2',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '40%'],
-							radius: pie3,
-							itemStyle: {
-								normal: {
-									borderWidth: 2 * scale,
-									borderColor: 'rgba(38,111,148,0.4)',
-									label: {
-										show: false
-									},
-									labelLine: {
-										show: false
-									},
-								}
-							},
-							data: [{
-								value: 10,
-								name: '',
-							}]
-						},
-					
-						//中间圆环
-						{
-							name: 'Line 1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							startAngle: 180,
-							hoverAnimation: false, //鼠标移入变大
-							center: ['85%', '40%'],
-							radius: pie1,
-							label: {
-								normal: {
-									show: false,
-//									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
-//									rich: rich
-									color:'#fff'
-								},
-								emphasis: {
-									show: true,
-								},
-							},
-							labelLine: {
-								normal: {
-									lineStyle:{
-										color:'#fff'
-									}
-								}
-							},
-							data: echartdata
-						},
-						//外层背景1
-						{
-							name: 'bg1',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['85%', '40%'],
-							radius: pie2,
-							color: ['rgba(56,129,137,0.1)', 'none'],
-							z: -5,
-							label: {
-								normal: {
-									show: false
-								}
-							},
-							labelLine: {
-								normal: {
-									show: false
-								}
-							},
-							data: [{
-								value: 10,
-								name: '占位',
-							}]
-						},
-						//外层边框
-						{
-							name: 'Line 2',
-							type: 'pie',
-							clockWise: false, //顺时加载
-							hoverAnimation: false, //鼠标移入变大
-							center: ['85%', '40%'],
-							radius: pie3,
-							itemStyle: {
-								normal: {
-									borderWidth: 2 * scale,
-									borderColor: 'rgba(38,111,148,0.4)',
-									label: {
-										show: false
-									},
-									labelLine: {
-										show: false
-									},
-								}
-							},
-							data: [{
-								value: 10,
-								name: '',
-							}]
-						},
-					
-					],
 				};
 
+				var labelShow = {
+					show: true,
+					color: '#fff',
+					fontSize: 15,
+					formatter: [
+						'{d| {d}% }',
+						'{b| {b} }'
+					].join('\n'),
+					rich: {
+						d: {
+							fontSize: 15,
+							color: '#fff'
+						},
+						b: {
+							fontSize: 18,
+							color: '#fff'
+						},
+					}
+				};
+
+				var placeHolderStyle = {
+					normal: {
+						color: 'rgba(0,0,0,0)',
+						label: {
+							show: false
+						},
+						labelLine: {
+							show: false
+						}
+					},
+					emphasis: {
+						color: 'rgba(0,0,0,0)'
+					}
+				};
+				var radius = 90;
+				var center = ['50%','50%']
+				this.option = {
+					title: {
+						text: '收费景区',
+						textStyle: {
+							fontSize: 25,
+							fontWeight: 'normal',
+							color: '#fff',
+						},
+						x: 'center',
+						bottom:0
+					},
+					color: ['#edc553', '#c2f38a', '#3c9eff', '#6df2c5', '#35e2e9'],
+					tooltip: {
+						show: true,
+						formatter: "{b} <br/> {c} ({d}%)"
+					},
+					angleAxis: {
+						type: 'category',
+						z: 10,
+						axisLine: {
+							color: '#fff',
+							lineStyle: {
+								width: 3,
+								color: '#fff',
+							}
+						},
+					},
+					radiusAxis: {
+						axisTick: {
+							show: false
+						},
+						axisLabel: {
+							show: false,
+							color: '#fff'
+						},
+						axisLine: {
+							show: false,
+							color: '#fff',
+							lineStyle: {
+								color: '#fff',
+							}
+						},
+						splitLine: {
+							color: '#000',
+							lineStyle: {
+								type: 'dotted',
+								color: 'rgba(170,170,170,.5)',
+							}
+						},
+
+					},
+					polar: {
+						center: center,
+						radius: radius,
+					},
+					legend: {
+						bottom: '5%',
+						textStyle: {
+							color: '#fff',
+						},
+						show:false,
+						itemGap: 12,
+						data: ['十八涡', '花溪', '百丈潭', '灵江源', '水下孔']
+					},
+					series: [{
+							name: 'Line 1',
+							type: 'pie',
+							clockWise: false,
+							radius: [radius-40, radius-35],
+							itemStyle: dataStyle,
+							center:center,
+							hoverAnimation: false,
+							data: [{
+									value: 260,
+									name: '',
+									itemStyle: placeHolderStyle
+								},
+								{
+									value: 100,
+									name: '十八涡',
+									label: labelShow,
+								},
+								{
+									value: 0,
+									name: '',
+									itemStyle: placeHolderStyle
+								}
+
+							]
+						},
+						{
+							name: 'Line 2',
+							type: 'pie',
+							clockWise: false,
+							center:center,
+							radius: [radius-70, radius-40],
+							itemStyle: dataStyle,
+							hoverAnimation: false,
+
+							data: [{
+									value: 190,
+									name: '',
+									itemStyle: placeHolderStyle
+								},
+								{
+									value: 70,
+									name: '花溪',
+									label: labelShow,
+								},
+								{
+									value: 100,
+									name: '',
+									itemStyle: placeHolderStyle
+								}
+							]
+						},
+						{
+							name: 'Line 3',
+							type: 'pie',
+							clockWise: false,
+							center:center,
+							hoverAnimation: false,
+							radius: [radius-20, radius-15],
+							itemStyle: dataStyle,
+
+							data: [{
+									value: 130,
+									name: '',
+									itemStyle: placeHolderStyle
+								},
+								{
+									value: 60,
+									name: '百丈潭',
+									label: labelShow,
+								},
+								{
+									value: 170,
+									name: '',
+									itemStyle: placeHolderStyle
+								}
+							]
+						},
+						{
+							name: 'Line 4',
+							type: 'pie',
+							clockWise: false,
+							center:center,
+							hoverAnimation: false,
+							radius: [radius-30, radius-15],
+							itemStyle: dataStyle,
+
+							data: [{
+									value: 40,
+									name: '',
+									itemStyle: placeHolderStyle
+								},
+								{
+									value: 90,
+									name: '灵江源',
+									label: labelShow,
+								},
+								{
+									value: 230,
+									name: '',
+									itemStyle: placeHolderStyle
+								}
+							]
+						},
+						{
+							name: 'Line 5',
+							type: 'pie',
+							clockWise: false,
+							center:center,
+							hoverAnimation: false,
+							radius: [radius-60, radius-40],
+							itemStyle: dataStyle,
+
+							data: [{
+									value: 0,
+									name: '',
+									itemStyle: placeHolderStyle
+								},
+								{
+									value: 40,
+									name: '水下孔',
+									label: labelShow,
+								},
+								{
+									value: 320,
+									name: '',
+									itemStyle: placeHolderStyle
+								}
+							]
+						},
+						{
+							type: 'bar',
+							data: [0],
+							coordinateSystem: 'polar',
+							name: '06a',
+							stack: 'a'
+						},
+
+					]
+				};
 			},
 			creatChart() {
 				this.initOpction();

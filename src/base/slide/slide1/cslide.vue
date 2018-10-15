@@ -106,9 +106,9 @@
 						fontSize: 14 * scale,
 					}
 				}
-				var pie1 =  ['30%', '30%'];
-				var pie2 = ['50%', '30%'];
-				var pie3 = ['50%', '50%'];
+				var pie1 =  ['25%', '25%'];
+				var pie2 = ['45%', '25%'];
+				var pie3 = ['45%', '45%'];
 				this.option = {
 					title: [
 					{
