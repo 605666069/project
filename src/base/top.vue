@@ -35,7 +35,7 @@
 		</div>
 		
 		<div class="center font-1">
-			{{title}}
+			<img src="../assets/title.png" class="title-img"/>
 		</div>
 	</div>
 </template>
@@ -103,7 +103,8 @@
 		padding-right: 20px;
 	}
 	.top .center {
-		font-size: 40px;
+		/*font-size: 40px;*/
+		text-align: center;
 		
 	}
 	.top .top-line {
@@ -120,5 +121,10 @@
 	}
 	.left-text {
 		line-height: 1;
+	}
+	.title-img {
+		margin-top: 10px;
+		width: 30%;
+		display: inline-block;
 	}
 </style>

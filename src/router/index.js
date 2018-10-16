@@ -7,7 +7,7 @@ import car from '@/components/car.vue'
 import hotel from '@/components/hotel.vue'
 import hot_search from '@/components/hot_search.vue'
 import wx_operation from '@/components/wx_operation.vue'
-import passenger_map from '@/base/jchart.vue'
+import passenger_map from '@/base/top.vue'
 import test from '@/components/test.vue'
 import store from '@/store/index.js'
 

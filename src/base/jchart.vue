@@ -1,16 +1,21 @@
 <template>
-	<div>
+	<div class="wrap">
 		<div style="width: 100%;height:540px;" ref="my_chart"></div>
+		<ButtonGroup size="large" shape="circle" class="map-btn">
+	        <Button type="ghost" @click="changeMap('china')">中国</Button>
+	        <Button type="ghost" @click="changeMap('zhejiang')">浙江</Button>
+	    </ButtonGroup>
 	</div>
 </template>
 
 <script>
+ 	import zhejiang from '@/api/zhejiang.json'
 	export default {
 		data() {
 			return {
 				option: {},
 				echart: null,
-				chinaData: this.echarts.getMap('china').geoJson.features
+				mapName:'china',
 			}
 		},
 		props: {
@@ -24,7 +29,8 @@
 				let citys = [];
 				let moveLines = [];
 				let data = [];
-				this.chinaData.map(item=>{
+				let mapData = this.echarts.getMap(this.mapName).geoJson.features
+				mapData.map(item=>{
 					let randomData = this.global.randomFunction(500,1000);
 					
 					citys.push({
@@ -56,7 +62,6 @@
 					tooltip: {
 						trigger: 'item',
 						formatter: function(params) {
-							console.log(params);
 							var toolTiphtml = '';
 							for(var i = 0; i < data.length; i++) {
 								if(params.name == data[i].name) {
@@ -77,7 +82,7 @@
 						}
 					},
 					geo: {
-						map: 'china',
+						map: this.mapName,
 						zoom:1.2,
 						label: {
 							emphasis: {
@@ -130,7 +135,7 @@
 					{
 						
 						type: 'map',
-						map: mapName,
+						map: this.mapName,
 						geoIndex: 0,
 						aspectScale: 0.75, //长宽比
 						showLegendSymbol: false, // 存在legend时显示
@@ -159,7 +164,7 @@
 								areaColor: '#2B91B7'
 							}
 						},
-						animation: false,
+						animation: true,
 						data: data
 					},
 					{
@@ -200,10 +205,15 @@
 				this.echart = this.echarts.init(this.$refs.my_chart);
 				this.echart.setOption(this.option);
 			},
+			changeMap(str) {
+				this.mapName = str;
+				this.creatChart();
+			}
 
 		},
 		created() {
 			this.$nextTick(() => {
+				this.echarts.registerMap('zhejiang', zhejiang);
 				this.creatChart()
 			})
 		},
@@ -211,6 +221,11 @@
 	}
 </script>
 
-<style>
+<style scoped>
+	.map-btn {
+		position: absolute;
+		bottom: 50px;
+		left: 50px;
+	}
 
 </style>
