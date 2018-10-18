@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div style="width: 100%;height:550px;" ref="my_chart"></div>
+		<div style="width: 100%;height:450px;" ref="my_chart"></div>
 	</div>
 </template>
 
@@ -59,11 +59,11 @@
 					].join('\n'),
 					rich: {
 						d: {
-							fontSize: 15,
+							fontSize: 14,
 							color: '#fff'
 						},
 						b: {
-							fontSize: 18,
+							fontSize: 16,
 							color: '#fff'
 						},
 					}
@@ -90,11 +90,11 @@
 						text: '收费景区',
 						textStyle: {
 							fontSize: 25,
-							fontWeight: 'normal',
 							color: '#fff',
+							fontWeight: 400
 						},
 						x: 'center',
-						bottom:0
+						bottom:35
 					},
 					color: ['#edc553', '#c2f38a', '#3c9eff', '#6df2c5', '#35e2e9'],
 					tooltip: {

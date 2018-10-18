@@ -138,11 +138,12 @@
 						{
 							type: 'pie',
 							center: ['93%', '50%'],
-							radius: ['25%', '30%'],
+							radius: ['40%', '50%'],
 							label: {
 								normal: {
 									color:'#fff'
-								}
+								},
+								fontSize:16
 							},
 							labelLine:labelLine,
 							data: [{
@@ -161,7 +162,7 @@
 										textStyle: {
 											color: '#ffd285',
 										},
-										formatter: '一日 {d} % \n',
+										formatter: '一日 \n{d} % \n',
 									}
 								}
 							}, {
@@ -180,7 +181,7 @@
 										textStyle: {
 											color: '#55afe6',
 										},
-										formatter: '二日 {d} %  \n',
+										formatter: '二日 \n{d} %  ',
 									}
 								}
 							}, {
@@ -193,7 +194,7 @@
 								},
 								label: {
 									normal: {
-										formatter: '三日以上 {d} %',
+										formatter: '三日以上 \n{d} %',
 										textStyle: {
 											color: '#f96257',
 										}
@@ -205,11 +206,12 @@
 						{
 							type: 'pie',
 							center: ['76%', '50%'],
-							radius: ['25%', '30%'],
+							radius: ['40%', '50%'],
 							label: {
 								normal: {
 									color:'#fff'
-								}
+								},
+								align:'center'
 							},
 							data: [{
 								value: 180,
@@ -227,7 +229,7 @@
 										textStyle: {
 											color: '#3c9eff',
 										},
-										formatter: '男 {d} % \n',
+										formatter: '男 \n{d} % \n',
 									}
 								}
 							}, {
@@ -248,7 +250,7 @@
 										textStyle: {
 											color: '#edc553',
 										},
-										formatter: '女 {d} %  \n',
+										formatter: '女 \n{d} %',
 									}
 								}
 							}]

@@ -14,8 +14,10 @@
 					</div>
 		        </Col>
 		        <Col span="18" class="pd">
-	        		<Title title="旅游要素分析"></Title>
-					<aSlider_chart style="height: 550px;"></aSlider_chart>
+		        		<Title title="旅游要素分析"></Title>
+		        		<div class="b">
+						<aSlider_chart style="height: 550px;"></aSlider_chart>
+		        		</div>
 		        </Col>
 		    </Row>
 		    <Row>

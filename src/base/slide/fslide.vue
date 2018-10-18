@@ -58,10 +58,10 @@
 						textStyle: {
 							color: '#fff',
 							fontSize: 20,
-							fontWeight: 'bold'
+							fontWeight: 400
 						},
 						left: 'center',
-						bottom: '20%'
+						bottom: 35
 					},
 					series: [{
 						type: 'pie',

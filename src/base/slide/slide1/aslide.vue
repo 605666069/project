@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div style="width: 100%;height:550px;" ref="my_chart"></div>
+		<div style="width: 100%;height:450px;" ref="my_chart"></div>
 	</div>
 </template>
 
@@ -66,16 +66,16 @@
 					}
 				};
 				
-				var pie1 =  ['23%', '22.8%'];
-				var pie2 = ['26%', '23%'];
-				var pie3 = ['26%', '27%'];
-
+				var pie1 =  ['33%', '32.8%'];
+				var pie2 = ['36%', '33%'];
+				var pie3 = ['36%', '37%'];
+				var center = 90;
 				this.option = {
 					title: [{
 						text: '5459',
 						subtext: '饭店1',
 						left: '10%',
-						top: '70%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#edc553',
@@ -86,15 +86,15 @@
 						subtextStyle: {
 							color: '#fff',
 							textAlign: 'center',
-							fontSize: 16 * scale,
-							fontWeight: 'bold'
+							fontSize: 25,
+							fontWeight: 400
 						}
 
 					}, {
 						text: '1548',
 						subtext: '饭店2',
 						left: '30%',
-						top: '70%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#c2f38a',
@@ -105,15 +105,15 @@
 						subtextStyle: {
 							color: '#fff',
 							textAlign: 'center',
-							fontSize: 16 * scale,
-							fontWeight: 'bold'
+							fontSize: 25,
+							fontWeight: 400
 						}
 
 					}, {
 						text: '1548',
 						subtext: '饭店3',
 						left: '50%',
-						top: '70%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#3c9eff',
@@ -124,15 +124,16 @@
 						subtextStyle: {
 							color: '#fff',
 							textAlign: 'center',
-							fontSize: 16 * scale,
-							fontWeight: 'bold'
+							fontSize:20,
+							fontWeight: 400
+							
 						}
 
 					}, {
 						text: '1548',
 						subtext: '饭店4',
 						left: '70%',
-						top: '70%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#6df2c5',
@@ -143,15 +144,16 @@
 						subtextStyle: {
 							color: '#fff',
 							textAlign: 'center',
-							fontSize: 16 * scale,
-							fontWeight: 'bold'
+							fontSize: 25,
+							fontWeight: 400
+							
 						}
 
 					}, {
 						text: '1548',
 						subtext: '饭店5',
 						left: '90%',
-						top: '70%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#35e2e9',
@@ -162,8 +164,9 @@
 						subtextStyle: {
 							color: '#fff',
 							textAlign: 'center',
-							fontSize: 16 * scale,
-							fontWeight: 'bold',
+							fontSize: 25,
+							fontWeight: 400
+							
 						}
 
 					}],
@@ -184,7 +187,7 @@
 							type: 'pie',
 							clockWise: true, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['10%', '50%'],
+							center: ['10%', center-50 + '%'],
 							radius:pie1,
 							itemStyle: innerItemStyle,
 							data: [{
@@ -225,7 +228,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['10%', '50%'],
+							center: ['10%', center-50 + '%'],
 							radius:pie2,
 							itemStyle: midItemStyle,
 							hoverAnimation: false,
@@ -243,7 +246,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['10%', '50%'],
+							center: ['10%', center-50 + '%'],
 							radius: pie3,
 							itemStyle: outerItemStyle,
 							hoverAnimation: false,
@@ -267,7 +270,7 @@
 							type: 'pie',
 							clockWise: true, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['30%', '50%'],
+							center: ['30%', center-50 + '%'],
 							radius: pie1,
 							itemStyle: innerItemStyle,
 							data: [{
@@ -308,7 +311,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['30%', '50%'],
+							center: ['30%', center-50 + '%'],
 							radius: pie2,
 							itemStyle: midItemStyle,
 							hoverAnimation: false,
@@ -326,7 +329,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['30%', '50%'],
+							center: ['30%', center-50 + '%'],
 							radius: pie3,
 							itemStyle: outerItemStyle,
 							hoverAnimation: false,
@@ -349,7 +352,7 @@
 							type: 'pie',
 							clockWise: true, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '50%'],
+							center: ['50%', center-50 + '%'],
 							radius: pie1,
 							itemStyle: innerItemStyle,
 							data: [{
@@ -390,7 +393,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['50%', '50%'],
+							center: ['50%', center-50 + '%'],
 							radius: pie2,
 							itemStyle: midItemStyle,
 							hoverAnimation: false,
@@ -408,7 +411,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['50%', '50%'],
+							center: ['50%', center-50 + '%'],
 							radius: pie3,
 							itemStyle: outerItemStyle,
 							hoverAnimation: false,
@@ -431,7 +434,7 @@
 							type: 'pie',
 							clockWise: true, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['70%', '50%'],
+							center: ['70%', center-50 + '%'],
 							radius: pie1,
 							itemStyle: innerItemStyle,
 							data: [{
@@ -472,7 +475,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['70%', '50%'],
+							center: ['70%', center-50 + '%'],
 							radius: pie2,
 							itemStyle: midItemStyle,
 							hoverAnimation: false,
@@ -490,7 +493,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['70%', '50%'],
+							center: ['70%', center-50 + '%'],
 							radius: pie3,
 							itemStyle: outerItemStyle,
 							hoverAnimation: false,
@@ -513,7 +516,7 @@
 							type: 'pie',
 							clockWise: true, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['90%', '50%'],
+							center: ['90%', center-50 + '%'],
 							radius: pie1,
 							itemStyle: innerItemStyle,
 							data: [{
@@ -554,7 +557,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['90%', '50%'],
+							center: ['90%', center-50 + '%'],
 							radius: pie2,
 							itemStyle: midItemStyle,
 							hoverAnimation: false,
@@ -572,7 +575,7 @@
 							type: 'pie',
 							animation: false,
 							clockWise: false,
-							center: ['90%', '50%'],
+							center: ['90%', center-50 + '%'],
 							radius: pie3,
 							itemStyle: outerItemStyle,
 							hoverAnimation: false,

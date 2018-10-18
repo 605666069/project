@@ -52,7 +52,7 @@
 						
 						<Title title="入县车型统计" ></Title>
 						<div class="b">
-							<Bar_two :data="car_data" :colorList="barColorList" :top="50"></Bar_two>
+							<Bar_two :data="car_data" :colorList="barColorList" :top="50" :axisLineShow="true"></Bar_two>
 						<!--<Line_one :data="car_data"  class="sub-line"></Line_one>-->
 						</div>
 					</div>

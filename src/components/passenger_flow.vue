@@ -34,7 +34,7 @@
 		        </Col>
 		        <Col span="6" class="pd">
 	        		<div class="chunk">
-						<Title title="游客来源增幅TOP10(市)"></Title>
+						<Title title="游客来源增幅Top10(市)"></Title>
 						<div class="b">
 							<Bar_two :data="source_visitor_data" :colorList="colorList2"></Bar_two>
 						</div>

@@ -27,10 +27,10 @@
 		                    color: { // 完成的圆环的颜色
 		                        colorStops: [{
 									offset:0,
-									color: 'rgba(235,41,125,0.1)' // 0% 处的颜色
+									color: 'rgba(132,89,226,0.1)' // 0% 处的颜色
 								}, {
 									offset: 1,
-									color: 'rgba(235,41,125,0.8)' // 100% 处的颜色
+									color: 'rgba(132,89,226,0.8)' // 100% 处的颜色
 								}]
 		                    },
 		                } 
@@ -91,7 +91,7 @@
 				var rich = {
 					exemptname: {
 						color: '#115b70',
-						fontSize: 14 * scale,
+						fontSize: 16,
 						padding: [0, 0]
 					},
 					examptdata: {
@@ -128,16 +128,17 @@
 					}
 				}
 				var radius = 80;
+				var center = ['50%', '40%']
 				this.option = {
 					title: {
 						text: this.title,
 						textStyle: {
-							fontSize: 25,
-							fontWeight: 'normal',
+							fontSize: 20,
 							color: '#fff',
+							fontWeight: 400
 						},
 						x: 'center',
-						bottom:30
+						bottom:35
 					},
 					legend: {
 						itemGap: 12,
@@ -169,7 +170,7 @@
 							startAngle: 260,
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '55%'],
+							center: center,
 							radius: [radius-60+'%', radius-60+'%'],
 							label: {
 								normal: {
@@ -203,7 +204,7 @@
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
 							startAngle: 270,
-							center: ['50%', '55%'],
+							center: center,
 							radius: [radius-40+'%', radius-50+'%'],
 							label: {
 								normal: {
@@ -232,7 +233,7 @@
 							// startAngle: 260,
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '55%'],
+							center: center,
 							radius: [radius-30+'%', radius-30+'%'],
 							label: {
 								normal: {

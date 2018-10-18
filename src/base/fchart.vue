@@ -55,7 +55,8 @@
 				    grid: {
 				        height: '50%',
 				        y: '10%',
-				        x:'20%'
+				        x:'13%',
+				        right:15
 				    },
 				    xAxis: {
 				        type: 'category',

@@ -41,6 +41,12 @@
 			},
 			top:{
 				default:null
+			},
+			legendTop:{
+				default:0
+			},
+			axisLineShow:{
+				default:false
 			}
         },
         computed:{
@@ -49,6 +55,7 @@
         },
         methods:{
         	initOpction() {
+        		console.log(this.axisLineShow)
         		let data = this.data;
         		let series_list =  [];
         		let name_list = [];
@@ -80,7 +87,12 @@
 			        		color:'#fff'
 			       	},
 			        axisLine:{
-			        		show:false
+			        		show:this.axisLineShow,
+			        		lineStyle:{
+			        			color:'#fff'
+			       			
+			       		}
+			        		
 			        },
 			        axisTick:{
 			        		show:false
@@ -93,15 +105,18 @@
 				        		color:'#fff'
 				       	},
 				       	axisLine:{
-				        		show:false
+				        		show:this.axisLineShow,
+				        		lineStyle:{
+				        			color:'#fff'
+				       			
+				       		}
 				        },
 				        splitLine: {
 				            show: false
 				        },
-				        show:false
+				        show:this.axisLineShow
 				    }
         		this.option = {
-        			
 				    tooltip: {
 				        trigger: 'axis',
 				        axisPointer: {
@@ -114,7 +129,7 @@
 					    	},
 //				    		orient:'vertical',
 //				    		right:0,
-						top:20,
+						top:this.legendTop,
 				        data:name_list,
 				        show:this.show_legend
 				    },

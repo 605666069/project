@@ -39,7 +39,7 @@
 						</div>
 					</div>
 					<div class="chunk">
-						<Title title="车辆来源城市top10"></Title>
+						<Title title="车辆来源城市Top10"></Title>
 						<div class="b">
 							<Bar_two :data="car_from_min_data"  :show_legend="false"></Bar_two>
 						</div>
@@ -61,7 +61,7 @@
         			</div>
 		        </Col>
 		        <Col span="6" class="pd">
-	        		<Title title="车辆来源省份top5"></Title>
+	        		<Title title="车辆来源省份Top5"></Title>
 	        		<div class="b">
 	        			<Bar_two :data="car_from_data" :isAcross='true' stack="总量" :colorList="colorList3" ></Bar_two>
 	        		</div>

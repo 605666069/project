@@ -3,7 +3,8 @@
 		<Row>
 	        <Col span="24" class="pd" style="padding-bottom: 20px;">
 	        		<div class="num-title">
-	        			总关注
+	        			<img src="../assets/b.png" class="atip"/> 
+	        			<span class="text">总关注</span>
 	        		</div>
 	        		<div class="num-text">
 	        			<span class="num-text-1">88742</span>
@@ -14,7 +15,8 @@
 	    <Row>
 	        <Col span="12" class="pd num-after">
 	        		<div class="num-title">
-	        			今日新增
+	        			<img src="../assets/a.png" class="tip"/>
+	        			<span class="text">今日新增</span>
 	        		</div>
 	        		<div class="num-text">
 	        			<span class="num-text-1">131</span>
@@ -23,7 +25,9 @@
 	        </Col>
 	         <Col span="12" class="pd">
 	         	<div class="num-title">
-	        			本周新增
+	        			<img src="../assets/a.png" class="tip"/>
+	        			<span class="text">本周新增</span>
+	        			
 	        		</div>
 	        		<div class="num-text">
 	        			<span class="num-text-1">1334</span>
@@ -85,5 +89,17 @@
 	    bottom: 30%;
 	    width: 1px;
 	    background-color: rgba(255,255,255,.4);
+	}
+	.tip {
+		width: 25px;
+		vertical-align: middle;
+		
+	}
+	.atip {
+		width: 30px;
+		vertical-align: middle;
+	}
+	.text {
+		vertical-align: middle;
 	}
 </style>

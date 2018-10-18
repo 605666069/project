@@ -29,7 +29,7 @@
 				    grid: {
 				        left: '15%',
 				        right: '4%',
-				        bottom: '3%',
+				        bottom: 20,
 				        top:0,
 				    },
 					xAxis: {

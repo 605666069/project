@@ -340,7 +340,7 @@
 								show: false,
 							}
 						},
-						roam: true,
+						roam: false,
 						itemStyle: {
 							normal: {
 			                    areaColor: 'rgba(61,97,166,0.5)',
@@ -381,7 +381,7 @@
 							},
 							itemStyle: {
 								normal: {
-									color: '#05C3F9'
+									color: '#fff'
 								}
 							}
 						},

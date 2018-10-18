@@ -60,11 +60,11 @@
 					].join('\n'),
 					rich: {
 						d: {
-							fontSize: 15,
+							fontSize: 14,
 							color: '#fff'
 						},
 						b: {
-							fontSize: 18,
+							fontSize: 16,
 							color: '#fff'
 						},
 					}
@@ -85,19 +85,19 @@
 					}
 				};
 				var radius = 90;
-				var center = ['50%','50%']
+				var center = ['50%','40%']
 				this.option = {
 					title: {
 						text: '免费景区',
 						textStyle: {
-							fontSize: 25,
-							fontWeight: 'normal',
+							fontSize: 20,
 							color: '#fff',
+							fontWeight: 400
 						},
 						x: 'center',
-						bottom:0
+						bottom:35
 					},
-					color: ['#edc553', '#c2f38a', '#3c9eff', '#6df2c5', '#35e2e9'],
+					color: ['#ffd800', '#f46d0b', '#ffb18b', '#fbff8b', '#a2ee3f'],
 					tooltip: {
 						show: true,
 						formatter: "{b} <br/> {c} ({d}%)"

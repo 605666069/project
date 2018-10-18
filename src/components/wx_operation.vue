@@ -16,7 +16,7 @@
 						<Anum class="v-center"></Anum>
 			        	</div>
 			        	<div class="chunk">
-			        		<Title title="关注量TOP5"></Title>
+			        		<Title title="关注量Top5"></Title>
 			        		<div class="b">
 			        			<Abar_two></Abar_two>
 						<!--<Bar_two :data="wx_attention" :isAcross='true' :height="250" :show_legend="false" :top="10" :barMaxWidth="20"></Bar_two>-->
@@ -33,7 +33,7 @@
 		        		</div>
 		        </Col>
 		        <Col span="6" class="pd">
-			        	<Title title="粉丝性别及年龄"></Title>
+			        	<Title title="粉丝性别及地域"></Title>
 			        	<div class="b">
 			        		<Gchart></Gchart>
 			        	</div>

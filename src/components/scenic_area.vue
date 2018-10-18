@@ -40,9 +40,9 @@
 		        		</div>
 		        </Col>
 		        <Col span="6" class="pd">
-	        		<Title title="今日景区客流top5"></Title>
+	        		<Title title="今日景区客流Top5"></Title>
 	        		<div class="b">
-	        			<Bar_two :data="tody_scenic_flow_data" :isAcross='true' :colorList="colorList2" style="margin-top: 20px;"></Bar_two>
+	        			<Bar_two :data="tody_scenic_flow_data" :isAcross='true' :colorList="colorList2" style="margin-top: 20px;" :legendTop="0"></Bar_two>
 	        		</div>
 		        </Col>
 		        <Col span="12" class="pd">

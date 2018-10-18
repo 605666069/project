@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div style="width: 100%;height:550px;" ref="my_chart"></div>
+		<div style="width: 100%;height:450px;" ref="my_chart"></div>
 	</div>
 </template>
 
@@ -106,37 +106,41 @@
 						fontSize: 14 * scale,
 					}
 				}
-				var pie1 =  ['25%', '25%'];
-				var pie2 = ['45%', '25%'];
-				var pie3 = ['45%', '45%'];
+				var pie1 =  ['20%', '20%'];
+				var pie2 = ['40%', '20%'];
+				var pie3 = ['40%', '40%'];
 				this.option = {
 					title: [
 					{
 						text: '省内',
 						left: '15%',
-						top: '80%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#fff',
-							fontSize: 16 * scale
+							fontSize:25,
+							fontWeight: 400
 						},
 					},{
 						text: '省外',
 						left: '50%',
-						top: '80%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#fff',
-							fontSize: 16 * scale
+							fontSize:25,
+							fontWeight: 400
 						},
 					},{
 						text: '本地',
 						left: '85%',
-						top: '80%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#fff',
-							fontSize: 16 * scale
+							fontSize: 25,
+							fontWeight: 400
+							
 						},
 					}
 					],
@@ -148,15 +152,15 @@
 							clockWise: false, //顺时加载
 							startAngle: 180,
 							hoverAnimation: false, //鼠标移入变大
-							center: ['15%', '40%'],
+							center: ['15%', '50%'],
 							radius: pie1,
 							label: {
+								
 								normal: {
-									show: false,
-//									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
-//									rich: rich
-									color:'#fff'
+									show: true,
+									formatter: '{b}:{c}  \n({d}%)',
+									color:'#fff',
+									fontSize:16,
 								},
 								emphasis: {
 									show: true,
@@ -164,6 +168,8 @@
 							},
 							labelLine: {
 								normal: {
+									length:5,
+									length2:5,
 									lineStyle:{
 										color:'#fff'
 									}
@@ -177,7 +183,7 @@
 							type: 'pie',
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['15%', '40%'],
+							center: ['15%', '50%'],
 							radius: pie2,
 							color: ['rgba(56,129,137,0.1)', 'none'],
 							z: -5,
@@ -202,7 +208,7 @@
 							type: 'pie',
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['15%', '40%'],
+							center: ['15%', '50%'],
 							radius: pie3,
 							itemStyle: {
 								normal: {
@@ -229,15 +235,16 @@
 							clockWise: false, //顺时加载
 							startAngle: 180,
 							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '40%'],
+							center: ['50%', '50%'],
 							radius: pie1,
 							label: {
 								normal: {
-									show: false,
+									show: true,
 //									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
+									formatter: '{b}:{c}  \n({d}%)',
 //									rich: rich
-									color:'#fff'
+									color:'#fff',
+									fontSize:16,
 								},
 								emphasis: {
 									show: true,
@@ -247,7 +254,9 @@
 								normal: {
 									lineStyle:{
 										color:'#fff'
-									}
+									},
+									length:5,
+									length2:5,
 								}
 							},
 							data: echartdata[1]
@@ -258,7 +267,7 @@
 							type: 'pie',
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '40%'],
+							center: ['50%', '50%'],
 							radius: pie2,
 							color: ['rgba(56,129,137,0.1)', 'none'],
 							z: -5,
@@ -283,7 +292,7 @@
 							type: 'pie',
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['50%', '40%'],
+							center: ['50%', '50%'],
 							radius: pie3,
 							itemStyle: {
 								normal: {
@@ -310,15 +319,17 @@
 							clockWise: false, //顺时加载
 							startAngle: 180,
 							hoverAnimation: false, //鼠标移入变大
-							center: ['85%', '40%'],
+							center: ['85%', '50%'],
 							radius: pie1,
 							label: {
 								normal: {
-									show: false,
+									show: true,
 //									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
+									formatter: '{b}:{c}  \n({d}%)',
 //									rich: rich
-									color:'#fff'
+									color:'#fff',
+									fontSize:16,
+									
 								},
 								emphasis: {
 									show: true,
@@ -328,7 +339,9 @@
 								normal: {
 									lineStyle:{
 										color:'#fff'
-									}
+									},
+									length:5,
+									length2:5,
 								}
 							},
 							data: echartdata[2]
@@ -339,7 +352,7 @@
 							type: 'pie',
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['85%', '40%'],
+							center: ['85%', '50%'],
 							radius: pie2,
 							color: ['rgba(56,129,137,0.1)', 'none'],
 							z: -5,
@@ -364,7 +377,7 @@
 							type: 'pie',
 							clockWise: false, //顺时加载
 							hoverAnimation: false, //鼠标移入变大
-							center: ['85%', '40%'],
+							center: ['85%', '50%'],
 							radius: pie3,
 							itemStyle: {
 								normal: {

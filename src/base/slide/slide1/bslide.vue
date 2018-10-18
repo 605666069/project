@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div style="width: 100%;height:550px;" ref="my_chart"></div>
+		<div style="width: 100%;height:450px;margin-top: 60px;" ref="my_chart"></div>
 	</div>
 </template>
 
@@ -35,8 +35,8 @@
 		methods: {
 			initOpction() {
 				var dataAll = [
-					[30, 14, 28, 49, 60],
-					[2, 7, 3, 2, 90]
+					[30, 14, 28,14, 28],
+					[2, 7,  90,27,17]
 				];
 
 				this.option = {
@@ -72,7 +72,7 @@
 					],
 					xAxis: [{
 							gridIndex: 0,
-							data: ['0-17', '18-35', '36-55', '55-65', '65以上'],
+							data: ['0-17', '18-35', '36-55','56-65','66以上'],
 							axisTick: {
 								show: false
 							},
@@ -83,7 +83,7 @@
 						},
 						{
 							gridIndex: 1,
-							data: ['0-17', '18-35', '36-55', '55-65', '65以上'],
+							data: ['0-17', '18-35', '36-55','56-65','66以上'],
 							axisLabel: {
 								show: false
 							},

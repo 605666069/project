@@ -2,8 +2,8 @@
 	<div class="wrap">
 		<div style="width: 100%;height:540px;" ref="my_chart"></div>
 		<ButtonGroup size="large" shape="circle" class="map-btn">
-	        <Button type="ghost" @click="changeMap('china')">中国</Button>
-	        <Button type="ghost" @click="changeMap('zhejiang')">浙江</Button>
+	        <Button type="info" @click="changeMap('china')">全国</Button>
+	        <Button type="success" @click="changeMap('zhejiang')">浙江</Button>
 	    </ButtonGroup>
 	</div>
 </template>
@@ -84,12 +84,12 @@
 					geo: {
 						map: this.mapName,
 						zoom:1.2,
+						roam: false,
 						label: {
 							emphasis: {
 								show: false
 							}
 						},
-						roam: true,
 						itemStyle: {
 							normal: {
 								areaColor: '#323c48',
@@ -226,6 +226,7 @@
 		position: absolute;
 		bottom: 50px;
 		left: 50px;
+		color: #FFFFFF;
 	}
 
 </style>

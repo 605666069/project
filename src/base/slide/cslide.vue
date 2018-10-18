@@ -106,37 +106,41 @@
 						fontSize: 14 * scale,
 					}
 				}
-				var pie1 =  ['40%', '40%'];
-				var pie2 = ['60%', '40%'];
-				var pie3 = ['60%', '60%'];
+				var pie1 =  ['30%', '30%'];
+				var pie2 = ['50%', '30%'];
+				var pie3 = ['50%', '50%'];
 				this.option = {
 					title: [
 					{
 						text: '省内',
 						left: '15%',
-						top: '80%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#fff',
-							fontSize: 16 * scale
+							fontSize:20,
+							fontWeight: 400
 						},
 					},{
 						text: '省外',
 						left: '50%',
-						top: '80%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#fff',
-							fontSize: 16 * scale
+							fontSize:20,
+							fontWeight: 400
 						},
 					},{
 						text: '本地',
 						left: '85%',
-						top: '80%',
+						bottom:35,
 						textAlign: 'center',
 						textStyle: {
 							color: '#fff',
-							fontSize: 16 * scale
+							fontSize: 20,
+							fontWeight: 400
+							
 						},
 					}
 					],
@@ -151,12 +155,12 @@
 							center: ['15%', '40%'],
 							radius: pie1,
 							label: {
+								
 								normal: {
-									show: false,
-//									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
-//									rich: rich
-									color:'#fff'
+									show: true,
+									formatter: '{b} \n{c}  \n{d}%',
+									color:'#fff',
+									fontSize:16,
 								},
 								emphasis: {
 									show: true,
@@ -164,6 +168,8 @@
 							},
 							labelLine: {
 								normal: {
+									length:5,
+									length2:5,
 									lineStyle:{
 										color:'#fff'
 									}
@@ -233,11 +239,12 @@
 							radius: pie1,
 							label: {
 								normal: {
-									show: false,
+									show: true,
 //									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
+									formatter: '{b} \n{c}  \n{d}%',
 //									rich: rich
-									color:'#fff'
+									color:'#fff',
+									fontSize:16,
 								},
 								emphasis: {
 									show: true,
@@ -247,7 +254,9 @@
 								normal: {
 									lineStyle:{
 										color:'#fff'
-									}
+									},
+									length:5,
+									length2:5,
 								}
 							},
 							data: echartdata[1]
@@ -314,11 +323,13 @@
 							radius: pie1,
 							label: {
 								normal: {
-									show: false,
+									show: true,
 //									position: 'center',
-									formatter: '{b}:{c} ({d}%)',
+									formatter: '{b} \n{c}  \n{d}%',
 //									rich: rich
-									color:'#fff'
+									color:'#fff',
+									fontSize:16,
+									
 								},
 								emphasis: {
 									show: true,
@@ -328,7 +339,9 @@
 								normal: {
 									lineStyle:{
 										color:'#fff'
-									}
+									},
+									length:5,
+									length2:5,
 								}
 							},
 							data: echartdata[2]

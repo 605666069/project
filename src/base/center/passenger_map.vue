@@ -127,7 +127,7 @@
 								show: false,
 							}
 						},
-						roam: true,
+						roam: false,
 						itemStyle: {
 							normal: {
 

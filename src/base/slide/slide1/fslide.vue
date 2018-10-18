@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div style="width: 100%;height:550px;" ref="my_chart"></div>
+		<div style="width: 100%;height:450px;" ref="my_chart"></div>
 	</div>
 </template>
 
@@ -57,11 +57,11 @@
 						text: this.title,
 						textStyle: {
 							color: '#fff',
-							fontSize: 20,
-							fontWeight: 'bold'
+							fontSize: 25,
+							fontWeight: 400
 						},
 						left: 'center',
-						bottom: '20%'
+						bottom: 35
 					},
 					series: [{
 						type: 'pie',

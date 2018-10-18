@@ -189,7 +189,7 @@
 		height: 100%;
 	}
 	.nav-text {
-		font-size: 18px;
+		font-size: 25px;
 		color: #fff;
 	}
 	.nav-click {
