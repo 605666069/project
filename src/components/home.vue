@@ -11,7 +11,7 @@
 		        </Col>
 		        <Col span="12" class="pd">
 		        		<Title title="实时客流分布地图" ></Title>
-					<Home_center></Home_center>
+					<Ahome_center></Ahome_center>
 		        </Col>
 		        <Col span="6" class="pd">
 		        	<div class="chunk">
@@ -73,7 +73,7 @@
 	import Slider_chart from "@/base/slider_chart.vue";
 	import Line_one from "@/base/line/line_one.vue";
 	import Num from "@/base/num.vue";
-	import Home_center from "@/base/center/home_center.vue";
+	import Ahome_center from "@/base/center/ahome_center.vue";
 	
 	
 	
@@ -91,7 +91,7 @@
         computed:{
         },
         components: {
-        	Top,Bar_one,Slider_chart,Line_one,Num,Home_center,Bar_two
+        	Top,Bar_one,Slider_chart,Line_one,Num,Ahome_center,Bar_two
         },
         methods:{
         		getVisit() {

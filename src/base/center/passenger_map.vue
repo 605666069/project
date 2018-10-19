@@ -127,6 +127,7 @@
 								show: false,
 							}
 						},
+						zoom:1.2,
 						roam: false,
 						itemStyle: {
 							normal: {
@@ -227,7 +228,8 @@
 							animation: false,
 							data: data
 						},
-						 {
+						{
+							
 							name: '线路',
 							type: 'lines',
 							coordinateSystem: 'geo',
@@ -237,7 +239,7 @@
 								show: true,
 								constantSpeed: 30,
 								symbol: 'pin',
-								symbolSize: 10,
+								symbolSize: 3,
 								trailLength: 0,
 							},
 							lineStyle: {
@@ -249,12 +251,13 @@
 										offset: 1,
 										color: '#F58158'
 									}], false),
-									width: 5,
+									width: 3,
 									opacity: 0.2,
 									curveness: 0.1
 								}
 							},
 							data: moveLines
+						
 						}
 
 					]

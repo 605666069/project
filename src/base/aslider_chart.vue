@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="content ">
-			<swiper :options="swiperOption" ref="mySwiper">
+			<swiper :options="swiperOption" ref="mySwiper"  class="swiper-no-swiping">
 		      	<swiper-slide >
 					<Aslide></Aslide>
 		     	 </swiper-slide>
@@ -151,6 +151,22 @@
 //      			this.changeIndex(0)
 			})
         },
+        mounted() {
+        	var _this = this; 
+        	var _this = this; 
+        	this.$nextTick(() => {
+    			this.timer = setInterval(function(){   
+	        		var index = _this.index + 1 > 5? 0 : _this.index + 1 ;
+	        		_this.changeIndex(index)
+	        	},10000);
+			})
+        },
+        beforeDestroy:function(){
+	        if(this.timer){
+	            clearInterval(this.timer);  
+	        }
+     	},
+
        
        
     }

@@ -4,16 +4,16 @@
 		<div class="content clearfix">
 			<Row>
 		        <Col span="18" class="pd">
-		        		<div class="" style="position: relative;height: 550px;">
-			        		<Title title="微信粉丝分布图"></Title>
+		        	<Title title="微信粉丝分布图"></Title>
+	        		<div class="b" style="position: relative;height: 550px;">
 						<Apassenger_map></Apassenger_map>
 						<Btable class="wx-table" ></Btable>
-		        		</div>
+	        		</div>
 		        </Col>
 		        <Col span="6" class="pd">
 			        	<div class="chunk center" style="position: relative;">
 			        		<Title title="微信粉丝指标"></Title>
-						<Anum class="v-center"></Anum>
+							<Anum class="v-center"></Anum>
 			        	</div>
 			        	<div class="chunk">
 			        		<Title title="关注量Top5"></Title>

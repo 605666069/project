@@ -91,12 +91,12 @@
 		border: 1px solid rgba(255,255,255,0);
 	}
 	.top-text-wrap {
-		display: none;
+		display: block;
 		font-size: 14px;
 	}
-	.text-wrap:hover .top-text-wrap {
+	/*.text-wrap:hover .top-text-wrap {
 		display: block;
-	}
+	}*/
 	.sub-title {
 		font-size: 20px;
 		font-weight:700;

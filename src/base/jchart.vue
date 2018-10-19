@@ -16,6 +16,7 @@
 				option: {},
 				echart: null,
 				mapName:'china',
+				timer:null
 			}
 		},
 		props: {
@@ -217,6 +218,18 @@
 				this.creatChart()
 			})
 		},
+		mounted() {
+        	var _this = this; 
+        	this.timer = setInterval(function(){      
+        		var str = _this.mapName == 'china'?'zhejiang':'china';
+        	 	_this.changeMap(str)
+        	},10000);
+        },
+        beforeDestroy:function(){
+	        if(this.timer){
+	            clearInterval(this.timer);  
+	        }
+     	},
 
 	}
 </script>

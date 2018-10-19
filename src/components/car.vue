@@ -28,8 +28,10 @@
 					</div>
 		        </Col>
 		        <Col span="12" class="pd">
-	        			<Title title="全国车辆来源示意图"></Title>
-					<Passenger_map></Passenger_map>
+        			<Title title="全国车辆来源示意图"></Title>
+        			<div class="b" style="height: 550px;">
+        				<Passenger_map></Passenger_map>
+        			</div>
 		        </Col>
 		        <Col span="6" class="pd">
 	        		<div class="chunk">

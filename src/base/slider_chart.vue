@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="content ">
-			<swiper :options="swiperOption" ref="mySwiper">
+			<swiper :options="swiperOption" ref="mySwiper"  class="swiper-no-swiping">
 		      	<swiper-slide >
 					<Aslide></Aslide>
 		     	 </swiper-slide>
@@ -120,37 +120,52 @@
 	
 	export default {
         data() {
-	        	return {
-	        		index:0,
-	        		data:[],
-	        		swiperOption:{
+        	return {
+        		index:0,
+        		data:[],
+        		swiperOption:{
 				    disableOnInteraction:false,
 				    observer:true,//修改swiper自己或子元素时，自动初始化swiper
-		       		observeParents:true//修改swiper的父元素时，自动初始化swiper
-				
-	        		}
-	        	}
+		       		observeParents:true,//修改swiper的父元素时，自动初始化swiper
+        		}
+        	}
         },
         computed: {
 	      	swiper() {
-	        		return this.$refs.mySwiper.swiper
+	        	return this.$refs.mySwiper.swiper
 	      	}
 	    },
         components: {
         		Circle_one,Aslide,Bslide,Cslide,Dslide,Eslide,Fslide,Dslide1
         },
         methods:{
-	        	changeIndex(index) {
-	        		this.index = index;
-	        		this.swiper.slideTo(index)
-	        	},
+        	changeIndex(index) {
+        		this.index = index;
+        		this.swiper.slideTo(index)
+        		this.swiper.lockSwipeToPrev()
+        	},
 	        	
         },
         created() {
-        		this.$nextTick(() => {
+        	this.$nextTick(() => {
+        		
 //      			this.changeIndex(0)
 			})
         },
+        mounted() {
+        	var _this = this; 
+        	this.$nextTick(() => {
+    			this.timer = setInterval(function(){   
+	        		var index = _this.index + 1 > 5? 0 : _this.index + 1 ;
+	        		_this.changeIndex(index)
+	        	},10000);
+			})
+        },
+        beforeDestroy:function(){
+	        if(this.timer){
+	            clearInterval(this.timer);  
+	        }
+     	},
        
        
     }
