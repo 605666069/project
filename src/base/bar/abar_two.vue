@@ -12,9 +12,7 @@
 				echart: null,
 			}
 		},
-		props: {
-
-		},
+		props: ['data'],
 		computed: {},
 		components: {},
 		methods: {
@@ -47,7 +45,7 @@
 					},
 					yAxis: {
 						type: 'category',
-						data: ['浙江', '北京', '上海', '长春', '深圳'],
+						data: this.data.product,
 						axisLabel: {
 							color: '#fff'
 						},
@@ -76,7 +74,7 @@
 							}
 						},
 						type: 'bar',
-						data: [9263, 13203, 14203, 18103, 2120]
+						data:this.data.data
 					}]
 				};
 
@@ -94,7 +92,7 @@
 			this.$nextTick(() => {
 				this.creatChart()
 			})
-		}
+		},
 	}	
 </script>
 

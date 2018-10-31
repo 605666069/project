@@ -7,7 +7,7 @@
 	        			<span class="text">总关注</span>
 	        		</div>
 	        		<div class="num-text">
-	        			<span class="num-text-1">88742</span>
+	        			<span class="num-text-1">{{data.totalFollow}}</span>
 	        			<span class="num-text-2">人</span>
 	        		</div>
 	        </Col>
@@ -19,7 +19,7 @@
 	        			<span class="text">今日新增</span>
 	        		</div>
 	        		<div class="num-text">
-	        			<span class="num-text-1">131</span>
+	        			<span class="num-text-1">{{data.todayFollow}}</span>
 	        			<span class="num-text-2">人</span>
 	        		</div>
 	        </Col>
@@ -30,7 +30,7 @@
 	        			
 	        		</div>
 	        		<div class="num-text">
-	        			<span class="num-text-1">1334</span>
+	        			<span class="num-text-1">{{data.weekFollow}}</span>
 	        			<span class="num-text-2">人</span>
 	        		</div>
 	        </Col>
@@ -42,6 +42,7 @@
 	export default {
         data() {
 	        	return {
+	        		data:{}
 	        	}
         },
         props:{
@@ -51,9 +52,15 @@
         components: {
         },
         methods:{
+        		getData () {
+        			this.$ajax.post('/admin/api/WeixinUser').then(data=>{
+        				this.data=data.data
+        			})
+        			
+        		}
         },
         created() {
-        		
+        		this.getData()
         },
        
        

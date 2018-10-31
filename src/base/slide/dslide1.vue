@@ -10,12 +10,10 @@
 			return {
 				option: {},
 				echart: null,
+				data:null
 			}
 		},
 		props: {
-			data: {
-				default: null
-			},
 			position: {
 				default: 'outside'
 			},
@@ -34,7 +32,6 @@
 		components: {},
 		methods: {
 			initOpction() {
-				
 				var dataStyle = {
 					normal: {
 						label: {
@@ -84,11 +81,19 @@
 						color: 'rgba(0,0,0,0)'
 					}
 				};
-				var radius = 90;
-				var center = ['50%','40%']
+				var radius = 70;
+				var center = ['50%','40%'];
+				let product = [];
+				let total = 0;
+				var series = [];
+				this.data.data.map((item,index)=>{
+					product.push(item.name);
+					total+= item.totalNum;
+				})
+				
 				this.option = {
 					title: {
-						text: '免费景区',
+						text: this.data.name,
 						textStyle: {
 							fontSize: 20,
 							color: '#fff',
@@ -109,7 +114,7 @@
 							color: '#fff',
 							lineStyle: {
 								width: 3,
-								color: '#fff',
+								color: 'rgba(255,255,255,.4)',
 							}
 						},
 					},
@@ -148,7 +153,7 @@
 						},
 						show:false,
 						itemGap: 12,
-						data: ['乌石村', '小章村', '方前村', '孔氏家庙', '中国药材城']
+						data:product
 					},
 					series: [{
 							name: 'Line 1',
@@ -159,13 +164,13 @@
 							center:center,
 							hoverAnimation: false,
 							data: [{
-									value: 260,
+									value: total-this.data.data[0].totalNum,
 									name: '',
 									itemStyle: placeHolderStyle
 								},
 								{
-									value: 100,
-									name: '乌石村',
+									value: this.data.data[0].totalNum,
+									name: this.data.data[0].name,
 									label: labelShow,
 								},
 								{
@@ -186,17 +191,17 @@
 							hoverAnimation: false,
 
 							data: [{
-									value: 190,
+									value: total-this.data.data[0].totalNum-this.data.data[1].totalNum,
 									name: '',
 									itemStyle: placeHolderStyle
 								},
 								{
-									value: 70,
-									name: '小章村',
+									value: this.data.data[1].totalNum,
+									name: this.data.data[1].name,
 									label: labelShow,
 								},
 								{
-									value: 100,
+									value: this.data.data[0].totalNum,
 									name: '',
 									itemStyle: placeHolderStyle
 								}
@@ -212,17 +217,17 @@
 							itemStyle: dataStyle,
 
 							data: [{
-									value: 130,
+									value: total-this.data.data[0].totalNum-this.data.data[1].totalNum-this.data.data[2].totalNum,
 									name: '',
 									itemStyle: placeHolderStyle
 								},
 								{
-									value: 60,
-									name: '方前村',
+									value: this.data.data[2].totalNum,
+									name: this.data.data[2].name,
 									label: labelShow,
 								},
 								{
-									value: 170,
+									value: this.data.data[0].totalNum+this.data.data[1].totalNum,
 									name: '',
 									itemStyle: placeHolderStyle
 								}
@@ -238,17 +243,17 @@
 							itemStyle: dataStyle,
 
 							data: [{
-									value: 40,
+									value: total-this.data.data[0].totalNum-this.data.data[1].totalNum-this.data.data[2].totalNum-this.data.data[3].totalNum,
 									name: '',
 									itemStyle: placeHolderStyle
 								},
 								{
-									value: 90,
-									name: '孔氏家庙',
+									value: this.data.data[3].totalNum,
+									name: this.data.data[3].name,
 									label: labelShow,
 								},
 								{
-									value: 230,
+									value: this.data.data[0].totalNum+this.data.data[1].totalNum+this.data.data[2].totalNum,
 									name: '',
 									itemStyle: placeHolderStyle
 								}
@@ -269,12 +274,12 @@
 									itemStyle: placeHolderStyle
 								},
 								{
-									value: 40,
-									name: '中国药材城',
+									value: this.data.data[4].totalNum,
+									name: this.data.data[4].name,
 									label: labelShow,
 								},
 								{
-									value: 320,
+									value: total-this.data.data[4].totalNum,
 									name: '',
 									itemStyle: placeHolderStyle
 								}
@@ -290,13 +295,15 @@
 
 					]
 				};
-			
 			},
 			creatChart() {
-				this.initOpction();
-				this.echart && this.echart.dispose();
-				this.echart = this.echarts.init(this.$refs.my_chart);
-				this.echart.setOption(this.option);
+        			this.$ajax.post('/admin/api/Tourist').then(data=>{
+        				this.data  = data.data[1];
+        				this.initOpction();
+					this.echart && this.echart.dispose();
+					this.echart = this.echarts.init(this.$refs.my_chart);
+					this.echart.setOption(this.option);
+        			})
 			},
 
 		},
@@ -304,6 +311,9 @@
 			this.$nextTick(() => {
 				this.creatChart()
 			})
+		},
+		beforeDestroy () {
+			this.echart.clear()
 		},
 
 	}

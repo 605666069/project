@@ -13,31 +13,26 @@
 			}
 		},
 		props: {
-			data: {
-				default: null
-			},
-			position: {
-				default: 'outside'
-			},
-			position_formatter: {
-				default: '{d}%'
-			},
-			colorList: {
-				default: null
-			},
-			show_legend: {
-				default: true
+			color:{
+				default:null
 			},
 			title:{
-				default: ''
+				default:''
+			},
+			data:{
+				default:{}
+			},
+			total:{
+				default:0
 			}
+	
 
 		},
 		computed: {},
 		components: {},
 		methods: {
 			initOpction() {
-				var rate = 0.953; //0.4+0.2*Math.random();
+				var rate = this.data/this.total; 
 				var linear_color = {
 					type: 'linear',
 					x: 0,
@@ -46,10 +41,10 @@
 					y2: 1,
 					colorStops: [{
 						offset: 0,
-						color: '#6959CD'
+						color: this.color
 					}, {
 						offset: 1,
-						color: '#ede0ff'
+						color: this.color
 					}]
 				};
 				this.option = {
@@ -66,7 +61,8 @@
 					series: [{
 						type: 'pie',
 						hoverAnimation: false,
-						radius: ['59%', '60%'],
+						radius: ['49%', '50%'],
+						center:['50%','40%'],
 						startAngle: 225,
 						labelLine: {
 							show: false
@@ -80,15 +76,16 @@
 									formatter: (rate * 100).toFixed(2) + '%',
 									textStyle: {
 										color: '#fff',
-										fontSize: 30,
-										fontWeight: 'bold'
+										fontSize: 20,
+										fontWeight: 400
+										
 									}
 								}
 							},
 							itemStyle: {
 								normal: {
 									borderColor: linear_color,
-									borderWidth: 20
+									borderWidth: 10
 								}
 							}
 						}, {
@@ -122,6 +119,9 @@
 			this.$nextTick(() => {
 				this.creatChart()
 			})
+		},
+		beforeDestroy () {
+			this.echart.clear()
 		},
 
 	}

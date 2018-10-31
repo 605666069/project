@@ -25,7 +25,7 @@
 					        		{{index}}
 					        </Col>
 					         <Col span="7" >
-					        		{{d.name}}{{index}}
+					        		{{d.name}}
 					        </Col>
 					         <Col span="7" >
 					        		{{d.all}}
@@ -59,16 +59,16 @@
 		       		observeParents:true//修改swiper的父元素时，自动初始化swiper
 				},
 				data:[
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'磐安',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'民宿',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'农家乐',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'漂流',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'药材',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'共享农屋',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'十八窝',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'百丈潭',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'沙溪玫瑰园',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
+					{name:'香菇',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
 				]
 			}
 		},

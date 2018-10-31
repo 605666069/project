@@ -5,10 +5,10 @@
 			<div class="">
 				<div class="top-text-wrap" >
 					<div class="">
-					 	今日：{{d.today_data}}人
+					 	今日：{{d.total_visitor}}人
 					</div>
 					<div class="top-text">
-					 	实时：{{d.current_data}}人
+					 	实时：{{d.curr_visitor}}人
 					</div>
 				</div>
 				<div class="sub-title border">{{d.name}}</div>
@@ -25,20 +25,19 @@
 	export default {
         data() {
         	return {
-        		data:[]
         	}
         },
+        props:['data'],
         computed:{
         },
         components: {
         },
         methods:{
 	        	getData() {
-					this.data =  this.echarts_data.home_data.home_center
-					this.data.map((item,index)=>{
-					 	 item.left = 90/this.data.length * index + "%";
-					 	 item.bottom = this.randomFunction(100,240) + 'px'
-					 })
+				this.data.map((item,index)=>{
+				 	 item.left = 95/this.data.length * index + "%";
+				 	 item.bottom = this.randomFunction(100,240) + 'px'
+				 })
 	        	},
 	        	randomFunction(min , max){
 				return parseInt(Math.random() * (max - min)) + min;

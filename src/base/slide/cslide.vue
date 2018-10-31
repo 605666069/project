@@ -10,12 +10,10 @@
 			return {
 				option: {},
 				echart: null,
+				data:null
 			}
 		},
 		props: {
-			data: {
-				default: null
-			},
 			position: {
 				default: 'outside'
 			},
@@ -34,61 +32,35 @@
 		components: {},
 		methods: {
 			initOpction() {
-				var echartdata = [[{
-					value: 84, //时间
-					name: '公共交通',
-					itemStyle: {
-						normal: {
-							borderColor: "#edc553",
-							borderWidth: 10,
-						}
-					}
-				}, {
-					value: 15,
-					name: '自驾',
-					itemStyle: {
-						normal: {
-							borderColor: "#edc553",
-							borderWidth: 3,
-						}
-					}
-				}],[{
-					value: 84, //时间
-					name: '公共交通',
-					itemStyle: {
-						normal: {
-							borderColor: "#c2f38a",
-							borderWidth: 10,
-						}
-					}
-				}, {
-					value: 15,
-					name: '自驾',
-					itemStyle: {
-						normal: {
-							borderColor: "#c2f38a",
-							borderWidth: 3,
-						}
-					}
-				}],[{
-					value: 84, //时间
-					name: '公共交通',
-					itemStyle: {
-						normal: {
-							borderColor: "#3c9eff",
-							borderWidth: 10,
-						}
-					}
-				}, {
-					value: 15,
-					name: '自驾',
-					itemStyle: {
-						normal: {
-							borderColor: "#3c9eff",
-							borderWidth: 3,
-						}
-					}
-				}]]
+				var echartdata = [];
+				var title = [];
+				this.data.map((data,index)=>{
+					title.push({
+						text: data.name,
+						left: '15' + index * 35 + "%",
+						bottom:35,
+						textAlign: 'center',
+						textStyle: {
+							color: '#fff',
+							fontSize:20,
+							fontWeight: 400
+						},
+					});
+					let list = []
+					data.value.map((item,item_index)=>{
+						list.push({
+							value: item.value, //时间
+							name: item.name,
+							itemStyle: {
+								normal: {
+									borderColor:(index==0&&'#edc553')||(index==1&&'#c2f38a')||(index==2&&'#3c9eff'),
+									borderWidth:item_index==0?3:10,
+								}
+							}
+						})
+					});
+					echartdata.push(list);
+				})
 
 				/*---------------------缩放----------------------------*/
 				var scale = 1;
@@ -110,40 +82,7 @@
 				var pie2 = ['50%', '30%'];
 				var pie3 = ['50%', '50%'];
 				this.option = {
-					title: [
-					{
-						text: '省内',
-						left: '15%',
-						bottom:35,
-						textAlign: 'center',
-						textStyle: {
-							color: '#fff',
-							fontSize:20,
-							fontWeight: 400
-						},
-					},{
-						text: '省外',
-						left: '50%',
-						bottom:35,
-						textAlign: 'center',
-						textStyle: {
-							color: '#fff',
-							fontSize:20,
-							fontWeight: 400
-						},
-					},{
-						text: '本地',
-						left: '85%',
-						bottom:35,
-						textAlign: 'center',
-						textStyle: {
-							color: '#fff',
-							fontSize: 20,
-							fontWeight: 400
-							
-						},
-					}
-					],
+					title: title,
 					series: [
 						//中间圆环
 						{
@@ -158,7 +97,7 @@
 								
 								normal: {
 									show: true,
-									formatter: '{b} \n{c}  \n{d}%',
+									formatter: '{b}   \n{d}%',
 									color:'#fff',
 									fontSize:16,
 								},
@@ -241,7 +180,7 @@
 								normal: {
 									show: true,
 //									position: 'center',
-									formatter: '{b} \n{c}  \n{d}%',
+									formatter: '{b}   \n{d}%',
 //									rich: rich
 									color:'#fff',
 									fontSize:16,
@@ -325,7 +264,7 @@
 								normal: {
 									show: true,
 //									position: 'center',
-									formatter: '{b} \n{c}  \n{d}%',
+									formatter: '{b}   \n{d}%',
 //									rich: rich
 									color:'#fff',
 									fontSize:16,
@@ -402,10 +341,14 @@
 
 			},
 			creatChart() {
-				this.initOpction();
-				this.echart && this.echart.dispose();
-				this.echart = this.echarts.init(this.$refs.my_chart);
-				this.echart.setOption(this.option);
+        			this.$ajax.post('/admin/api/Traffic').then(data=>{
+//      				0自驾 1公共交通
+        				this.data  = data.data
+        				this.initOpction();
+					this.echart && this.echart.dispose();
+					this.echart = this.echarts.init(this.$refs.my_chart);
+					this.echart.setOption(this.option);
+        			})
 			},
 
 		},
@@ -414,7 +357,9 @@
 				this.creatChart()
 			})
 		},
-
+		beforeDestroy () {
+			this.echart.clear()
+		},
 	}
 </script>
 

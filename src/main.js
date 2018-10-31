@@ -30,6 +30,9 @@ Vue.prototype.color = ()  => {
     return 'rgb('+  Math.floor(Math.random()*255) +','+  Math.floor(Math.random()*255) +','+  Math.floor(Math.random()*255) + ')';
  }
 
+import axios from "axios";
+Vue.prototype.$ajax = axios;
+
 
 import Title from "@/base/Title.vue";
 Vue.component('Title', Title)

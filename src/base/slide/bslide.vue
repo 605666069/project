@@ -10,12 +10,10 @@
 			return {
 				option: {},
 				echart: null,
+				data:null
 			}
 		},
 		props: {
-			data: {
-				default: null
-			},
 			position: {
 				default: 'outside'
 			},
@@ -38,7 +36,17 @@
 					[30, 14, 28,14, 28],
 					[2, 7,  90,27,17]
 				];
-
+				let name = [];
+				let man = [];
+				let woman = [];
+				
+				
+				
+				this.data.map((data,index)=>{
+					name.push(data.name);
+					man.push(data.value[0]);
+					woman.push(data.value[1]);
+				})
 				this.option = {
 					 legend: {
 		                data: ['男', '女'],
@@ -72,7 +80,7 @@
 					],
 					xAxis: [{
 							gridIndex: 0,
-							data: ['0-17', '18-35', '36-55','56-65','66以上'],
+							data: name,
 							axisTick: {
 								show: false
 							},
@@ -83,7 +91,7 @@
 						},
 						{
 							gridIndex: 1,
-							data: ['0-17', '18-35', '36-55','56-65','66以上'],
+							data:name,
 							axisLabel: {
 								show: false
 							},
@@ -129,7 +137,7 @@
 							type: 'bar',
 							xAxisIndex: 0,
 							yAxisIndex: 0,
-							data: dataAll[0],
+							data: man,
 							itemStyle: {
 								normal: {
 									color: new this.echarts.graphic.LinearGradient(
@@ -159,7 +167,7 @@
 							type: 'bar',
 							xAxisIndex: 1,
 							yAxisIndex: 1,
-							data: dataAll[1],
+							data: woman,
 							itemStyle: {
 								normal: {
 									color: new this.echarts.graphic.LinearGradient(
@@ -187,10 +195,14 @@
 				};
 			},
 			creatChart() {
-				this.initOpction();
-				this.echart && this.echart.dispose();
-				this.echart = this.echarts.init(this.$refs.my_chart);
-				this.echart.setOption(this.option);
+				this.$ajax.post('/admin/api/Hotel').then(data=>{
+        				this.data  = data.data
+					this.initOpction();
+					this.echart && this.echart.dispose();
+					this.echart = this.echarts.init(this.$refs.my_chart);
+					this.echart.setOption(this.option);
+        			})
+				
 			},
 
 		},
@@ -198,6 +210,9 @@
 			this.$nextTick(() => {
 				this.creatChart()
 			})
+		},
+		beforeDestroy () {
+			this.echart.clear()
 		},
 
 	}

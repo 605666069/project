@@ -109,7 +109,7 @@
 							color: '#fff',
 							lineStyle: {
 								width: 3,
-								color: '#fff',
+								color: 'rgba(255,255,255,.4)',
 							}
 						},
 					},

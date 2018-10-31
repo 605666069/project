@@ -7,18 +7,18 @@
 		        	<Title title="微信粉丝分布图"></Title>
 	        		<div class="b" style="position: relative;height: 550px;">
 						<Apassenger_map></Apassenger_map>
-						<Btable class="wx-table" ></Btable>
+						<Btable class="wx-table" :data="province" ></Btable>
 	        		</div>
 		        </Col>
 		        <Col span="6" class="pd">
 			        	<div class="chunk center" style="position: relative;">
 			        		<Title title="微信粉丝指标"></Title>
-							<Anum class="v-center"></Anum>
+						<Anum class="v-center"></Anum>
 			        	</div>
 			        	<div class="chunk">
 			        		<Title title="关注量Top5"></Title>
 			        		<div class="b">
-			        			<Abar_two></Abar_two>
+			        			<Abar_two :data="province_chart_data" v-if="province_chart_data"></Abar_two>
 						<!--<Bar_two :data="wx_attention" :isAcross='true' :height="250" :show_legend="false" :top="10" :barMaxWidth="20"></Bar_two>-->
 			        		</div>
 			        	</div>
@@ -68,6 +68,8 @@
 				wx_age:null,
 				wx_use_type:null,
 				comfort_data:null,
+				province:null,
+				province_chart_data:null,
 				sum_visitor_data:null,
 				colorList:['#ccb14a','#97df5d','#55afe6']
 			}
@@ -87,7 +89,62 @@
 			getData() {
 				this.wx_attention = this.echarts_data.wx.bar_data1;
 				this.wx_age = this.echarts_data.wx.bar_data;
-				this.wx_use_type = this.echarts_data.wx.line_data;
+				this.$ajax.post('/admin/api/ShengFenSource').then(data=>{
+        				this.province = data.data;
+        				
+        			})
+				this.$ajax.post('/admin/api/TopCity').then(data=>{
+        				let product = [];
+	    				let dataList = [];
+	    				data.data.map((item,index)=>{
+	    					if(index<5) {
+	    						product.push(item.name);
+	    						dataList.push(item.value.num);
+	    					}
+	    				})
+    					this.province_chart_data =  {
+						product:product,
+						name:'关注量Top5',
+						data:dataList
+	    				}
+	    		
+        			});
+        			this.$ajax.get('/admin/api/WeixinVisit?daynum=30').then(data=>{
+        				let product = [];
+	    				let data_obj = {};
+	    			
+	    				data.data.map((item,index)=>{
+	    					product.push(this.global.timespanToString(item.date,'MM/dd'));
+	    					for(var key in item) {
+	    						if(!data_obj[key])  data_obj[key] = {
+								data:[],
+								name:key
+							};
+							for(let obj in data_obj) {
+								if(key == obj) {
+									data_obj[obj].data.push(item[key]);
+								}
+							}
+	    					}
+	    					
+	    				});
+	    				data_obj.visitNum.name= "总阅读数";
+	    				data_obj.friendsVisitNum.name= "朋友圈阅读数";
+	    				data_obj.shareNum.name= "分享转发";
+	    				
+	    				let seriver = [
+	    					data_obj.visitNum,
+	    					data_obj.friendsVisitNum,
+	    					data_obj.shareNum
+	    				]
+
+	    				this.wx_use_type =  {
+						product:product,
+						name:'近30日图文消息趋势',
+						data:seriver
+	    				}
+	    		
+        			})
 			}
         		
 

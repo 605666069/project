@@ -124,7 +124,7 @@
 						subtextStyle: {
 							color: '#fff',
 							textAlign: 'center',
-							fontSize:20,
+							fontSize:25,
 							fontWeight: 400
 							
 						}

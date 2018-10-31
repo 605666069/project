@@ -16,16 +16,16 @@
 			</div>
 			<div class="slide-wrap">
 				<swiper :options="swiperOption">
-			      	<swiper-slide v-for="(d,index) in data" :key="index">
+			      	<swiper-slide v-for="(d,index) in data" :key="d.name">
 				      	<Row class="slide-item">
 					        <Col span="4">
-					        		{{index}}
+					        		{{index+1}}
 					        </Col>
 					         <Col span="10" >
-					        		{{d.name}}{{index}}
+					        		{{d.name}}
 					        </Col>
 					         <Col span="10" >
-					        		{{d.all}}
+					        		{{d.value}}
 					        </Col>
 					    </Row>
 			      </swiper-slide>
@@ -52,23 +52,9 @@
 				    observer:true,//修改swiper自己或子元素时，自动初始化swiper
 		       		observeParents:true//修改swiper的父元素时，自动初始化swiper
 				},
-				data:[
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-					{name:'百度',all:this.global.getRandomData(1)[0],phone:this.global.getRandomData(1)[0]},
-				]
 			}
 		},
-		props: {
-
-		},
+		props: ['data'],
 		computed: {},
 		components: {},
 		methods: {},

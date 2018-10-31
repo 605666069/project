@@ -10,13 +10,13 @@
 							今日
 						</div>
 						<div>
-							<Num data="912796"></Num>
+							<Num :data="num.today_total"></Num>
 						</div>
 						<div class="sub_title m-t">
 							全年
 						</div>
 						<div>
-							<Num data="2094"></Num>
+							<Num :data="num.totalNum2018"></Num>
 						</div>
 					</div>
 					<div class="chunk">
@@ -29,7 +29,7 @@
 		        </Col>
 		        <Col span="18" class="pd">
 		        		<Title title="实时客流分布地图" ></Title>
-					<Home_center></Home_center>
+					<Home_center :data="home_center_data" v-if="home_center_data"></Home_center>
 		        </Col>
 		    </Row>
 		    <Row>
@@ -81,7 +81,8 @@
 	        		colorList:['#edc553','#3c9eff'],
 	        		colorList1:['#67d0e4','#97df5d','#4f72f6','#d6807e','#ccb14a'],
 	        		colorList2:['#67d0e4','#887bcc'],
-	        		
+	        		num:{},
+	        		home_center_data:null
 			}
 		},
 		computed: {},
@@ -99,11 +100,51 @@
 		},
 		methods: {
 			getData() {
-				this.scenic_flow_data = this.echarts_data.scenic_data.line_data;
+				
 				this.history_scenic_flow_data = this.echarts_data.scenic_data.line_data1;
-				console.log(this.history_scenic_flow_data)
 				this.tody_scenic_flow_data = this.echarts_data.scenic_data.bar_data;
 				this.comfort_data = this.echarts_data.scenic_data.bar_data1;
+				//总客流数
+        			this.$ajax.post('/admin/api/OperationalData').then(data=>{
+        				this.num  = data.data;
+        				this.$ajax.post('/admin/api/DeviceRealTimeInfo').then(data=>{
+		    				this.home_center_data = data.data;
+		    				let total = 0
+	
+		    				this.home_center_data.map(item=>{
+		    					total+= item.total_visitor
+		    				});
+		    				this.$set(this.num,'today_total',String(total));
+		    				
+		    			});
+        			})
+        			
+				//网络访问量
+	    			this.$ajax.get('/admin/api/StatisticsDayInfo?day=7').then(data=>{
+	    				let product = [];
+	    				let dataList = [];
+	    				let dataList1 = [];
+	    				data.data.map(item=>{
+	    					product.push(this.global.timespanToString(item.date,'MM/dd'));
+	    					dataList.push(item.total)
+	    					dataList1.push(item.jingquTotal)
+	    				})
+	    				this.scenic_flow_data =  {
+						product:product,
+						name:'网络访问量',
+						data:[
+							{
+								name:'景区客流',
+								data:dataList1
+							},
+							{
+								name:'入县客流',
+								data:dataList
+							}
+						]
+					
+	    				}
+        			})
 				
 			}
         		

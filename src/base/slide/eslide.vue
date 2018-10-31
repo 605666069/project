@@ -12,47 +12,45 @@
 				echart: null,
 			}
 		},
-		props:['title'],
+		props:['title','data'],
 		computed: {},
 		components: {},
 		methods: {
 			initOpction() {
-				console.log(this.title)
 				/*---------------------数据----------------------------*/
-				var exemptData = [{
-					value: 48,
-					name: '差评',
-					itemStyle:{
-						normal: {
-		                    color: { // 完成的圆环的颜色
-		                        colorStops: [{
-									offset:0,
-									color: 'rgba(132,89,226,0.1)' // 0% 处的颜色
-								}, {
-									offset: 1,
-									color: 'rgba(132,89,226,0.8)' // 100% 处的颜色
-								}]
-		                    },
-		                } 
-					}
-		            
-				}, {
-					value: 58,
-					name: '好评',
-					itemStyle:{
-						normal: {
-		                    color: { // 完成的圆环的颜色
-		                        colorStops: [{
-									offset:0,
-									color: 'rgba(63,218,255,0.1)' // 0% 处的颜色
-								}, {
-									offset: 1,
-									color: 'rgba(63,218,255,0.8)' // 100% 处的颜色
-								}]
-		                    },
-		                } 
-					}
-				}];
+				var exemptData = [];
+				this.data.map((data,index)=>{
+					exemptData.push({
+							
+						value: data.value,
+						name: data.name,
+						itemStyle:{
+							normal: {
+			                    color:index==0?{ // 完成的圆环的颜色
+			                        colorStops: [{
+										offset:0,
+										color: 'rgba(132,89,226,0.1)' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: 'rgba(132,89,226,0.8)' // 100% 处的颜色
+									}]
+			                    }:{
+				                    	 // 完成的圆环的颜色
+			                        colorStops: [{
+										offset:0,
+										color: 'rgba(63,218,255,0.1)' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: 'rgba(63,218,255,0.8)' // 100% 处的颜色
+									}]
+			                    }
+			                } 
+						}
+			            
+					
+					})
+				})
+				
 				var scale = 0.8;
 				/*---------------------颜色配置----------------------------*/
 				var exemptcolor = [{
@@ -127,7 +125,7 @@
 						padding: [0, 10, 0, 0]
 					}
 				}
-				var radius = 80;
+				var radius = 85;
 				var center = ['50%', '40%']
 				this.option = {
 					title: {
@@ -209,9 +207,11 @@
 							label: {
 								normal: {
 									formatter: function(params) {
-											return '{examptdata|' + params.value + '}\n{exemptname|' + params.name + '}';
+											return  +params.value + '\n' + params.name ;
 									},
-									rich: rich
+									color: '#fff',
+									fontSize: 16,
+//									rich: rich
 								}
 							},
 							labelLine: {
@@ -219,7 +219,7 @@
 									length: 20,
 									length2: 20,
 									lineStyle: {
-										color: '#eb297d',
+										color: '#fff',
 									}
 								}
 							},
@@ -264,7 +264,7 @@
 				};
 			},
 			creatChart() {
-				this.initOpction();
+    				this.initOpction();
 				this.echart && this.echart.dispose();
 				this.echart = this.echarts.init(this.$refs.my_chart);
 				this.echart.setOption(this.option);
@@ -275,6 +275,9 @@
 			this.$nextTick(() => {
 				this.creatChart()
 			})
+		},
+		beforeDestroy () {
+			this.echart.clear()
 		},
 
 	}

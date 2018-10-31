@@ -87,13 +87,13 @@
 		     	 <swiper-slide >
 		     	 	<div class="clearfix">
 		      			<div style="width: 33%;" class="l">
-		      				<Fslide title="住宿消费"></Fslide>
+		      				<Fslide title="住宿消费" color="#e7c666"></Fslide>
 			      		</div>
 			      		<div style="width: 33%;" class="l">
-		      				<Fslide title="餐饮消费"></Fslide>
+		      				<Fslide title="餐饮消费" color="#ccf196"></Fslide>
 			      		</div>
 			      		<div style="width: 33%;" class="l">
-		      				<Fslide title="娱乐消费"></Fslide>
+		      				<Fslide title="娱乐消费" color="#569ef8"></Fslide>
 			      		</div>
 		      		</div>
 		     	 </swiper-slide>

@@ -29,7 +29,7 @@
 		           <a href="#/hotel"> <DropdownItem>酒店住宿</DropdownItem></a>
 		           <a href="#/car"> <DropdownItem>交通数据</DropdownItem></a>
 		           <a href="#/wx_operation"> <DropdownItem>微信运营</DropdownItem></a>
-		           <a href="#/hot_search"> <DropdownItem>网络热搜</DropdownItem></a>
+		           <!--<a href="#/hot_search"> <DropdownItem>网络热搜</DropdownItem></a>-->
 		        </DropdownMenu>
 		    </Dropdown>
 		</div>
@@ -55,12 +55,15 @@
         		}
         },
         computed:{
+        		
         },
         components: {
         },
         methods:{
         		back() {
-        			window.location.href=window.location.host;
+        			
+        			console.log(window.location.host + '/panan/index.html')
+        			location.href=window.location.host + 'panan/index.html';
         		}
         },
         mounted() {

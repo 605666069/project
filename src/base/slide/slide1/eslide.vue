@@ -17,7 +17,6 @@
 		components: {},
 		methods: {
 			initOpction() {
-				console.log(this.title)
 				/*---------------------数据----------------------------*/
 				var exemptData = [{
 					value: 48,
@@ -127,7 +126,7 @@
 						padding: [0, 10, 0, 0]
 					}
 				}
-				var radius = 80;
+				var radius = 85;
 				var center = ['50%', '50%']
 				this.option = {
 					title: {
@@ -209,9 +208,10 @@
 							label: {
 								normal: {
 									formatter: function(params) {
-											return '{examptdata|' + params.value + '}\n{exemptname|' + params.name + '}';
+											return  +params.value + '\n' + params.name ;
 									},
-									rich: rich
+									color: '#fff',
+									fontSize: 16,
 								}
 							},
 							labelLine: {

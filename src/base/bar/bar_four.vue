@@ -10,30 +10,11 @@
 			return {
 				option: {},
 				echart: null,
+				data:null
 			}
 		},
 		props: {
-			data: {
-				default: null
-			},
-			barMaxWidth: {
-				default: 10
-			},
-			show_legend: {
-				default: true
-			},
-			isAcross: {
-				default: false
-			},
-			gradient: {
-				default: null
-			},
-			stack: {
-				default: null
-			},
-			colorList: {
-				default: null
-			}
+			
 		},
 		computed: {},
 		components: {},
@@ -86,7 +67,7 @@
 						"splitArea": {
 							"show": false
 						},
-						"data": xData,
+						"data": this.data.product,
 					}],
 					"yAxis": [{
 						"type": "value",
@@ -157,18 +138,7 @@
 									}
 								}
 							},
-							"data": [
-								709,
-								1917,
-								2455,
-								2610,
-								1719,
-								1433,
-								1544,
-								3285,
-								5208,
-								3372,
-							],
+							"data": this.data.data['女'].data
 						},
 
 						{
@@ -188,18 +158,7 @@
 									}
 								}
 							},
-							"data": [
-								327,
-								1776,
-								507,
-								1200,
-								800,
-								482,
-								204,
-								1390,
-								1001,
-								951,
-							]
+							"data": this.data.data['男'].data
 						}, {
 							"name": "总数",
 							"type": "line",
@@ -219,38 +178,61 @@
 									}
 								}
 							},
-							"data": [
-								1036,
-								3693,
-								2962,
-								3810,
-								2519,
-								1915,
-								1748,
-								4675,
-								6209,
-								4323,
-							]
+							"data": this.data.data['总数'].data
 						},
 					]
 				}
 			},
 			creatChart() {
-				this.initOpction();
-				this.echart && this.echart.dispose();
-				this.echart = this.echarts.init(this.$refs.my_chart);
-				this.echart.setOption(this.option);
+				this.$ajax.post('/admin/api/KeLiuTopCity').then(data=>{
+	    				
+	    				let product = [];
+	    				let data_obj = {};
+	    				let seriver = [];
+	    				data.data.map((item,index)=>{
+	    					let total = 0;
+	    					item.value.map((sub_item,sub_index)=>{
+	    						total+=sub_item.value;
+	    					});
+
+	    					item.value.push({
+	    						value:total,
+	    						name:'总数'
+	    					})
+	    				});
+	    				data.data.map((item,index)=>{
+	    					product.push(item.name);
+	    					item.value.map((sub_item,sub_index)=>{
+							if(!data_obj[sub_item.name])  data_obj[sub_item.name] = {
+								data:[],
+								name:sub_item.name
+							};
+							for(let key in data_obj) {
+								if(sub_item.name == key) {
+									data_obj[key].data.push(sub_item.value);
+								}
+							}
+	    					})
+	    				});
+	    				this.data =  {
+						product:product,
+						name:'2018年客源累计Top10',
+						data:data_obj
+	    				}
+	    				console.log(this.data);
+	    				
+	    				this.initOpction();
+					this.echart && this.echart.dispose();
+					this.echart = this.echarts.init(this.$refs.my_chart);
+					this.echart.setOption(this.option);
+	    			});
+				
 			},
 		},
-		watch: {
-			'data': {
-				handler(val, oldVal) {
-					if(this.data) {
-						this.creatChart()
-					}
-				},
-				immediate: true
-			}
+		created() {
+			 this.$nextTick(()=>{
+	        		this.creatChart();
+	        	})
 		}
 
 	}

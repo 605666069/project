@@ -29,7 +29,7 @@
 				        color:'#fff'
 				    },
 				    grid: {
-				        left: '-70',
+				        left: '-120',
 				        right: '4%',
 				        bottom: '3%',
 				        top:"0%",
@@ -57,7 +57,7 @@
 				        axisLabel:{
 				        		color:'#fff',
 				        		align:'left',
-				        		margin:110,
+				        		margin:150,
 				        		fontSize:16
 				        },
 				    },
@@ -97,14 +97,28 @@
         		
         	},
         	creatChart() {
+        		
         		this.initOpction();
         		this.echart_one && this.echart_one.dispose();
 				this.echart_one = this.echarts.init(this.$refs.my_chart);
         		this.echart_one.setOption(this.option);
         	},
         	getData() {
-        		this.data = this.echarts_data.home_data.rank;
-        		this.creatChart()
+        		this.$ajax.post('/admin/api/DeviceYearInfo').then(data=>{
+        			let product = [];
+    				let dataList = [];
+    				data.data.map((item,index)=>{
+    					product.push(index+1+'.'+item.name);
+    					dataList.push(item.totalNum)
+    				})
+    				this.data =  {
+					product:product,
+					name:'网络访问量',
+					data:dataList
+    				}
+        			this.creatChart()
+    			})
+        		
         	}
         	
         	
@@ -114,7 +128,9 @@
         		this.getData();
         	})
         },
-       
+       beforeDestroy () {
+		this.echart_one.clear()
+		},
        
     }
 </script>

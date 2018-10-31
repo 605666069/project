@@ -73,27 +73,15 @@
 		     	 </swiper-slide>
 		     	 <swiper-slide >
 		     	 	<div class="clearfix">
-		      			<div style="width: 33%;" class="l">
-		      				<Eslide title="KTV"></Eslide>
-			      		</div>
-			      		<div style="width: 33%;" class="l">
-		      				<Eslide title="酒吧"></Eslide>
-			      		</div>
-			      		<div style="width: 33%;" class="l">
-		      				<Eslide title="漂流"></Eslide>
+		      			<div style="width: 33%;" class="l" v-for="d in pleasure_data">
+		      				<Eslide :title="d.name" :data="d.value"></Eslide>
 			      		</div>
 		      		</div>
 		     	 </swiper-slide>
 		     	 <swiper-slide >
 		     	 	<div class="clearfix">
-		      			<div style="width: 33%;" class="l">
-		      				<Fslide title="住宿消费"></Fslide>
-			      		</div>
-			      		<div style="width: 33%;" class="l">
-		      				<Fslide title="餐饮消费"></Fslide>
-			      		</div>
-			      		<div style="width: 33%;" class="l">
-		      				<Fslide title="娱乐消费"></Fslide>
+		      			<div style="width: 33%;" class="l" v-for="d in shopping_data" >
+		      				<Fslide :title="d.name" :color="d.color" :data="d.value" :total="shopping_data_total"></Fslide>
 			      		</div>
 		      		</div>
 		     	 </swiper-slide>
@@ -127,7 +115,10 @@
 				    disableOnInteraction:false,
 				    observer:true,//修改swiper自己或子元素时，自动初始化swiper
 		       		observeParents:true,//修改swiper的父元素时，自动初始化swiper
-        		}
+        		},
+        		pleasure_data:[],
+        		shopping_data:[],
+        		shopping_data_total:0,
         	}
         },
         computed: {
@@ -142,12 +133,24 @@
         	changeIndex(index) {
         		this.index = index;
         		this.swiper.slideTo(index)
-        		this.swiper.lockSwipeToPrev()
         	},
 	        	
         },
         created() {
-        	this.$nextTick(() => {
+        		this.$nextTick(() => {
+        			this.$ajax.post('/admin/api/Pleasure').then(data=>{
+        				this.pleasure_data = data.data;
+        			})
+        			this.$ajax.post('/admin/api/Shopping').then(data=>{
+        				let total = 0;
+        				let colorList = ['#e7c666','#ccf196','#569ef8'];
+        				 data.data.map((item,index)=>{
+        					total+=item.value;
+        					item.color = colorList[index];
+        				})
+        				this.shopping_data  =  data.data;
+        				this.shopping_data_total = total
+        			})
         		
 //      			this.changeIndex(0)
 			})

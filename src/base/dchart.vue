@@ -10,12 +10,10 @@
 			return {
 				option: {},
 				echart: null,
+				data:null
 			}
 		},
 		props: {
-			data: {
-				default: null
-			},
 			position: {
 				default: 'outside'
 			},
@@ -34,6 +32,26 @@
 		components: {},
 		methods: {
 			initOpction() {
+				let title = [];
+				let sub_name = [];
+				this.data.map((item,index)=>{
+					title.push(item.name);
+					item.data_value = [];
+					item.value.map((sub_item,sub_index)=>{
+						item.data_value.push(Number(sub_item.value))
+						if(index<1) {
+						 	sub_name.push({
+						 		name:sub_item.name
+						 	});
+						}
+					})
+				})
+				console.log(this.data)
+				console.log(sub_name);
+				console.log(title);
+				
+				
+				
 				this.option = {
 					"normal": {
 						"top": 200,
@@ -57,7 +75,7 @@
 							"fontSize": 14,
 							"color": "#fff"
 						},
-						"data": ["酒店1", "酒店2",'酒店3']
+						"data": title
 					},
 					"radar": {
 						"center": ["50%", "35%"],
@@ -89,28 +107,10 @@
 								"color": "grey" //
 							}
 						},
-						"indicator": [{
-							"name": "服务",
-							"max": 88
-						}, {
-							"name": "卫生",
-							"max": 88
-						}, {
-							"name": "位置",
-							"max": 88
-						}, {
-							"name": "房间",
-							"max": 88
-						}, {
-							"name": "价格",
-							"max": 88
-						},{
-							"name": "性价比",
-							"max": 88
-						}]
+						"indicator": sub_name
 					},
 					"series": [{
-						"name": "酒店1",
+						"name": this.data[0].name,
 						"type": "radar",
 						"symbol": "circle",
 						"symbolSize": 10,
@@ -133,10 +133,10 @@
 							}
 						},
 						"data": [
-							[80, 50, 55, 80, 50,75]
+							this.data[0].data_value
 						]
 					}, {
-						"name": "酒店2",
+						"name": this.data[1].name,
 						"type": "radar",
 						"symbol": "circle",
 						"symbolSize": 10,
@@ -160,10 +160,10 @@
 							}
 						},
 						"data": [
-							[60, 60, 65, 60, 70,21]
+							this.data[1].data_value
 						]
 					},{
-						"name": "酒店3",
+						"name": this.data[2].name,
 						"type": "radar",
 						"symbol": "circle",
 						"symbolSize": 10,
@@ -187,17 +187,21 @@
 							}
 						},
 						"data": [
-							[40, 50, 25, 80, 30,26]
+							this.data[2].data_value
 						]
 					
 					}]
 				};
 			},
 			creatChart() {
-				this.initOpction();
-				this.echart && this.echart.dispose();
-				this.echart = this.echarts.init(this.$refs.my_chart);
-				this.echart.setOption(this.option);
+				this.$ajax.post('/admin/api/HotelCommentTop3').then(data=>{
+        				this.data = data.data;
+        				this.initOpction();
+					this.echart && this.echart.dispose();
+					this.echart = this.echarts.init(this.$refs.my_chart);
+					this.echart.setOption(this.option);
+        			})
+				
 			},
 
 		},

@@ -13,7 +13,7 @@
 					<div  class="chunk">
 						<Title title="接待人数Top5酒店"></Title>
 						<div class="b">
-							<Bar_two :data="hotel_people_num" :isAcross='true' stack="总量" style="margin-top: 10px;" :colorList="colorList1"></Bar_two>
+							<Bar_two :data="hotelTop5" :isAcross='true' stack="总量" style="margin-top: 10px;" :colorList="colorList1"></Bar_two>
 							<!--<Bar_two :data="good_hotel" :isAcross='true' stack="总量"></Bar_two>-->
 						</div>
 					</div>
@@ -67,6 +67,7 @@
 				hotel_in_total:null,
 				colorList:['#3c9eff','#edc553'],
 				colorList1:['rgba(19, 173, 255, 1)','rgba(245, 166, 35, 1)'],
+				hotelTop5:null
 				
 			}
 		},
@@ -90,6 +91,41 @@
 				this.hotel_people_num = this.echarts_data.hotel_data.bar_data1;
 				this.hotel_in = this.echarts_data.hotel_data.line_data;
 				this.hotel_in_total = this.echarts_data.hotel_data.circle_data;
+				
+				this.$ajax.post('/admin/api/HotelTop5').then(data=>{
+					
+	    				let product = [];
+	    				let data_obj = {};
+	    				let seriver = [];
+	    				data.data.map((item,index)=>{
+	    					product.push(item.name);
+	    					item.value.map((sub_item,sub_index)=>{
+							if(!data_obj[sub_item.name])  data_obj[sub_item.name] = {
+								data:[],
+								name:sub_item.name
+							};
+							for(let key in data_obj) {
+								if(sub_item.name == key) {
+									data_obj[key].data.push(sub_item.value);
+								}
+							}
+	    					})
+	    				});
+	    				for (let key  in data_obj) {
+	    					seriver.push(data_obj[key]);
+	    				}
+
+	    				this.hotelTop5 =  {
+						product:product,
+						name:'接待人数Top5酒店',
+						data:seriver
+	    				}
+	    				console.log(this.hotelTop5);
+	    				
+        			
+//      				this.hotelTop5 = data.data;
+        			})
+				 
 				
 			}
         		

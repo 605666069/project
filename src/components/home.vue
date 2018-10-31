@@ -11,7 +11,7 @@
 		        </Col>
 		        <Col span="12" class="pd">
 		        		<Title title="实时客流分布地图" ></Title>
-					<Ahome_center></Ahome_center>
+					<Ahome_center :data="home_center_data" v-if="home_center_data"></Ahome_center>
 		        </Col>
 		        <Col span="6" class="pd">
 		        	<div class="chunk">
@@ -20,13 +20,13 @@
 							总客流数
 						</div>
 						<div>
-							<Num data="123796"></Num>
+							<Num :data="num.totalNum"></Num>
 						</div>
 						<div class="sub_title  m-t">
 							今日客流数
 						</div>
 						<div>
-							<Num data="2094"></Num>
+							<Num :data="num.today_total" v-if="num.today_total"></Num>
 						</div>
 					</div>
 					<div class="chunk">
@@ -85,29 +85,72 @@
 	        		visit_data:null,
 	        		car_data:null,
 	        		colorList:['#2ab1a8','#faae3c'],
-	        		barColorList:['#01c6fd','#8d53ea']
+	        		barColorList:['#01c6fd','#8d53ea'],
+	        		num:{},
+	        		home_center_data:null
 	        	}
         },
         computed:{
         },
         components: {
-        	Top,Bar_one,Slider_chart,Line_one,Num,Ahome_center,Bar_two
+        		Top,Bar_one,Slider_chart,Line_one,Num,Ahome_center,Bar_two
         },
         methods:{
         		getVisit() {
-        			this.visit_data  = this.echarts_data.home_data.line_data;
+//      			axios.post('/ApiZmkzt/api/getDingConfig',{
+//			   		param:obj
+//			   })
+//      			this.visit_data  = this.echarts_data.home_data.line_data;
 //      			this.visit_data.data.map(item=>{
 //      				item.color = [this.color(),this.color()]
 //      			})
         		},
         		getCar() {
         			this.car_data = this.echarts_data.home_data.line_data_1;
+        		},
+        		getData() {
+        			//总客流数
+        			this.$ajax.post('/admin/api/OperationalData').then(data=>{
+        				this.num  = data.data;
+        				this.$ajax.post('/admin/api/DeviceRealTimeInfo').then(data=>{
+		    				this.home_center_data = data.data;
+		    				let total = 0
+	
+		    				this.home_center_data.map(item=>{
+		    					total+= item.total_visitor
+		    				});
+		    				this.$set(this.num,'today_total',String(total));
+		    			});
+        			})
+        			
+	    			//网络访问量
+	    			this.$ajax.get('/admin/api/WeixinVisit?dayNum=7').then(data=>{
+	    				let product = [];
+	    				let dataList = [];
+	    				data.data.map(item=>{
+	    					product.push(this.global.timespanToString(item.date,'MM/dd'));
+	    					dataList.push(item.visitNum)
+	    				})
+	    				this.visit_data =  {
+						product:product,
+						name:'网络访问量',
+						data:[
+							{
+								name:'微信访问量',
+								data:dataList
+							},
+						]
+					
+	    				}
+        			})
+        			
         		}
         },
         created() {
         		this.$nextTick(() => {
 				this.getVisit();
 				this.getCar();
+				this.getData()
 			})
         		
         },

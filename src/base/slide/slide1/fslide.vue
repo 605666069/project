@@ -30,6 +30,9 @@
 			},
 			title:{
 				default: ''
+			},
+			color:{
+				default:null
 			}
 
 		},
@@ -46,10 +49,10 @@
 					y2: 1,
 					colorStops: [{
 						offset: 0,
-						color: '#6959CD'
+						color: this.color
 					}, {
 						offset: 1,
-						color: '#ede0ff'
+						color: this.color
 					}]
 				};
 				this.option = {
@@ -66,7 +69,8 @@
 					series: [{
 						type: 'pie',
 						hoverAnimation: false,
-						radius: ['59%', '60%'],
+						radius: ['49%', '50%'],
+						center: ['50%', '50%'],
 						startAngle: 225,
 						labelLine: {
 							show: false
@@ -80,15 +84,14 @@
 									formatter: (rate * 100).toFixed(2) + '%',
 									textStyle: {
 										color: '#fff',
-										fontSize: 30,
-										fontWeight: 'bold'
+										fontSize: 25,
 									}
 								}
 							},
 							itemStyle: {
 								normal: {
 									borderColor: linear_color,
-									borderWidth: 20
+									borderWidth: 10
 								}
 							}
 						}, {

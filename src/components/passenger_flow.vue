@@ -10,13 +10,13 @@
 							今日入磐
 						</div>
 						<div>
-							<Num data="9123796"></Num>
+							<Num :data="num.today_total"></Num>
 						</div>
 						<div class="sub_title m-t">
 							2018累积入磐
 						</div>
 						<div>
-							<Num data="2094"></Num>
+							<Num :data="num.totalNum2018"></Num>
 						</div>
 					</div>
 					<div class="chunk">
@@ -63,7 +63,7 @@
 		        <Col span="12" class="pd">
 	        		<Title title="2018年客源累计Top10"></Title>
 	        		<div class="b">
-	        			<Bar_four :data="sum_visitor_data" :barMaxWidth='60' :show_legend="false" style="margin-top: 10px;"></Bar_four>
+	        			<Bar_four style="margin-top: 10px;"></Bar_four>
 	        		</div>
 		        </Col>
 		    </Row>
@@ -100,7 +100,8 @@
 				sum_visitor_data: null,
 				colorList: ['#fe996a', '#944fe8', '#01c8f3'],
 				colorList1: ['rgba(50,227,235,1)'],
-				colorList2:['#67d0e4','#f9e659']
+				colorList2:['#67d0e4','#f9e659'],
+				num:{}
 			}
 		},
 		computed: {},
@@ -136,6 +137,23 @@
 			getSumVisitorData() {
 				this.sum_visitor_data = this.echarts_data.passenger_flow.bar_data1;
 			},
+			getData() {
+					//总客流数
+        			this.$ajax.post('/admin/api/OperationalData').then(data=>{
+        				this.num  = data.data;
+        				this.$ajax.post('/admin/api/DeviceRealTimeInfo').then(data=>{
+		    				this.home_center_data = data.data;
+		    				let total = 0
+	
+		    				this.home_center_data.map(item=>{
+		    					total+= item.total_visitor
+		    				});
+		    				this.$set(this.num,'today_total',String(total));
+		    				
+		    			});
+        			})
+	    			
+			}
 
 		},
 		created() {
@@ -144,7 +162,8 @@
 				this.getVisitorData()
 				this.getHistoryVisitorData();
 				this.getSourceVisitorData();
-				this.getSumVisitorData()
+				this.getSumVisitorData();
+				this.getData()
 			})
 		},
 

@@ -11,12 +11,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-    	'/ApiZmkzt': { 
+    	'/admin': { 
 				changeOrigin: true, 
-				target: 'https://008.zmgjp.cn', 
+				target: 'http://61.174.54.116:8083', 
 				secure:false,
 				pathRewrite: { 
-					'^/ApiZmkzt': '/ApiZmkzt' 
+					'^/admin': '/admin' 
 				}, 
 			} 
     },
