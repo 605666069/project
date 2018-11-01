@@ -186,3 +186,13 @@ a:hover {
 .sub-left {
 	
 }
+.list .ivu-cell-main {
+	width: 100%;
+}
+.list .ivu-cell-title {
+	width: 100%;
+	-o-text-overflow: ellipsis;
+   text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
