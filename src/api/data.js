@@ -53,6 +53,67 @@ function getRandomData(length,isDate) {
 	return arr;
 }
 export default  {
+	ticketing_data:{
+		data1:{
+			name:'团散比分析',
+			data:[
+				{
+					value: 435,
+					name: '散体'
+				},
+				{
+					value: 120,
+					name: '团体'
+				},
+			]
+		},
+		data2:{
+			name:'销售渠道分析',
+			data:[
+				{
+					value: 435,
+					name: '网络'
+				},
+				{
+					value: 120,
+					name: '旅行社'
+				},
+				{
+					value: 2120,
+					name: '广告宣传'
+				},
+			]
+		},
+		data3:{
+			product:getRandomData(30,1),
+			name:'本周日售票额统计',
+			data:[
+				{
+					name:'周',
+					data:getRandomData(30)
+				},
+				{
+					name:'售票额',
+					data:getRandomData(30)
+				},
+			]
+		},
+		data4:{
+			product:['第一周','第二周','第三周','第四周'],
+			name:'本月周售票额统计',
+			data:[1234,1111,1000,500]
+		},
+		data5:{
+			product:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+			name:'全年月售票额统计',
+			data:[
+				{
+					name:'金额',
+					data:getRandomData(12)
+				},
+			]
+		}
+	},
 	home_data:{
 		rank:{
 			product:['1.十八窝','2.百丈潭','3.沙溪玫瑰园','4.百丈潭','5.十八窝','6.百丈潭','7.十八窝','8.百丈潭','9.孔庙'],

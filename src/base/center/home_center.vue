@@ -47,8 +47,6 @@
         created() {
 			this.getData();        		
         },
-       
-       
     }
 </script>
 

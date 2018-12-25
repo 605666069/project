@@ -115,7 +115,10 @@
 	    		},
 	    		immediate: true
 	    	}
-		}
+		},
+		beforeDestroy () {
+			this.echart.clear()
+			},
 
 	}
 </script>

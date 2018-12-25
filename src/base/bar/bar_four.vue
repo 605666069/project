@@ -233,7 +233,10 @@
 			 this.$nextTick(()=>{
 	        		this.creatChart();
 	        	})
-		}
+		},
+		  beforeDestroy () {
+			this.echart.clear()
+			},
 
 	}
 </script>

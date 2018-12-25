@@ -185,7 +185,10 @@
         		this.$nextTick(() => {
 				this.creatChart()
         		})
-		}
+		},
+		beforeDestroy () {
+			this.circle_one.clear()
+			},
 
 	}
 </script>

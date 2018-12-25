@@ -126,10 +126,18 @@
 				this.visitor_data = this.echarts_data.passenger_flow.line_data;
 			},
 			getHistoryVisitorData() {
-				this.history_visitor_data = this.echarts_data.passenger_flow.line_data1;
-				this.history_visitor_data.data.map((item, index) => {
-					item.color = [this.colorList[index], this.colorList[index]]
-				})
+				//网络访问量
+	    			this.$ajax.get('/admin/api/GetHourNum').then(data=>{
+	    				this.history_visitor_data = data.data;
+					this.history_visitor_data.data.map((item, index) => {
+						item.color = [this.colorList[index], this.colorList[index]]
+					})
+        			})
+	    		
+//				this.history_visitor_data = this.echarts_data.passenger_flow.line_data1;
+//				this.history_visitor_data.data.map((item, index) => {
+//					item.color = [this.colorList[index], this.colorList[index]]
+//				})
 			},
 			getSourceVisitorData() {
 				this.source_visitor_data = this.echarts_data.passenger_flow.bar_data;

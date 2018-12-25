@@ -128,7 +128,10 @@
 		    		},
 		    		immediate: true
 		    	}
-		}
+		},
+		beforeDestroy () {
+			this.circle_one.clear()
+			},
 
 	}
 </script>

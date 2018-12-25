@@ -9,9 +9,9 @@
 				<img src="../assets/clod.png"/>
 			</div>
 			<div  class="l">
-				多云 19°C<br />
+				{{data.weather}} {{data.temperatures}}<br />
 				
-				空气质量: 优35
+				空气质量: {{data.pM25}}
 			</div>
 		</div>
 		<div class="font-1 pointer right-text r" @click="back">
@@ -23,12 +23,18 @@
 		            {{$route.name||'菜单'}}
 		        </a>
 		        <DropdownMenu slot="list">
-		           <a href="#/home"><DropdownItem>实时客流</DropdownItem></a>
+		           <a href="#/home"><DropdownItem>数据总览</DropdownItem></a>
 		           <a href="#/passenger_flow"> <DropdownItem>客流数据</DropdownItem></a>
 		           <a href="#/scenic_area"> <DropdownItem>景区数据</DropdownItem></a>
 		           <a href="#/hotel"> <DropdownItem>酒店住宿</DropdownItem></a>
 		           <a href="#/car"> <DropdownItem>交通数据</DropdownItem></a>
 		           <a href="#/wx_operation"> <DropdownItem>微信运营</DropdownItem></a>
+		           <a href="#/map_data"> <DropdownItem>基础资源</DropdownItem></a>
+		           <a href="#/weather"> <DropdownItem>气象环保</DropdownItem></a>
+		           <a href="#/ticketing"> <DropdownItem>票务数据</DropdownItem></a>
+		           
+		           
+		           
 		           <!--<a href="#/hot_search"> <DropdownItem>网络热搜</DropdownItem></a>-->
 		        </DropdownMenu>
 		    </Dropdown>
@@ -46,12 +52,16 @@
         	return {
         		date_string:this.global.timespanToString(new Date(),'yyyy/MM/dd'),
         		time_string:this.global.timespanToString(new Date(),'hh:mm:ss'),
-        		timer:null
+        		timer:null,
+        		data:{}
         	}
         },
         props:{
         		title:{
         			default:""
+        		},
+        		isBg:{
+        			default:false
         		}
         },
         computed:{
@@ -61,9 +71,12 @@
         },
         methods:{
         		back() {
-        			
-        			console.log(window.location.host + '/panan/index.html')
-        			location.href=window.location.host + 'panan/index.html';
+        			location.href='http://' + window.location.host + '/panan/index.html';
+        		},
+        		getData() {
+        			this.$ajax.post('/api/weather').then(data=>{
+        				this.data = data.data;
+        			})
         		}
         },
         mounted() {
@@ -78,7 +91,7 @@
 	        }
      	},
         created() {
-        	
+        		this.getData()
         },
        
     }
@@ -87,10 +100,14 @@
 <style scoped>
 	.top {
 		position: relative;
-		background: url(../assets/top.png) 0 0;
+		background: url(../assets/top_bg1.png) 0 0;
 		background-size: 100% 100%;
 		padding-bottom: 15px;
+		z-index: 100;
 	}
+	/*.top1 {
+		background: url(../assets/top_bg1.png) 0 0;
+	}*/
 	.font-1 {
 		font-size: 20px;
 		color: #FFFFFF;

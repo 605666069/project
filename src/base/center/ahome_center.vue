@@ -62,6 +62,7 @@
 	        if(this.timer){
 	            clearInterval(this.timer);  
 	        }
+	        this.chart.clear()
      	},
        
        

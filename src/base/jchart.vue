@@ -31,6 +31,7 @@
 				let moveLines = [];
 				let data = [];
 				let mapData = this.echarts.getMap(this.mapName).geoJson.features
+				console.log(mapData)
 				mapData.map(item=>{
 					let randomData = this.global.randomFunction(500,1000);
 					
@@ -229,6 +230,7 @@
 	        if(this.timer){
 	            clearInterval(this.timer);  
 	        }
+	        this.echart.clear()
      	},
 
 	}

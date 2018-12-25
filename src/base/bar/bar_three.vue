@@ -120,6 +120,9 @@
         		this.creatChart();
         	})
         },
+        beforeDestroy () {
+			this.echart.clear()
+			},
        
        
     }

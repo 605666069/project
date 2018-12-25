@@ -47,6 +47,9 @@
 			},
 			axisLineShow:{
 				default:false
+			},
+			inverse:{
+				default:true
 			}
         },
         computed:{
@@ -82,7 +85,7 @@
     			
     			let a = {
 			        type: 'category',
-			        data: data.product,
+			        data: data.product||data.xAxis,
 			        axisLabel:{
 			        		color:'#fff'
 			       	},
@@ -97,7 +100,7 @@
 			        axisTick:{
 			        		show:false
 			        },
-			        inverse:true,
+			        inverse:this.inverse,
 			    }
     			let b = {
 				        type: 'value',

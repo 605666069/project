@@ -46,9 +46,6 @@
 						}
 					})
 				})
-				console.log(this.data)
-				console.log(sub_name);
-				console.log(title);
 				
 				
 				
@@ -210,6 +207,9 @@
 				this.creatChart()
 			})
 		},
+		beforeDestroy () {
+			this.echart.clear()
+			},
 
 	}
 </script>

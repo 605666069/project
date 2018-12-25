@@ -10,34 +10,10 @@
 			return {
 				option: {},
 				circle_one: null,
+				data:null
 			}
 		},
-		props: {
-			data: {
-				default: null
-			},
-			show_legend: {
-				default: true
-			},
-			isSmooth: {
-				default: false
-			},
-			isAreaShow: {
-				default: false
-			},
-			showTitle: {
-				default: true
-			},
-			gradient: {
-				default: null
-			},
-			colorList: {
-				default: null
-			},
-			dataZoom: {
-				default: null
-			}
-		},
+		props: {},
 		computed: {},
 		components: {},
 		methods: {
@@ -97,33 +73,45 @@
 				}
 
 				//  x轴数据          象形柱图数据  折线图数据
-				let xAxisMonth = [],
+				let xAxisMonth = this.data.xAxis,
 					barData = [],
 					lineData = [];
-				for(let i = 0; i < data.chart.length; i++) {
-					xAxisMonth.push(data.chart[i].month);
+				this.data.data[0].data.map((item,i)=>{
 					barData.push({
 						"name": xAxisMonth[i],
-						"value": data.chart[i].value
+						"value": item
 					});
+				})
+				console.log(this.data)
+				this.data.data[1].data.map((item,i)=>{
 					lineData.push({
 						"name": xAxisMonth[i],
-						"value": data.chart[i].ratio
+						"value": item
 					});
-				}
+				})
 				let colorList = [];
-				data.chart.map((item,index)=>{
-					console.log(item.value/item.ratio)
-					if(item.value/item.ratio < 0.6) {
+				barData.map((item,index)=>{
+					if(item.value/lineData[index].value < 0.6) {
 						colorList.push('rgba(151,223,93,'+(index%2?0.6:0.3) +')')
-					} else if(item.value/item.ratio > 60 && item.value/item.ratio < 0.75) {
+					} else if(item.value/lineData[index].value  > 60 && item.value/lineData[index].value  < 0.75) {
 						colorList.push('rgba(249,230,89 ,'+(index%2?0.6:0.3) +')')
 					} else {
 						colorList.push('rgba(236,88,81,'+(index%2?0.6:0.3) +')')
 					}
-					
 				})
-				console.log(colorList)
+				
+//				data.chart.map((item,index)=>{
+//					console.log(item.value/item.ratio)
+//					if(item.value/item.ratio < 0.6) {
+//						colorList.push('rgba(151,223,93,'+(index%2?0.6:0.3) +')')
+//					} else if(item.value/item.ratio > 60 && item.value/item.ratio < 0.75) {
+//						colorList.push('rgba(249,230,89 ,'+(index%2?0.6:0.3) +')')
+//					} else {
+//						colorList.push('rgba(236,88,81,'+(index%2?0.6:0.3) +')')
+//					}
+//					
+//				})
+//				console.log(colorList)
 
 				this.option = {
 					title: '',
@@ -139,13 +127,14 @@
 							type: 'none'
 						},
 						formatter: function(params) {
-							return params[0]["data"].name + "<br/>" + '舒适度: ' + params[1]["data"].value + "<br/>" + '承载量: ' + params[0]["data"].value;
+							console.log(params)
+							return params[0]["data"].name + "<br/>" + params[0].seriesName + ': '  + params[0]["data"].value + "<br/>" +  params[1].seriesName + ': ' + params[1]["data"].value;
 						}
 					},
 					xAxis: [{
 							type: 'category',
 							show: false,
-							data: ['景区1', '景区1', '景区1', '景区1', '景区1', '景区1', '景区1', '景区1', '景区1'],
+							data: xAxisMonth,
 							axisLabel: {
 								textStyle: {
 									color: '#b6b5ab'
@@ -213,7 +202,7 @@
 					}],
 					color: ['#e54035'],
 					series: [{
-							name: '舒适度',
+							name: this.data.data[0].name,
 							type: 'pictorialBar',
 							xAxisIndex: 1,
 							barCategoryGap: '-80%',
@@ -241,7 +230,7 @@
 						{
 							symbol: 'image://data:image/png;base64,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',
 							symbolSize: 42,
-							name: "承载量",
+							name: this.data.data[1].name,
 							type: "line",
 							yAxisIndex: 1,
 							data: lineData,
@@ -267,10 +256,15 @@
 				}
 			},
 			creatChart() {
-				this.initOpction();
-				this.circle_one && this.circle_one.dispose();
-				this.circle_one = this.echarts.init(this.$refs.my_chart);
-				this.circle_one.setOption(this.option);
+				//总客流数
+        			this.$ajax.post('/admin/api/ScenicComfort').then(data=>{
+        				this.data = data.data;
+        				this.initOpction();
+					this.circle_one && this.circle_one.dispose();
+					this.circle_one = this.echarts.init(this.$refs.my_chart);
+					this.circle_one.setOption(this.option);
+        			})
+				
 			},
 
 		},
@@ -278,7 +272,10 @@
         		this.$nextTick(() => {
 				this.creatChart()
         		})
-		}
+		},
+			beforeDestroy () {
+			this.circle_one.clear()
+			},
 
 	}
 </script>

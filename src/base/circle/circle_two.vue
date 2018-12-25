@@ -27,6 +27,16 @@
 			},
 			show_legend:{
 				default:true
+			},
+			radius:{
+				default:function(){
+					return ['45%','65%']
+				}
+			},
+			center:{
+				default:function(){
+					return ['40%','50%']
+				}
 			}
 			
 		},
@@ -71,8 +81,8 @@
 					series: [{
 							name: this.data.name,
 							type: 'pie',
-							center:['40%','50%'],
-							radius: ['45%', '65%'],
+							center:this.center,
+							radius: this.radius,
 							avoidLabelOverlap: false,
 							hoverAnimation:true,
 							label: {
@@ -116,7 +126,10 @@
 	    		},
 	    		immediate: true
 	    	}
-		}
+		},
+		beforeDestroy () {
+			this.echart.clear()
+			},
 
 	}
 </script>

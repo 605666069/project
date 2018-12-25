@@ -49,7 +49,6 @@
 				let dataList = [];
 				let nameList = [];
 				this.data.data.map((item,index)=>{
-					console.log
 					dataList.push({
 						 areaStyle: {
 						 	opacity:this.isAreaShow?1:0,
@@ -125,7 +124,7 @@
 				       	},
 				        type: 'category',
 				        boundaryGap: false,
-				        data: this.data.product,
+				        data: this.data.product||this.data.xAxis,
 				        splitLine: {
 				            show: false
 				        },

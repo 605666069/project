@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<span v-for="d in data">
+		<span v-for="d in dataList">
 			<span class="iconfont icon-shuzi9" v-if="d==9"></span>
 			<span class="iconfont icon-shuzi1" v-if="d==1"></span>
 			<span class="iconfont icon-shuzi2" v-if="d==2"></span>
@@ -28,7 +28,9 @@
         },
         computed:{
         		dataList() {
-        			return toString(data).splice('')
+        			let data = this.data;
+        			if(typeof(data)=='number')  data = String(data);
+        			return data
         		}
         },
         components: {

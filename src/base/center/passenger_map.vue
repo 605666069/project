@@ -278,6 +278,9 @@
 				this.getData();
 			})
 		},
+		beforeDestroy () {
+			this.chart.clear()
+			},
 
 	}
 </script>

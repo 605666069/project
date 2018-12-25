@@ -6,7 +6,7 @@
 		        <Col span="18" class="pd">
 		        	<Title title="微信粉丝分布图"></Title>
 	        		<div class="b" style="position: relative;height: 550px;">
-						<Apassenger_map></Apassenger_map>
+						<Apassenger_map :data="province"></Apassenger_map>
 						<Btable class="wx-table" :data="province" ></Btable>
 	        		</div>
 		        </Col>
