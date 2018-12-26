@@ -100,8 +100,12 @@
 		},
 		methods: {
 			getData() {
+				//各景区客流趋势
+			this.$ajax.post('/admin/api/GetDataInATime').then(data=>{
+				this.history_scenic_flow_data = data.data;
+			})
 				
-				this.history_scenic_flow_data = this.echarts_data.scenic_data.line_data1;
+				// this.history_scenic_flow_data = this.echarts_data.scenic_data.line_data1;
 				this.tody_scenic_flow_data = this.echarts_data.scenic_data.bar_data;
 				this.comfort_data = this.echarts_data.scenic_data.bar_data1;
 				//总客流数
